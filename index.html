@@ -1,0 +1,1878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jagan PG – Premium Living Spaces</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <meta name="description" content="Jagan PG offers premium paying guest accommodation with fully furnished rooms, WiFi, homely food, and 24/7 security for students and professionals.">
+  <meta name="keywords" content="PG near metro, student PG, boys PG, working professional PG, furnished PG rooms">
+  <meta name="author" content="Jagan PG">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg: #030506;
+      --fg: #ffffff;
+      --accent: #d4af37;
+      --accent-dim: rgba(255, 215, 0, 0.1);
+      --glass: rgba(10, 10, 10, 0.6);
+      --border: rgba(255, 255, 255, 0.1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      overflow-x: hidden;
+      background-color: #050505;
+    }
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+
+    /* Scroll Progress */
+    .scroll-line {
+      position: fixed;
+      top: 0; left: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), #fff);
+      z-index: 9999;
+      transition: width 0.1s;
+    }
+
+    /* Navigation */
+    .nav {
+      position: fixed; top: 0; width: 100%;
+      padding: 1.5rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      background: rgba(5,5,5,0.7);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: #fff; text-decoration: none; }
+    
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a { color: #fff; text-decoration: none; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; transition: 0.3s; }
+    .nav-links a:hover { opacity: 1; color: var(--accent); }
+
+    .burger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        z-index: 200;
+    }
+    .burger span {
+        width: 25px;
+        height: 2px;
+        background: #fff;
+        transition: all 0.3s ease;
+    }
+    .burger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .burger.active span:nth-child(2) { opacity: 0; }
+    .burger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .mobile-menu {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0,0,0,0.8);
+        backdrop-filter: blur(20px);
+        z-index: 99;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+    .mobile-menu.active { opacity: 1; visibility: visible; }
+    .mobile-menu a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 2rem;
+        font-family: 'Playfair Display', serif;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.4s ease;
+    }
+    .mobile-menu.active a { opacity: 1; transform: translateY(0); }
+    .mobile-menu.active a:nth-child(1) { transition-delay: 0.1s; }
+    .mobile-menu.active a:nth-child(2) { transition-delay: 0.2s; }
+    .mobile-menu.active a:nth-child(3) { transition-delay: 0.3s; }
+    .mobile-menu.active a:nth-child(4) { transition-delay: 0.4s; }
+
+    @media (max-width: 768px) {
+        .nav-links { display: none; }
+        .burger { display: flex; }
+    }
+
+    /* HERO SECTION */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      padding: 0 20px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image: url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1600');
+      background-size: cover;
+      background-position: center;
+      z-index: -2;
+      animation: heroZoom 20s ease-in-out infinite alternate;
+      filter: brightness(0.5);
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(to bottom, rgba(3,5,6,0.3), rgba(3,5,6,0.95));
+      z-index: -1;
+    }
+
+    #bg-canvas {
+      position: fixed; 
+      top: 0; left: 0; 
+      width: 100%; height: 100%; 
+      z-index: 0; 
+      pointer-events: none; 
+      opacity: 0.5; 
+    }
+
+    #hero-3d-overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 2; 
+      pointer-events: none; 
+    }
+
+    .hero > *:not(canvas) { z-index: 1; position: relative; }
+
+    @keyframes heroZoom {
+        0% { transform: scale(1); }
+        100% { transform: scale(1.1); }
+    }
+    
+    .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 0, 0, 0.15);
+        border: 1px solid rgba(255, 50, 50, 0.4);
+        color: #ffcccc;
+        padding: 10px 24px;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-bottom: 2rem;
+        animation: fadeInDown 1s ease forwards;
+        opacity: 0;
+        backdrop-filter: blur(4px);
+    }
+    .hero-title {
+      font-size: clamp(2.5rem, 8vw, 5.5rem);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(45deg, #fff, #ccc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: fadeIn 1s ease forwards 0.2s;
+      opacity: 0;
+      text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .hero-subtitle {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: #eee;
+      max-width: 600px;
+      margin-bottom: 2rem;
+      animation: fadeIn 1s ease forwards 0.4s;
+      opacity: 0;
+      line-height: 1.6;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+    .hero-features {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+        animation: fadeIn 1s ease forwards 0.6s;
+        opacity: 0;
+    }
+    .hero-feature {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #fff;
+        font-size: 0.9rem;
+        background: rgba(0,0,0,0.4);
+        padding: 8px 16px;
+        border-radius: 50px;
+        border: 1px solid rgba(255,255,255,0.1);
+        backdrop-filter: blur(4px);
+    }
+    .hero-feature svg { width: 18px; height: 18px; stroke: var(--accent); }
+
+    .btn-primary { padding: 1rem 2.5rem; background: var(--accent); color: #000; font-weight: 600; text-decoration: none; border-radius: 2px; transition: all 0.3s; display: inline-block; border: 1px solid var(--accent); }
+    .btn-primary:hover { background: transparent; color: var(--accent); box-shadow: 0 0 20px rgba(212, 175, 55, 0.2); }
+    .btn-secondary { padding: 1rem 2.5rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); color: #fff; font-weight: 500; text-decoration: none; border-radius: 2px; transition: all 0.3s; display: inline-block; backdrop-filter: blur(4px); }
+    .btn-secondary:hover { border-color: #fff; background: rgba(255,255,255,0.2); }
+
+    @keyframes fadeIn { to { opacity: 1; } }
+    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Sections */
+    .section-title {
+        text-align: center;
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        position: relative;
+        color: white;
+        text-shadow: 0 0 15px rgba(212,175,55,0.4);
+    }
+    .section-subtitle { text-align: center; color: #888; margin-bottom: 4rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .section-title::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 60px; height: 2px; background: var(--accent); }
+
+    /* ------------------------------------------------------- */
+    /* WHY CHOOSE US - UPDATED ANIMATION */
+    /* ------------------------------------------------------- */
+    .why-us-section {
+        padding: 8rem 5%;
+        background: radial-gradient(circle at top center, #111 0%, #050505 70%);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    #about-canvas {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        z-index: 0;
+        opacity: 0.6;
+        pointer-events: none;
+    }
+
+    .bento-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, auto);
+        gap: 1.5rem;
+        max-width: 1100px;
+        margin: 0 auto;
+        position: relative; 
+        z-index: 1;
+    }
+    
+    /* Card Entrance Animation */
+    .bento-card {
+        background: rgba(255,255,255,0.02);
+        border: 1px solid rgba(255,255,255,0.05);
+        border-radius: 12px;
+        padding: 2rem;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.6s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        backdrop-filter: blur(4px);
+        
+        /* Start hidden for animation */
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    /* Visible state triggered by JS */
+    .bento-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Staggering delays */
+    .bento-card:nth-child(1) { transition-delay: 0.1s; }
+    .bento-card:nth-child(2) { transition-delay: 0.2s; }
+    .bento-card:nth-child(3) { transition-delay: 0.3s; }
+    .bento-card:nth-child(4) { transition-delay: 0.4s; }
+
+    .bento-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 12px;
+        padding: 1px;
+        background: linear-gradient(45deg, #d4af37, transparent, #d4af37);
+        -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: 0.4s;
+    }
+    .bento-card:hover::after { opacity: 1; }
+    .bento-card.highlight {
+        grid-column: span 2;
+        background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), transparent);
+        border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+    .bento-card::before {
+        content: '';
+        position: absolute;
+        top: var(--mouse-y, 50%);
+        left: var(--mouse-x, 50%);
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(circle, rgba(212, 175, 55, 0.1), transparent 60%);
+        opacity: 0;
+        transition: opacity 0.3s;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        z-index: 1;
+    }
+    .bento-card:hover::before { opacity: 1; }
+    .bento-card:hover {
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        border-color: rgba(255,255,255,0.1);
+    }
+    .bento-icon { font-size: 2rem; margin-bottom: 1rem; color: var(--accent); position: relative; z-index: 2; }
+    .bento-title { font-size: 1.8rem; margin-bottom: 0.5rem; color: #fff; position: relative; z-index: 2; }
+    .bento-text { color: #aaa; font-size: 0.95rem; position: relative; z-index: 2; }
+    .counter-num {
+        font-size: 3.5rem;
+        font-weight: 700;
+        color: var(--accent);
+        font-family: 'Playfair Display', serif;
+        margin-right: 0.5rem;
+    }
+    @media (max-width: 900px) {
+        .bento-grid { grid-template-columns: 1fr 1fr; }
+        .bento-card.highlight { grid-column: span 2; }
+    }
+    @media (max-width: 600px) {
+        .bento-grid { grid-template-columns: 1fr; }
+        .bento-card.highlight { grid-column: span 1; }
+    }
+
+    /* ROOMS SECTION */
+    .rooms-section-wrapper {
+        padding: 8rem 5%;
+        background: radial-gradient(circle at center, #0d0d0d 0%, #050505 100%);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .room-container { 
+        display: grid; 
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); 
+        gap: 2.5rem; 
+        max-width: 1400px; 
+        margin: 0 auto; 
+        perspective: 1000px;
+    }
+
+    .room-card { 
+        position: relative;
+        height: 500px;
+        border-radius: 20px;
+        overflow: hidden;
+        transform-style: preserve-3d;
+        transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        cursor: pointer;
+    }
+
+    .room-card::before {
+        content: '';
+        position: absolute;
+        top: 5%; left: 5%;
+        width: 90%; height: 90%;
+        background: rgba(0,0,0,0.5);
+        filter: blur(20px);
+        z-index: -1;
+        transition: all 0.6s ease;
+        transform: translateZ(-50px);
+    }
+    .room-card:hover::before {
+        filter: blur(30px) brightness(0.5);
+        top: 10%;
+    }
+
+    .room-glare {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.2), transparent 40%);
+        z-index: 5;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s;
+        mix-blend-mode: overlay;
+    }
+    .room-card:hover .room-glare { opacity: 1; }
+
+    .room-border {
+        position: absolute;
+        inset: 0;
+        border-radius: 20px;
+        padding: 2px;
+        background: linear-gradient(45deg, var(--accent), transparent, var(--accent));
+        background-size: 400% 400%;
+        animation: borderRotate 6s linear infinite;
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0.3;
+        transition: opacity 0.3s;
+        z-index: 2;
+    }
+    .room-card:hover .room-border { opacity: 1; }
+
+    @keyframes borderRotate {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .room-image { 
+        position: absolute;
+        inset: 0;
+        background-size: cover; 
+        background-position: center; 
+        filter: grayscale(100%) brightness(0.6);
+        transition: transform 0.8s ease, filter 0.8s ease;
+        z-index: 0;
+    }
+    .room-card:hover .room-image { 
+        transform: scale(1.1); 
+        filter: grayscale(0%) brightness(0.8);
+    }
+
+    .room-content { 
+        position: absolute;
+        bottom: 0; left: 0; right: 0;
+        padding: 2rem;
+        background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.8) 70%, transparent);
+        z-index: 3;
+        transform: translateY(80px);
+        transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .room-card:hover .room-content {
+        transform: translateY(0);
+    }
+
+    .room-price { 
+        position: absolute;
+        top: 20px; right: 20px;
+        background: rgba(0,0,0,0.7);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--accent);
+        padding: 8px 20px;
+        border-radius: 30px;
+        font-size: 0.9rem;
+        color: var(--accent);
+        font-weight: 700;
+        z-index: 4;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        transform: translateY(0);
+        transition: transform 0.3s ease, color 0.3s;
+    }
+    .room-card:hover .room-price {
+        transform: translateY(-5px);
+        color: #fff;
+        background: var(--accent);
+    }
+
+    .room-list { 
+        list-style: none; 
+        color: #ccc; 
+        font-size: 0.85rem; 
+        margin: 1.5rem 0; 
+        opacity: 0;
+        transition: opacity 0.4s ease 0.1s;
+        transform: translateY(20px);
+    }
+    .room-card:hover .room-list {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .room-list li { 
+        margin-bottom: 0.5rem; 
+        display: flex; 
+        align-items: center; 
+        gap: 0.5rem; 
+    }
+    .room-list li::before { 
+        content: '✔'; 
+        color: var(--accent); 
+        font-size: 0.8rem; 
+    }
+
+    .room-btn-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1rem;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.4s ease 0.2s;
+    }
+    .room-card:hover .room-btn-wrapper {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .room-btn {
+        padding: 10px 24px;
+        background: var(--accent);
+        color: #000;
+        text-decoration: none;
+        font-weight: 600;
+        border-radius: 4px;
+        transition: all 0.3s;
+        font-size: 0.9rem;
+    }
+    .room-btn:hover {
+        background: #fff;
+        color: #000;
+    }
+
+    /* GALLERY SECTION */
+    .gallery-section { 
+        padding: 6rem 0; 
+        background: #000; 
+        overflow: hidden; 
+        height: 800px; 
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .gallery-scene {
+        width: 210px;
+        height: 140px;
+        position: relative;
+        perspective: 1000px;
+    }
+
+    .gallery-carousel {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        transform-style: preserve-3d;
+    }
+    
+    .gallery-carousel.paused {
+        animation-play-state: paused !important;
+    }
+
+    .gallery-card {
+        position: absolute;
+        width: 200px;
+        height: 280px;
+        left: 50%;
+        top: 50%;
+        margin-left: -100px;
+        margin-top: -140px;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        transition: transform 0.5s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+        backface-visibility: hidden;
+    }
+
+    .gallery-card:hover {
+        box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+        border-color: #d4af37;
+        transform: scale(1.05); 
+    }
+
+    .gallery-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+    }
+
+    .gallery-card:hover img {
+        transform: scale(1.1);
+    }
+
+    .gallery-card-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 1rem;
+        background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+        text-align: center;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: 0.3s;
+    }
+    
+    .gallery-card:hover .gallery-card-content {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .gallery-card-title { color: #fff; font-weight: 600; font-size: 1rem; }
+    .gallery-card-sub { color: #d4af37; font-size: 0.8rem; }
+
+    .gallery-section::after {
+        content: '';
+        position: absolute;
+        bottom: 100px;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background: radial-gradient(ellipse at center, rgba(212,175,55,0.1) 0%, transparent 70%);
+        pointer-events: none;
+    }
+
+    /* AMENITIES SECTION */
+    .amenities-section {
+        padding: 8rem 5%;
+        background: radial-gradient(circle at bottom center, #111 0%, #050505 70%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    #amenities-canvas {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    .amenities-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+    }
+
+    .amenity-card {
+        background: rgba(255,255,255,0.02);
+        border: 1px solid rgba(255,255,255,0.05);
+        padding: 2rem;
+        border-radius: 12px;
+        text-align: center;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(4px);
+    }
+
+    .amenity-card:hover {
+        background: rgba(255,255,255,0.05);
+        border-color: rgba(212, 175, 55, 0.3);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+
+    .amenity-icon {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 1rem;
+        stroke: var(--accent);
+        transition: transform 0.3s;
+    }
+
+    .amenity-card:hover .amenity-icon {
+        transform: scale(1.1);
+    }
+
+    .amenity-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #fff;
+        margin-bottom: 0.5rem;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .amenity-desc {
+        font-size: 0.85rem;
+        color: #777;
+        line-height: 1.4;
+    }
+
+    /* Reviews Orbit */
+    .reviews-orbit { padding: 120px 0; background: #050505; text-align: center; overflow: hidden; }
+    .reviews-title { color: white; font-size: 36px; margin-bottom: 80px; font-family: 'Playfair Display', serif; }
+    .orbit { position: relative; width: 650px; height: 380px; margin: auto; animation: spin 28s linear infinite; }
+    .review-card {
+        position: absolute;
+        top: 50%; left: 50%;
+        width: 180px; height: 180px;
+        background: #0a0a0a;
+        border: 2px solid #d4af37;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 18px;
+        text-align: center;
+        transform: rotate(calc(var(--i) * 36deg)) translate(300px) rotate(calc(var(--i) * -36deg));
+        box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+    .review-card img { width: 60px; height: 60px; border-radius: 50%; margin-bottom: 10px; object-fit: cover; }
+    .review-card p { font-size: 12px; color: #ccc; margin-bottom: 5px; }
+    .review-card h4 { color: #fff; font-size: 14px; }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+    /* CONTACT SECTION */
+    .contact-section-upgraded {
+        padding: 8rem 5%;
+        background: radial-gradient(circle at top right, #111 0%, #050505 80%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .contact-grid-upgraded {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+    }
+
+    @media (max-width: 900px) {
+        .contact-grid-upgraded {
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+    }
+
+    .contact-info-panel h2 {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(45deg, #fff, #d4af37);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .contact-info-panel p {
+        color: #aaa;
+        margin-bottom: 2.5rem;
+        line-height: 1.6;
+    }
+
+    .info-card {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        background: rgba(255,255,255,0.02);
+        border: 1px solid rgba(255,255,255,0.05);
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin-bottom: 1.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .info-card:hover {
+        border-color: var(--accent);
+        background: rgba(212, 175, 55, 0.05);
+        transform: translateX(10px);
+    }
+
+    .info-icon {
+        width: 50px;
+        height: 50px;
+        background: rgba(212, 175, 55, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        flex-shrink: 0;
+    }
+
+    .info-content h4 {
+        font-family: 'Inter', sans-serif;
+        font-size: 1.1rem;
+        color: #fff;
+        margin-bottom: 0.3rem;
+    }
+
+    .info-content p {
+        font-size: 0.9rem;
+        color: #888;
+        margin: 0;
+    }
+    
+    .info-content a {
+        color: var(--accent);
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+    .info-content a:hover {
+        color: #fff;
+    }
+
+    .map-container {
+        position: relative;
+        border-radius: 16px;
+        overflow: hidden;
+        height: 250px;
+        margin-top: 2rem;
+        border: 1px solid rgba(255,255,255,0.1);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .map-container iframe {
+        width: 100%;
+        height: 100%;
+        filter: grayscale(100%) invert(92%) contrast(83%);
+        transition: filter 0.3s;
+    }
+    .map-container:hover iframe {
+        filter: grayscale(0%);
+    }
+
+    .form-panel {
+        background: rgba(10, 10, 10, 0.6);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.1);
+        padding: 3rem;
+        border-radius: 20px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .form-panel::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+        position: relative;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-size: 0.8rem;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 1rem;
+        background: rgba(0,0,0,0.3);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 8px;
+        color: #fff;
+        transition: all 0.3s ease;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .form-input:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
+        background: rgba(0,0,0,0.5);
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+
+    @media (max-width: 600px) {
+        .form-row {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 1.2rem;
+        background: var(--accent);
+        color: #000;
+        border: none;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .submit-btn::before {
+        content: '';
+        position: absolute;
+        top: 0; left: -100%;
+        width: 100%; height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+        transition: left 0.5s;
+    }
+
+    .submit-btn:hover::before {
+        left: 100%;
+    }
+
+    .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+    }
+
+    /* FAQ */
+    .faq-container { max-width: 800px; margin: 0 auto; padding: 0 5%; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-question { width: 100%; background: transparent; border: none; padding: 1.5rem 0; display: flex; justify-content: space-between; align-items: center; color: #fff; font-size: 1rem; cursor: pointer; text-align: left; }
+    .faq-question svg { transition: transform 0.3s; min-width: 20px; stroke: var(--accent); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: #888; }
+    .faq-answer p { padding-bottom: 1.5rem; }
+    .faq-item.active .faq-answer { max-height: 200px; }
+    .faq-item.active .faq-question svg { transform: rotate(45deg); }
+
+    /* Footer */
+    footer { background: #030505; padding: 5rem 5% 2rem; border-top: 1px solid var(--border); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; max-width: 1200px; margin: 0 auto; }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; text-align: center; } }
+
+    /* WhatsApp */
+    .whatsapp-float {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background-color: #25D366;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        z-index: 100;
+        transition: transform 0.3s;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); }
+  </style>
+</head>
+<body>
+    <div class="scroll-line" id="scroll-line"></div>
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="#" class="nav-logo">JAGAN PG</a>
+        <div class="nav-links">
+        <a href="why_us.html">Why Us</a>
+        <a href="rooms.html">Rooms</a>
+        <a href="amenities.html">Amenities</a>
+        <a href="life-at-pg.html">Life at PG</a>
+        <a href="contact.html">Contact</a>
+        </div>
+        <div class="burger" id="burger-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobile-menu">
+            <a href="why_us.html">Why Us</a>
+            <a href="rooms.html">Rooms</a>
+            <a href="amenities.html">Amenities</a>
+            <a href="life-at-pg.html">Life at PG</a>
+            <a href="contact.html">Contact</a>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-badge">🔥 Only 3 Rooms Left This Month</div>
+        <h1 class="hero-title">Premium PG for Students & Working Professionals</h1>
+        <p class="hero-subtitle">Fully furnished PG rooms near metro with homely food, WiFi and 24/7 security. Starting from ₹5,500/month.</p>
+        
+        <div class="hero-features">
+            <div class="hero-feature">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Fully Furnished Rooms
+            </div>
+            <div class="hero-feature">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                High-Speed WiFi
+            </div>
+            <div class="hero-feature">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Homely Food
+            </div>
+            <div class="hero-feature">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                24/7 Security
+            </div>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-4" style="opacity:0; animation: fadeIn 1s ease forwards 0.8s; z-index: 10;">
+            <a href="#rooms" class="btn-primary">Explore Rooms</a>
+            <a href="#contact" class="btn-secondary">Book a Visit</a>
+        </div>
+
+        <canvas id="hero-3d-overlay"></canvas>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="why-us" class="why-us-section">
+        <canvas id="about-canvas"></canvas>
+
+        <div class="text-center mb-16 relative z-10">
+            <span class="text-xs uppercase tracking-[0.3em] text-[#d4af37] font-semibold">Why Choose Us</span>
+            <h2 class="section-title text-white mt-4">The Jagan PG Advantage</h2>
+            <p class="section-subtitle">Trusted by <span style="color:#d4af37;font-weight:600;">1700+ happy residents</span> for safe, comfortable, and premium living.</p>
+        </div>
+
+        <div class="bento-grid">
+            <div class="bento-card highlight" data-tilt>
+                <div class="bento-icon">👥</div>
+                <div class="flex items-baseline gap-2 mb-2">
+                    <span class="counter-num" id="counter1">0</span>
+                    <span class="text-2xl text-white font-bold">+</span>
+                </div>
+                <h3 class="bento-title">Happy Residents</h3>
+                <p class="bento-text">A vibrant community of students and professionals living harmoniously. Join our family today.</p>
+            </div>
+            <div class="bento-card" data-tilt>
+                <div class="bento-icon">🛡️</div>
+                <h3 class="bento-title">Safe & Secure</h3>
+                <p class="bento-text">Biometric entry, CCTV surveillance, and 24/7 security.</p>
+            </div>
+            <div class="bento-card" data-tilt>
+                <div class="bento-icon">🍛</div>
+                <h3 class="bento-title">Homely Food</h3>
+                <p class="bento-text">Fresh, hygienic, and nutritious meals served daily.</p>
+            </div>
+            <div class="bento-card" data-tilt>
+                <div class="bento-icon">📍</div>
+                <h3 class="bento-title">Prime Location</h3>
+                <p class="bento-text">Located near colleges, offices, metro stations.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rooms -->
+    <section id="rooms" class="rooms-section-wrapper">
+        <div class="text-center mb-16 relative z-10">
+            <span class="text-xs uppercase tracking-[0.3em] text-[#d4af37] font-semibold">Our Rooms</span>
+            <h2 class="section-title text-white mt-4">Choose Your Space</h2>
+            <p class="section-subtitle">Perfect spaces that fit your budget and lifestyle.</p>
+        </div>
+        <div class="room-container" id="room-container"></div>
+    </section>
+
+    <!-- Amenities -->
+    <section id="amenities" class="amenities-section">
+        <canvas id="amenities-canvas"></canvas>
+
+        <div class="text-center mb-16 relative z-10">
+            <span class="text-xs uppercase tracking-[0.3em] text-[#d4af37] font-semibold">Facilities</span>
+            <h2 class="section-title text-white mt-4">Premium Amenities</h2>
+            <p class="section-subtitle">Everything you need for a comfortable and enjoyable stay.</p>
+        </div>
+
+        <div class="amenities-grid">
+            <div class="amenity-card">
+                <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01M1 8a9 9 0 0122 0M4 12a5 5 0 0116 0"/></svg>
+                <h3 class="amenity-title">High-Speed WiFi</h3>
+                <p class="amenity-desc">100 Mbps fiber connection for work & streaming.</p>
+            </div>
+            <div class="amenity-card">
+                <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <h3 class="amenity-title">Nutritious Food</h3>
+                <p class="amenity-desc">Breakfast, lunch, and dinner served hot daily.</p>
+            </div>
+            <div class="amenity-card">
+                <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4v16h16M4 20l4-4m0 0l4-4m-4 4l4 4m0-8l4-4m0 0l4 4"/><circle cx="18" cy="6" r="2"/></svg>
+                <h3 class="amenity-title">Washing Area</h3>
+                <p class="amenity-desc">Separate washing zone with machine access.</p>
+            </div>
+            <div class="amenity-card">
+                <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                <h3 class="amenity-title">Power Backup</h3>
+                <p class="amenity-desc">24/7 uninterrupted power supply for all rooms.</p>
+            </div>
+            <div class="amenity-card">
+                <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/></svg>
+                <h3 class="amenity-title">Hot Water</h3>
+                <p class="amenity-desc">Geysers installed in all bathrooms.</p>
+            </div>
+            <div class="amenity-card">
+                <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                <h3 class="amenity-title">CCTV Security</h3>
+                <p class="amenity-desc">Surveillance cameras across the premises.</p>
+            </div>
+            <div class="amenity-card">
+                <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                <h3 class="amenity-title">Housekeeping</h3>
+                <p class="amenity-desc">Daily cleaning and fresh linen service.</p>
+            </div>
+            <div class="amenity-card">
+                <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/></svg>
+                <h3 class="amenity-title">Festivals & Parties</h3>
+                <p class="amenity-desc">Community celebrations for festivals & events.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="gallery-section">
+        <div class="text-center mb-12 relative z-10">
+            <span class="text-xs uppercase tracking-[0.3em] text-[#d4af37] font-semibold">Tour</span>
+            <h2 class="section-title text-white mt-4">Life at Jagan PG</h2>
+            <p class="section-subtitle">A glimpse into our comfortable living spaces and friendly community.</p>
+        </div>
+
+        <div class="gallery-scene" id="gallery-scene">
+            <div class="gallery-carousel" id="gallery-carousel">
+                <!-- Cards injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section id="reviews" class="reviews-orbit">
+        <h2 class="reviews-title">What Our Residents Say</h2>
+        <div class="orbit" id="reviews-orbit-container"></div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section-upgraded">
+        <div class="contact-grid-upgraded">
+            <div class="contact-info-panel">
+                <h2>Get in Touch</h2>
+                <p>Have questions about availability or want to schedule a visit? Reach out to us directly or fill out the form, and we'll get back to you shortly.</p>
+                
+                <div class="info-card">
+                    <div class="info-icon">📍</div>
+                    <div class="info-content">
+                        <h4>Our Location</h4>
+                        <p>Near Metro Station, Main Road,<br>Bangalore – 560001</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">📞</div>
+                    <div class="info-content">
+                        <h4>Phone Number</h4>
+                        <p><a href="tel:+917300212948">+91 73002 12948</a></p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">💬</div>
+                    <div class="info-content">
+                        <h4>WhatsApp</h4>
+                        <p><a href="https://wa.me/917300212948" target="_blank">Chat with us instantly</a></p>
+                    </div>
+                </div>
+
+                <div class="map-container">
+                    <iframe src="https://maps.google.com/maps?q=bangalore&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy"></iframe>
+                </div>
+            </div>
+
+            <div class="form-panel">
+                <h3 style="font-family: 'Inter', sans-serif; font-size: 1.5rem; margin-bottom: 2rem; color: #fff;">Send an Enquiry</h3>
+                <form id="contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input id="fullName" name="fullName" type="text" class="form-input" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input id="phone" name="phone" type="tel" class="form-input" placeholder="+91 98765 43210" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input id="email" name="email" type="email" class="form-input" placeholder="john@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Move-in Date</label>
+                            <input id="moveInDate" name="moveInDate" type="date" class="form-input">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Room Preference</label>
+                        <select id="roomPreference" name="roomPreference" class="form-input">
+                            <option>Select Room Type</option>
+                            <option>Single Occupancy</option>
+                            <option>Double Sharing</option>
+                            <option>Triple Sharing</option>
+                            <option>Deluxe Suite</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Your Message</label>
+                        <textarea id="message" name="message" class="form-input" rows="4" placeholder="Any specific requirements or questions..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Send Enquiry</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-24 relative z-10">
+        <div class="text-center mb-12">
+            <h2 class="section-title text-white">Frequently Asked Questions</h2>
+        </div>
+        <div class="faq-container">
+            <div class="faq-item active">
+                <button class="faq-question">Is food included in rent? <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+                <div class="faq-answer"><p>Yes, breakfast, lunch, and dinner are included in the monthly rent.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Is there WiFi? <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+                <div class="faq-answer"><p>Yes, high-speed fiber WiFi is available throughout the building.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Is security available? <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+                <div class="faq-answer"><p>Yes, we have 24/7 CCTV surveillance and biometric entry for maximum security.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h3 class="text-2xl font-bold text-white mb-4" style="font-family:'Playfair Display'">JAGAN PG</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">Premium Paying Guest Accommodation.<br>Safe and comfortable living for students and professionals.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold text-white mb-4">Quick Links</h4>
+                <ul class="space-y-2 text-gray-500 text-sm">
+                    <li><a href="#" class="hover:text-white">Home</a></li>
+                    <li><a href="#rooms" class="hover:text-white">Rooms</a></li>
+                    <li><a href="#gallery" class="hover:text-white">Gallery</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold text-white mb-4">Contact</h4>
+                <ul class="space-y-2 text-gray-500 text-sm">
+                    <li>📍 123 Main Street</li>
+                    <li>📞 +91 73002 12948</li>
+                    <li>📧 piyushverma730929@gmail.com</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold text-white mb-4">Location</h4>
+                <p class="text-gray-500 text-sm">Near Metro Station, Bangalore - 560001</p>
+            </div>
+        </div>
+        <div class="border-t border-[#111] mt-12 pt-8 text-center text-gray-600 text-xs">
+            &copy; 2024 Jagan PG. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+      const homeForm = document.getElementById('contact-form');
+      if (homeForm) {
+        homeForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const payload = {
+            fullName: document.getElementById('fullName').value.trim(),
+            phone: document.getElementById('phone').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            moveInDate: document.getElementById('moveInDate').value,
+            roomPreference: document.getElementById('roomPreference').value,
+            message: document.getElementById('message').value.trim(),
+          };
+          try {
+            const res = await fetch('/api/contact', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload),
+            });
+            if (!res.ok) {
+              const err = await res.json().catch(() => ({}));
+              alert(err.error || 'Failed to send enquiry');
+              return;
+            }
+            alert('Thanks! Your enquiry has been sent.');
+            homeForm.reset();
+          } catch (e2) {
+            alert('Network error. Please try again.');
+          }
+        });
+      }
+    </script>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/917300212948?text=Hi%2C%20I%27m%20interested%20in%20Jagan%20PG" target="_blank" class="whatsapp-float">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+        import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+        import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+
+        // Data
+        const roomsData = [
+          { type: 'Single Occupancy', price: '₹9,000 / month', img: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800', features: ['Private Room', 'Attached Bathroom', 'AC & Fan', 'High-Speed WiFi'], btn: 'Enquire Now' },
+          { type: 'Double Sharing', price: '₹7,000 / month', img: 'https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=800', features: ['Spacious Room', 'High-Speed WiFi', 'Wardrobe', 'Study Table'], btn: 'Enquire Now' },
+          { type: 'Triple Sharing', price: '₹5,500 / month', img: 'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=800', features: ['Budget Friendly', 'WiFi Included', 'Personal Storage', 'Study Area'], btn: 'Enquire Now' },
+          { type: 'Deluxe Suite', price: '₹12,000 / month', img: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800', features: ['Premium Private Room', 'AC Included', 'Mini Fridge', 'Smart TV'], btn: 'Book Now' }
+        ];
+        
+        const galleryData = [
+            { url: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600', title: '🏠 Fully Furnished', sub: 'Rooms' },
+            { url: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=600', title: '🍽 Hygienic Dining', sub: 'Area' },
+            { url: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600', title: '📚 Quiet Study', sub: 'Space' },
+            { url: 'https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=600', title: '🛋 Community', sub: 'Lounge' },
+            { url: 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=600', title: '🏢 Modern', sub: 'Interiors' },
+            { url: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600', title: '📍 Safe Building', sub: 'Exterior' },
+            { url: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600', title: '🏠 Balcony View', sub: 'Rooms' },
+            { url: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=600', title: '🍽 Kitchen', sub: 'Area' }
+        ];
+
+        const reviewsData = [
+            { img: 'https://i.pravatar.cc/150?img=1', text: 'Clean rooms and homely food. Highly recommended.', name: 'Rahul Sharma' },
+            { img: 'https://i.pravatar.cc/150?img=2', text: 'Very safe PG and great WiFi for work.', name: 'Ankit Verma' },
+            { img: 'https://i.pravatar.cc/150?img=3', text: 'Best PG near metro station.', name: 'Priya Singh' },
+            { img: 'https://i.pravatar.cc/150?img=4', text: 'Owner is very supportive.', name: 'Aman Gupta' },
+            { img: 'https://i.pravatar.cc/150?img=5', text: 'Affordable and comfortable rooms.', name: 'Neha Kapoor' },
+            { img: 'https://i.pravatar.cc/150?img=6', text: 'Food quality is amazing.', name: 'Rohit Sharma' },
+            { img: 'https://i.pravatar.cc/150?img=7', text: 'Very peaceful environment.', name: 'Karan Mehta' },
+            { img: 'https://i.pravatar.cc/150?img=8', text: 'Feels like home.', name: 'Sneha Verma' },
+            { img: 'https://i.pravatar.cc/150?img=9', text: 'Great facilities and fast internet.', name: 'Riya Sharma' },
+            { img: 'https://i.pravatar.cc/150?img=10', text: 'Perfect for students.', name: 'Aditya Jain' },
+        ];
+
+        // Render Rooms
+        const roomContainer = document.getElementById('room-container');
+        roomContainer.innerHTML = roomsData.map(r => `
+        <div class="room-card" data-tilt>
+            <div class="room-border"></div>
+            <div class="room-glare"></div>
+            <div class="room-image" style="background-image:url('${r.img}')" role="img" aria-label="Jagan PG ${r.type} Room"></div>
+            <div class="room-price">${r.price}</div>
+            <div class="room-content">
+                <h3 class="text-2xl font-bold text-white mb-2" style="font-family:'Playfair Display';">${r.type}</h3>
+                <ul class="room-list">${r.features.map(f => `<li>${f}</li>`).join('')}</ul>
+                <div class="room-btn-wrapper">
+                    <a href="#contact" class="room-btn">${r.btn}</a>
+                </div>
+            </div>
+        </div>
+        `).join('');
+
+        // GALLERY 3D CAROUSEL LOGIC
+        const galleryCarousel = document.getElementById('gallery-carousel');
+        const galleryScene = document.getElementById('gallery-scene');
+        
+        if(galleryCarousel) {
+            const cardCount = galleryData.length;
+            const angleStep = 360 / cardCount;
+            const radius = 400; 
+
+            galleryData.forEach((g, i) => {
+                const card = document.createElement('div');
+                card.className = 'gallery-card';
+                const angle = i * angleStep;
+                card.style.transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
+
+                card.innerHTML = `
+                    <img src="${g.url}" loading="lazy" alt="${g.title}">
+                    <div class="gallery-card-content">
+                        <div class="gallery-card-title">${g.title}</div>
+                        <div class="gallery-card-sub">${g.sub}</div>
+                    </div>
+                `;
+                galleryCarousel.appendChild(card);
+            });
+
+            let rotation = 0;
+            let isPaused = false;
+
+            galleryScene.addEventListener('mouseenter', () => isPaused = true);
+            galleryScene.addEventListener('mouseleave', () => isPaused = false);
+
+            function animateGallery() {
+                requestAnimationFrame(animateGallery);
+                if (!isPaused) {
+                    rotation += 0.2; 
+                    galleryCarousel.style.transform = `rotateY(${rotation}deg)`;
+                }
+            }
+            animateGallery();
+        }
+
+        // Render Reviews
+        const reviewsContainer = document.getElementById('reviews-orbit-container');
+        reviewsContainer.innerHTML = reviewsData.map((r, i) => `
+            <div class="review-card" style="--i:${i+1};">
+                <img src="${r.img}" alt="${r.name}">
+                <p>${r.text}</p>
+                <h4>${r.name}</h4>
+            </div>
+        `).join('');
+
+        // ENHANCED 3D TILT & GLARE LOGIC
+        document.querySelectorAll('[data-tilt]').forEach(card => {
+            const glare = card.querySelector('.room-glare');
+            
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 15; 
+                const rotateY = (centerX - x) / 15; 
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                
+                if(glare) {
+                    const percentX = (x / rect.width) * 100;
+                    const percentY = (y / rect.height) * 100;
+                    glare.style.setProperty('--mouse-x', `${percentX}%`);
+                    glare.style.setProperty('--mouse-y', `${percentY}%`);
+                }
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            });
+        });
+
+        // Burger Menu Logic
+        const burger = document.getElementById('burger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        burger.addEventListener('click', () => {
+            burger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                burger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // -------------------------------------------------------
+        // INTERSECTION OBSERVER FOR BENTO CARDS (New Animation)
+        // -------------------------------------------------------
+        const bentoCards = document.querySelectorAll('.bento-card');
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: "0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        bentoCards.forEach(card => {
+            observer.observe(card);
+        });
+
+        // Spotlight Effect for Bento
+        document.querySelectorAll('.bento-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // Counter Animation
+        const counterEle = document.getElementById('counter1');
+        let hasCounted = false;
+        const animateCounter = () => {
+            if(hasCounted) return;
+            const rect = counterEle.getBoundingClientRect();
+            if(rect.top < window.innerHeight && rect.bottom > 0) {
+                hasCounted = true;
+                let count = 0;
+                const target = 2000;
+                const duration = 2000;
+                const step = target / (duration / 16);
+                const update = () => {
+                    count += step;
+                    if(count < target) {
+                        counterEle.innerText = Math.floor(count);
+                        requestAnimationFrame(update);
+                    } else {
+                        counterEle.innerText = target;
+                    }
+                };
+                update();
+            }
+        };
+        window.addEventListener('scroll', animateCounter);
+        animateCounter();
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.parentElement;
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                if(!isActive) item.classList.add('active');
+            });
+        });
+
+        // GLOBAL BACKGROUND 3D (Three.js)
+        const canvas = document.getElementById('bg-canvas');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+        camera.position.z = 30;
+        
+        const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+        renderer.setClearColor(0x000000, 0);
+
+        scene.add(new THREE.AmbientLight(0x404040, 0.5));
+        const pLight = new THREE.PointLight(0xffd700, 10, 100);
+        pLight.position.set(10,10,10);
+        scene.add(pLight);
+
+        const geo = new THREE.IcosahedronGeometry(10, 1);
+        const mat = new THREE.MeshStandardMaterial({ color: 0x111111, metalness: 0.9, roughness: 0.1, transparent: true, opacity: 0.8 });
+        const crystal = new THREE.Mesh(geo, mat);
+        scene.add(crystal);
+        
+        const wireMat = new THREE.MeshBasicMaterial({ color: 0xffd700, wireframe: true, transparent: true, opacity: 0.2 });
+        crystal.add(new THREE.Mesh(geo, wireMat));
+
+        const pGeo = new THREE.BufferGeometry();
+        const pCount = 1500;
+        const pos = new Float32Array(pCount * 3);
+        for(let i=0; i<pCount*3; i++) pos[i] = (Math.random() - 0.5) * 100;
+        pGeo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+        const pMat = new THREE.PointsMaterial({ size: 0.1, color: 0xffffff, transparent: true, opacity: 0.6 });
+        scene.add(new THREE.Points(pGeo, pMat));
+
+        const composer = new EffectComposer(renderer);
+        composer.addPass(new RenderPass(scene, camera));
+        const bloom = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.4, 0.85);
+        bloom.threshold = 0; bloom.strength = 2; bloom.radius = 0.5;
+        composer.addPass(bloom);
+
+        let mX = 0, mY = 0, tX = 0, tY = 0, sY = 0;
+        document.addEventListener('mousemove', e => { mX = (e.clientX/window.innerWidth)*2-1; mY = -(e.clientY/window.innerHeight)*2+1; });
+        window.addEventListener('scroll', () => {
+            sY = window.scrollY;
+            document.getElementById('scroll-line').style.width = (sY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
+        });
+
+        function animate() {
+            requestAnimationFrame(animate);
+            const t = performance.now() * 0.001;
+            tX += (mX - tX) * 0.05;
+            tY += (mY - tY) * 0.05;
+            crystal.rotation.x = t * 0.1 + tY * 0.5;
+            crystal.rotation.y = t * 0.1 + tX * 0.5;
+            crystal.rotation.z = sY * 0.001;
+            pLight.position.x = Math.sin(t * 0.3) * 20;
+            pLight.position.y = Math.cos(t * 0.3) * 20;
+            composer.render();
+        }
+        animate();
+
+        // HERO OVERLAY 3D
+        const heroCanvas = document.getElementById('hero-3d-overlay');
+        if(heroCanvas) {
+            const hScene = new THREE.Scene();
+            const hCamera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            hCamera.position.z = 20;
+
+            const hRenderer = new THREE.WebGLRenderer({ canvas: heroCanvas, antialias: true, alpha: true });
+            hRenderer.setSize(window.innerWidth, window.innerHeight);
+            hRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 1));
+
+            const hGeo = new THREE.BufferGeometry();
+            const hCount = 300;
+            const hPos = new Float32Array(hCount * 3);
+            for(let i=0; i<hCount*3; i++) hPos[i] = (Math.random() - 0.5) * 40;
+            hGeo.setAttribute('position', new THREE.BufferAttribute(hPos, 3));
+            
+            const hMat = new THREE.PointsMaterial({ size: 0.15, color: 0xd4af37, transparent: true, opacity: 0.6, blending: THREE.AdditiveBlending });
+            hScene.add(new THREE.Points(hGeo, hMat));
+
+            const sphereGeo = new THREE.IcosahedronGeometry(8, 1);
+            const sphereMat = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true, transparent: true, opacity: 0.1 });
+            const sphere = new THREE.Mesh(sphereGeo, sphereMat);
+            hScene.add(sphere);
+
+            function animateHero() {
+                requestAnimationFrame(animateHero);
+                const t = performance.now() * 0.001;
+                hScene.children[0].rotation.y = t * 0.05;
+                hScene.children[0].rotation.x = t * 0.03;
+                sphere.rotation.x = t * 0.1;
+                sphere.rotation.y = t * 0.15;
+                hCamera.position.x += ( (mX * 2) - hCamera.position.x ) * 0.02;
+                hCamera.position.y += ( (mY * 2) - hCamera.position.y ) * 0.02;
+                hCamera.lookAt(hScene.position);
+                hRenderer.render(hScene, hCamera);
+            }
+            animateHero();
+        }
+
+        // -------------------------------------------------------
+        // ABOUT SECTION 3D (UPDATED TO PARTICLE SPHERE)
+        // -------------------------------------------------------
+        const aboutCanvas = document.getElementById('about-canvas');
+        if(aboutCanvas) {
+            const aScene = new THREE.Scene();
+            const whyUsSection = document.getElementById('why-us');
+            
+            let aWidth = whyUsSection.clientWidth;
+            let aHeight = whyUsSection.clientHeight;
+
+            const aCamera = new THREE.PerspectiveCamera(75, aWidth / aHeight, 0.1, 1000);
+            aCamera.position.z = 30;
+
+            const aRenderer = new THREE.WebGLRenderer({ canvas: aboutCanvas, antialias: true, alpha: true });
+            aRenderer.setSize(aWidth, aHeight);
+            aRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 1));
+            
+            // Create Particle Sphere
+            const particleCount = 2000;
+            const particleGeo = new THREE.BufferGeometry();
+            const positions = new Float32Array(particleCount * 3);
+            const originalPositions = []; // Store original positions for wave effect
+            
+            for(let i=0; i<particleCount; i++) {
+                // Spherical distribution
+                const lon = Math.random() * Math.PI * 2;
+                const lat = Math.random() * Math.PI;
+                const r = 12; // Radius
+                
+                const x = r * Math.sin(lat) * Math.cos(lon);
+                const y = r * Math.sin(lat) * Math.sin(lon);
+                const z = r * Math.cos(lat);
+                
+                positions[i*3] = x;
+                positions[i*3+1] = y;
+                positions[i*3+2] = z;
+                
+                originalPositions.push({x, y, z});
+            }
+            
+            particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            
+            const particleMat = new THREE.PointsMaterial({
+                color: 0xd4af37,
+                size: 0.15,
+                transparent: true,
+                opacity: 0.8,
+                blending: THREE.AdditiveBlending
+            });
+            
+            const particleSystem = new THREE.Points(particleGeo, particleMat);
+            aScene.add(particleSystem);
+
+            function animateAbout() {
+                requestAnimationFrame(animateAbout);
+                const t = performance.now() * 0.001;
+                
+                // Rotate the whole system
+                particleSystem.rotation.y = t * 0.1;
+                particleSystem.rotation.x = t * 0.05;
+                
+                // Distort vertices (Breathing Effect)
+                const positions = particleGeo.attributes.position.array;
+                for(let i=0; i<particleCount; i++) {
+                    const original = originalPositions[i];
+                    
+                    // Simple sine wave distortion
+                    const noise = Math.sin(original.x * 0.5 + t) * 0.5 + 
+                                  Math.sin(original.y * 0.5 + t) * 0.5;
+                                  
+                    positions[i*3] = original.x + (original.x * noise * 0.05);
+                    positions[i*3+1] = original.y + (original.y * noise * 0.05);
+                    positions[i*3+2] = original.z + (original.z * noise * 0.05);
+                }
+                particleGeo.attributes.position.needsUpdate = true;
+
+                aRenderer.render(aScene, aCamera);
+            }
+            animateAbout();
+
+            window.addEventListener('resize', () => {
+                aWidth = whyUsSection.clientWidth;
+                aHeight = whyUsSection.clientHeight;
+                aCamera.aspect = aWidth / aHeight;
+                aCamera.updateProjectionMatrix();
+                aRenderer.setSize(aWidth, aHeight);
+            });
+        }
+
+        // AMENITIES SECTION 3D
+        const amenitiesCanvas = document.getElementById('amenities-canvas');
+        if(amenitiesCanvas) {
+            const amScene = new THREE.Scene();
+            const amenitiesSection = document.getElementById('amenities');
+            
+            let amWidth = amenitiesSection.clientWidth;
+            let amHeight = amenitiesSection.clientHeight;
+
+            const amCamera = new THREE.PerspectiveCamera(75, amWidth / amHeight, 0.1, 1000);
+            amCamera.position.z = 30;
+
+            const amRenderer = new THREE.WebGLRenderer({ canvas: amenitiesCanvas, antialias: true, alpha: true });
+            amRenderer.setSize(amWidth, amHeight);
+            amRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 1));
+            
+            const group = new THREE.Group();
+            
+            const ringGeo1 = new THREE.TorusGeometry(15, 0.05, 16, 100);
+            const ringMat1 = new THREE.MeshBasicMaterial({ color: 0xd4af37, transparent: true, opacity: 0.4 });
+            const ring1 = new THREE.Mesh(ringGeo1, ringMat1);
+            ring1.rotation.x = Math.PI / 2;
+            group.add(ring1);
+
+            const ringGeo2 = new THREE.TorusGeometry(12, 0.05, 16, 100);
+            const ringMat2 = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.2 });
+            const ring2 = new THREE.Mesh(ringGeo2, ringMat2);
+            ring2.rotation.x = Math.PI / 3;
+            ring2.rotation.y = Math.PI / 4;
+            group.add(ring2);
+
+            const ringGeo3 = new THREE.TorusGeometry(8, 0.05, 16, 100);
+            const ring3 = new THREE.Mesh(ringGeo3, ringMat1);
+            ring3.rotation.x = Math.PI / 5;
+            ring3.rotation.z = Math.PI / 6;
+            group.add(ring3);
+
+            const coreGeo = new THREE.IcosahedronGeometry(2, 0);
+            const coreMat = new THREE.MeshBasicMaterial({ color: 0xd4af37, wireframe: true, transparent: true, opacity: 0.6 });
+            const core = new THREE.Mesh(coreGeo, coreMat);
+            group.add(core);
+
+            const particlesGeo = new THREE.BufferGeometry();
+            const particlesCount = 100;
+            const posArray = new Float32Array(particlesCount * 3);
+            
+            for(let i = 0; i < particlesCount * 3; i++) {
+                posArray[i] = (Math.random() - 0.5) * 40;
+            }
+            
+            particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+            const particlesMat = new THREE.PointsMaterial({
+                size: 0.15,
+                color: 0xd4af37,
+                transparent: true,
+                opacity: 0.6,
+                blending: THREE.AdditiveBlending
+            });
+            const particlesMesh = new THREE.Points(particlesGeo, particlesMat);
+            group.add(particlesMesh);
+
+            amScene.add(group);
+
+            function animateAmenities() {
+                requestAnimationFrame(animateAmenities);
+                const t = performance.now() * 0.001;
+
+                ring1.rotation.z = t * 0.2;
+                ring2.rotation.z = -t * 0.3;
+                ring3.rotation.y = t * 0.4;
+
+                const scale = 1 + Math.sin(t * 2) * 0.1;
+                core.scale.set(scale, scale, scale);
+                core.rotation.x = t;
+                core.rotation.y = t * 0.5;
+
+                particlesMesh.rotation.y = t * 0.05;
+
+                group.rotation.x = tY * 0.5;
+                group.rotation.y = tX * 0.5;
+
+                amRenderer.render(amScene, amCamera);
+            }
+            animateAmenities();
+
+            window.addEventListener('resize', () => {
+                amWidth = amenitiesSection.clientWidth;
+                amHeight = amenitiesSection.clientHeight;
+                amCamera.aspect = amWidth / amHeight;
+                amCamera.updateProjectionMatrix();
+                amRenderer.setSize(amWidth, amHeight);
+            });
+        }
+
+        // Global Resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth/window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            composer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>
