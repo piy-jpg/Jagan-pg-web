@@ -1,0 +1,5 @@
+# robots.txt for Jagan PG
+User-agent: *
+Allow: /
+
+Sitemap: https://jagan-pg-web.vercel.app/sitemap.xml
