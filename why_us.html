@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Why Choose Us – Jagan PG</title>
   <link rel="icon" type="image/png" href="logo.png">
-  <meta name="description" content="Discover why Jagan PG is the preferred choice.">
+  <meta name="description" content="Discover why Jagan PG is Bangalore's premier coliving accommodation for students and working professionals.">
   
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <script type="importmap">
     {
@@ -26,8 +26,8 @@
       --accent: #d4af37;
       --accent-light: #f1d27a;
       --accent-glow: rgba(212, 175, 55, 0.6);
-      --glass: rgba(20, 20, 20, 0.7);
-      --border: rgba(255, 255, 255, 0.1);
+      --glass: rgba(14, 14, 14, 0.7);
+      --border: rgba(255, 255, 255, 0.08);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -37,11 +37,11 @@
       background: var(--bg);
       color: var(--fg);
       overflow-x: hidden;
-      background-color: #050505;
+      background-color: #040404;
     }
     h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
 
-    /* Scroll Progress */
+    /* Scroll Progress Line */
     .scroll-line {
       position: fixed;
       top: 0; left: 0;
@@ -49,34 +49,69 @@
       background: linear-gradient(90deg, var(--accent), #fff);
       z-index: 9999;
       transition: width 0.1s;
-      box-shadow: 0 0 10px var(--accent);
+      box-shadow: 0 0 12px var(--accent);
     }
 
     /* Navigation */
     .nav {
       position: fixed; top: 0; width: 100%;
-      padding: 1.5rem 5%;
+      padding: 1.25rem 5%;
       display: flex;
       justify-content: space-between;
       align-items: center;
       z-index: 100;
-      background: rgba(5,5,5,0.6);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      background: rgba(5,5,5,0.65);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: all 0.3s ease;
     }
-    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: #fff; text-decoration: none; }
-    .nav-links { display: flex; gap: 2rem; }
-    .nav-links a { color: #fff; text-decoration: none; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; transition: 0.3s; position: relative; }
+    .nav-logo { 
+      font-family: 'Playfair Display', serif; 
+      font-size: 1.5rem; 
+      font-weight: 700; 
+      color: #fff; 
+      text-decoration: none; 
+      letter-spacing: 0.5px;
+    }
+    .nav-links { display: flex; gap: 2.2rem; align-items: center; }
+    .nav-links a { 
+      color: #fff; 
+      text-decoration: none; 
+      font-size: 0.82rem; 
+      text-transform: uppercase; 
+      letter-spacing: 1px; 
+      opacity: 0.75; 
+      transition: 0.3s; 
+      position: relative; 
+    }
     .nav-links a:hover, .nav-links a.active { opacity: 1; color: var(--accent); }
     .nav-links a.active::after {
         content: '';
         position: absolute;
-        bottom: -5px;
+        bottom: -6px;
         left: 0;
         width: 100%;
-        height: 1px;
+        height: 2px;
         background: var(--accent);
-        box-shadow: 0 0 5px var(--accent);
+        box-shadow: 0 0 8px var(--accent);
+        border-radius: 2px;
+    }
+
+    .nav-cta-btn {
+        padding: 7px 18px;
+        background: linear-gradient(135deg, var(--accent), #b8860b);
+        color: #000 !important;
+        font-weight: 700;
+        border-radius: 6px;
+        opacity: 1 !important;
+        box-shadow: 0 2px 10px rgba(212, 175, 55, 0.25);
+        transition: all 0.3s ease !important;
+    }
+    .nav-cta-btn:hover {
+        background: #fff;
+        color: #000 !important;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
     }
 
     .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 200; }
@@ -92,10 +127,10 @@
         opacity: 0; visibility: hidden; transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
     }
     .mobile-menu.active { opacity: 1; visibility: visible; }
-    .mobile-menu a { color: #fff; text-decoration: none; font-size: 2rem; font-family: 'Playfair Display', serif; opacity: 0; transform: translateY(50px); transition: all 0.4s ease; }
+    .mobile-menu a { color: #fff; text-decoration: none; font-size: 1.8rem; font-family: 'Playfair Display', serif; opacity: 0; transform: translateY(50px); transition: all 0.4s ease; }
     .mobile-menu.active a { opacity: 1; transform: translateY(0); }
 
-    @media (max-width: 768px) {
+    @media (max-width: 860px) {
         .nav-links { display: none; }
         .burger { display: flex; }
     }
@@ -110,7 +145,7 @@
         position: fixed;
         top: 0; left: 0;
         width: 800px; height: 800px;
-        background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 60%);
+        background: radial-gradient(circle, rgba(212, 175, 55, 0.07) 0%, transparent 60%);
         pointer-events: none;
         z-index: 1;
         transform: translate(-50%, -50%);
@@ -118,7 +153,7 @@
         mix-blend-mode: screen;
     }
 
-    /* Floating Magic Particles (CSS) */
+    /* Floating Particles */
     .particle {
         position: absolute;
         width: 4px; height: 4px;
@@ -138,71 +173,62 @@
 
     /* HERO SECTION */
     .hero-why {
-        min-height: 80vh;
+        min-height: 52vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         text-align: center;
-        padding-top: 10rem;
+        padding: 9.5rem 5% 2rem;
         position: relative;
         z-index: 5;
-        overflow: hidden;
     }
 
-    .hero-glow {
-        position: absolute;
-        width: 800px;
-        height: 800px;
-        background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        animation: pulseGlow 4s ease-in-out infinite alternate;
-        pointer-events: none;
-    }
-
-    @keyframes pulseGlow {
-        0% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
-        100% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+    .page-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.72rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--accent);
+        font-weight: 600;
+        padding: 5px 14px;
+        border-radius: 9999px;
+        background: rgba(212, 175, 55, 0.08);
+        border: 1px solid rgba(212, 175, 55, 0.25);
+        margin-bottom: 1.25rem;
     }
     
     .hero-title {
-        font-size: clamp(3.5rem, 9vw, 7rem);
-        line-height: 1.1;
-        background: linear-gradient(45deg, #fff, #d4af37, #fff);
-        background-size: 200% auto;
+        font-size: clamp(2.8rem, 6.5vw, 5rem);
+        line-height: 1.15;
+        background: linear-gradient(45deg, #ffffff 30%, #d4af37 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.25rem;
         opacity: 0;
         transform: translateY(30px);
-        animation: fadeUp 1s ease forwards 0.3s, shineText 5s linear infinite;
-        position: relative;
-        transition: transform 0.1s ease-out; /* Parallax */
-    }
-    
-    @keyframes shineText {
-        to { background-position: 200% center; }
+        animation: fadeUp 1s ease forwards 0.2s;
     }
 
     .hero-sub {
-        font-size: 1.2rem;
-        color: #ccc;
-        max-width: 600px;
+        font-size: 1.05rem;
+        color: #999;
+        max-width: 680px;
         opacity: 0;
         transform: translateY(30px);
-        animation: fadeUp 1s ease forwards 0.6s;
-        line-height: 1.8;
+        animation: fadeUp 1s ease forwards 0.4s;
+        line-height: 1.7;
     }
 
     @keyframes fadeUp {
         to { opacity: 1; transform: translateY(0); }
     }
 
-    /* STATS SECTION - Floating Cards */
+    /* STATS SECTION */
     .stats-section {
-        padding: 6rem 5%;
+        padding: 1.5rem 5% 4rem;
         position: relative;
         z-index: 5;
     }
@@ -211,7 +237,7 @@
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 1.5rem;
-        max-width: 1000px;
+        max-width: 1100px;
         margin: 0 auto;
     }
 
@@ -222,11 +248,12 @@
     .stat-item {
         text-align: center;
         position: relative;
-        background: rgba(255,255,255,0.02);
-        border: 1px solid rgba(255,255,255,0.05);
-        padding: 2rem 1rem;
-        border-radius: 16px;
-        transition: all 0.4s ease;
+        background: rgba(14, 14, 14, 0.65);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255,255,255,0.06);
+        padding: 2rem 1.2rem;
+        border-radius: 20px;
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
         opacity: 0;
         transform: translateY(30px);
     }
@@ -237,18 +264,19 @@
     }
 
     .stat-item:hover {
-        background: rgba(212, 175, 55, 0.05);
-        border-color: rgba(212, 175, 55, 0.2);
-        transform: translateY(-5px);
+        background: rgba(212, 175, 55, 0.06);
+        border-color: rgba(212, 175, 55, 0.35);
+        transform: translateY(-6px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.5), 0 0 20px rgba(212, 175, 55, 0.1);
     }
 
     .stat-number {
-        font-size: 3rem;
+        font-size: 2.6rem;
         font-weight: 700;
         color: var(--accent);
         font-family: 'Playfair Display', serif;
         line-height: 1;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.4rem;
         transition: text-shadow 0.3s;
     }
     
@@ -257,69 +285,60 @@
     }
 
     .stat-label {
-        font-size: 0.85rem;
+        font-size: 0.78rem;
         color: #888;
         text-transform: uppercase;
         letter-spacing: 1px;
+        font-weight: 500;
     }
 
-    /* REASONS GRID - Staggered Layout */
+    /* REASONS GRID */
     .why-section {
-        padding: 6rem 5%;
+        padding: 2rem 5% 6rem;
         position: relative;
         z-index: 5;
     }
 
     .section-header {
         text-align: center;
-        margin-bottom: 5rem;
+        margin-bottom: 3.5rem;
     }
     .section-header h2 {
-        font-size: 3rem;
+        font-size: clamp(2.2rem, 4vw, 3.2rem);
         color: #fff;
         margin-bottom: 0.5rem;
-    }
-    .section-header p {
-        color: #666;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        font-size: 0.8rem;
+        background: linear-gradient(45deg, #fff, #d4af37);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 
     .reasons-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        grid-auto-rows: minmax(200px, auto);
         gap: 2rem;
         max-width: 1300px;
         margin: 0 auto;
         perspective: 1000px;
     }
-    
-    /* Masonry effect */
-    .reason-card:nth-child(1) { grid-row: span 2; }
-    .reason-card:nth-child(4) { grid-column: span 2; }
 
-    @media (max-width: 900px) {
+    @media (max-width: 960px) {
         .reasons-grid { grid-template-columns: 1fr; }
-        .reason-card:nth-child(1) { grid-row: span 1; }
-        .reason-card:nth-child(4) { grid-column: span 1; }
     }
 
     .reason-card {
-        background: rgba(10, 10, 10, 0.6);
-        backdrop-filter: blur(15px);
-        border: 1px solid rgba(255,255,255,0.05);
-        border-radius: 20px;
+        background: rgba(14, 14, 14, 0.65);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(255,255,255,0.06);
+        border-radius: 24px;
         padding: 2.5rem;
         position: relative;
         overflow: hidden;
-        transition: all 0.1s ease-out; /* Faster transition for tilt */
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
         opacity: 0;
         transform: translateY(50px);
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-between;
         transform-style: preserve-3d;
     }
     
@@ -328,14 +347,13 @@
         transform: translateY(0);
     }
     
-    /* Rotating Border Effect */
     .reason-card::before {
         content: "";
         position: absolute;
         top: -50%; left: -50%;
         width: 200%; height: 200%;
-        background: conic-gradient(transparent, rgba(212, 175, 55, 0.4), transparent 30%);
-        animation: rotateBorder 6s linear infinite;
+        background: conic-gradient(transparent, rgba(212, 175, 55, 0.35), transparent 30%);
+        animation: rotateBorder 8s linear infinite;
         opacity: 0;
         transition: opacity 0.4s ease;
         pointer-events: none;
@@ -345,14 +363,17 @@
     .reason-card::after {
         content: "";
         position: absolute;
-        inset: 2px;
-        background: rgba(10, 10, 10, 0.95);
-        border-radius: 18px;
+        inset: 1.5px;
+        background: rgba(10, 10, 10, 0.94);
+        border-radius: 22px;
         z-index: -1;
     }
 
-    .reason-card:hover::before {
-        opacity: 1;
+    .reason-card:hover::before { opacity: 1; }
+    .reason-card:hover {
+        transform: translateY(-8px);
+        border-color: rgba(212, 175, 55, 0.4);
+        box-shadow: 0 20px 45px rgba(0,0,0,0.6), 0 0 25px rgba(212, 175, 55, 0.1);
     }
     
     @keyframes rotateBorder {
@@ -360,74 +381,66 @@
         100% { transform: rotate(360deg); }
     }
 
-    /* Custom SVG Icons */
     .icon-container {
         width: 60px;
         height: 60px;
-        border-radius: 50%;
-        background: rgba(212, 175, 55, 0.1);
+        border-radius: 16px;
+        background: rgba(212, 175, 55, 0.08);
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-bottom: 1.5rem;
-        border: 1px solid rgba(212, 175, 55, 0.2);
+        margin-bottom: 1.4rem;
+        border: 1px solid rgba(212, 175, 55, 0.25);
         transition: all 0.3s;
-        animation: floatIcon 4s ease-in-out infinite;
-        transform: translateZ(30px); /* Pop out in 3D */
-    }
-    
-    /* Stagger icon animation */
-    .reason-card:nth-child(2) .icon-container { animation-delay: 0.5s; }
-    .reason-card:nth-child(3) .icon-container { animation-delay: 1s; }
-    .reason-card:nth-child(4) .icon-container { animation-delay: 1.5s; }
-    
-    @keyframes floatIcon {
-        0%, 100% { transform: translateZ(30px) translateY(0); }
-        50% { transform: translateZ(30px) translateY(-8px); }
+        transform: translateZ(30px);
     }
 
     .reason-card:hover .icon-container {
         background: rgba(212, 175, 55, 0.2);
-        box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
+        transform: translateZ(30px) scale(1.08);
     }
 
     .icon-container svg {
-        width: 28px;
-        height: 28px;
+        width: 26px;
+        height: 26px;
         fill: var(--accent);
     }
 
     .reason-card h3 {
-        font-size: 1.5rem;
+        font-size: 1.45rem;
         color: #fff;
-        margin-bottom: 0.8rem;
+        margin-bottom: 0.75rem;
+        font-family: 'Playfair Display', serif;
         transform: translateZ(20px);
     }
 
     .reason-card p {
-        font-size: 0.95rem;
-        color: #aaa;
-        line-height: 1.6;
+        font-size: 0.9rem;
+        color: #888;
+        line-height: 1.65;
         transform: translateZ(10px);
     }
 
-    /* Trust Checklist - Animated Check */
+    /* Trust Checklist */
     .checklist-section {
-        padding: 4rem 5%;
+        padding: 4rem 5% 7rem;
         position: relative;
         z-index: 5;
     }
 
     .checklist-container {
-        max-width: 900px;
+        max-width: 1050px;
         margin: 0 auto;
-        background: rgba(10, 10, 10, 0.5);
-        border: 1px solid rgba(255,255,255,0.05);
-        border-radius: 20px;
-        padding: 3rem;
+        background: rgba(14, 14, 14, 0.65);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(255,255,255,0.06);
+        border-radius: 24px;
+        padding: 3.5rem;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.8rem;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
     }
 
     .check-item {
@@ -435,59 +448,84 @@
         align-items: center;
         gap: 1rem;
         color: #ddd;
-        font-size: 0.95rem;
-        transition: color 0.3s;
+        font-size: 0.92rem;
+        transition: all 0.3s;
     }
     
     .check-item:hover {
         color: var(--accent);
+        transform: translateX(4px);
     }
 
     .check-icon {
-        width: 24px;
-        height: 24px;
+        width: 28px;
+        height: 28px;
         background: rgba(212, 175, 55, 0.1);
+        border: 1px solid rgba(212, 175, 55, 0.3);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
-        position: relative;
-        overflow: hidden;
     }
-    
+
     .check-icon svg {
         width: 14px;
         height: 14px;
         fill: var(--accent);
-        stroke: var(--accent);
-        stroke-width: 3;
-        stroke-dasharray: 30;
-        stroke-dashoffset: 30;
-        transition: stroke-dashoffset 0.6s ease;
-    }
-    
-    .check-item.visible .check-icon svg {
-        stroke-dashoffset: 0;
     }
 
     /* Footer */
-    footer { background: #030505; padding: 5rem 5% 2rem; border-top: 1px solid var(--border); position: relative; z-index: 10; }
+    footer { 
+      background: #030505; 
+      padding: 5rem 5% 2rem; 
+      border-top: 1px solid var(--border); 
+      position: relative; 
+      z-index: 10; 
+    }
     .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; max-width: 1200px; margin: 0 auto; }
     @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; text-align: center; } }
 
-    /* WhatsApp */
+    /* WhatsApp Float */
     .whatsapp-float {
-        position: fixed; bottom: 30px; right: 30px;
-        background-color: #25D366;
-        width: 60px; height: 60px; border-radius: 50%;
-        display: flex; align-items: center; justify-content: center;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3), 0 0 20px rgba(37, 211, 102, 0.4);
-        z-index: 100; transition: transform 0.3s;
-        animation: pulse-wa 2s infinite;
+        position: fixed; 
+        bottom: 100px; 
+        right: 30px;
+        background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+        height: 62px;
+        width: 62px; 
+        border-radius: 50px;
+        display: none; 
+        align-items: center; 
+        justify-content: center;
+        box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        z-index: 100; 
+        transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        text-decoration: none;
+        color: white;
+        overflow: hidden;
+        border: 2px solid rgba(255,255,255,0.2);
     }
-    .whatsapp-float:hover { transform: scale(1.1); }
-    @keyframes pulse-wa { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+    @media (min-width: 769px) { .whatsapp-float { display: flex; } }
+    .whatsapp-float:hover {
+        width: 210px; 
+        justify-content: flex-start; 
+        padding-left: 18px;
+        box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+        transform: translateY(-3px);
+    }
+    .wa-icon { flex-shrink: 0; width: 32px; height: 32px; margin-right: 12px; }
+    .whatsapp-float:not(:hover) .wa-icon { margin-right: 0; }
+    .wa-text {
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
+        font-size: 0.95rem;
+        opacity: 0; 
+        transform: translateX(20px);
+        transition: all 0.3s ease;
+        white-space: nowrap;
+    }
+    .whatsapp-float:hover .wa-text { opacity: 1; transform: translateX(0); }
   </style>
 </head>
 <body>
@@ -503,11 +541,13 @@
     <nav class="nav">
         <a href="index.html" class="nav-logo">JAGAN PG</a>
         <div class="nav-links">
+            <a href="index.html">Home</a>
             <a href="why_us.html" class="active">Why Us</a>
             <a href="rooms.html">Rooms</a>
             <a href="amenities.html">Amenities</a>
             <a href="life-at-pg.html">Life at PG</a>
             <a href="contact.html">Contact</a>
+            <a href="contact.html" class="nav-cta-btn">Book a Visit</a>
         </div>
         <div class="burger" id="burger-btn">
             <span></span><span></span><span></span>
@@ -516,6 +556,7 @@
 
     <!-- Mobile Menu Overlay -->
     <div class="mobile-menu" id="mobile-menu">
+        <a href="index.html">Home</a>
         <a href="why_us.html">Why Us</a>
         <a href="rooms.html">Rooms</a>
         <a href="amenities.html">Amenities</a>
@@ -525,18 +566,17 @@
 
     <!-- Hero Section -->
     <section class="hero-why">
-        <div class="hero-glow"></div>
-        <h1 class="hero-title" id="hero-title">Why Choose Us</h1>
-        <p class="hero-sub">We don't just offer a room. We offer a lifestyle defined by safety, comfort, and a community that feels like family.</p>
+        <span class="page-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            THE BENCHMARK IN COLIVING
+        </span>
+        <h1 class="hero-title" id="hero-title">Why Choose Jagan PG?</h1>
+        <p class="hero-sub">We redefined student and professional living in Bangalore by combining absolute privacy, high-speed connectivity, hotel-grade cleanliness, and warm homely dining.</p>
     </section>
 
-    <!-- Stats Section -->
+    <!-- Live Animated Stats -->
     <section class="stats-section">
         <div class="stats-grid">
-            <div class="stat-item">
-                <div class="stat-number" data-target="10">0</div>
-                <div class="stat-label">Years Experience</div>
-            </div>
             <div class="stat-item">
                 <div class="stat-number" data-target="500">0</div>
                 <div class="stat-label">Happy Residents</div>
@@ -546,72 +586,88 @@
                 <div class="stat-label">Google Rating</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number" data-target="24">0</div>
-                <div class="stat-label">Support Available</div>
+                <div class="stat-number" data-target="100">0</div>
+                <div class="stat-label">% DG Power Backup</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="0">0</div>
+                <div class="stat-label">Zero Brokerage</div>
             </div>
         </div>
     </section>
 
-    <!-- Reasons Section -->
+    <!-- Core Pillars Grid -->
     <section class="why-section">
         <div class="section-header">
-            <p>Our Promise</p>
-            <h2>The Jagan PG Difference</h2>
+            <span class="page-badge">OUR COMMITMENT</span>
+            <h2>6 Pillars of Excellence</h2>
         </div>
 
         <div class="reasons-grid">
-            <!-- Reason 1 (Tall) -->
+            <!-- Card 1 -->
             <div class="reason-card">
                 <div class="icon-container">
                     <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
                 </div>
-                <h3>Uncompromised Safety</h3>
-                <p>Biometric entry systems, 24/7 CCTV surveillance, and dedicated security staff ensure you and your belongings are always safe. We treat your security as our top priority.</p>
+                <div>
+                    <h3>Biometric 24/7 Security</h3>
+                    <p>Smart fingerprint door locks, 32+ high-definition CCTV cameras, night surveillance, and on-premise staff ensure your safety is never compromised.</p>
+                </div>
             </div>
 
-            <!-- Reason 2 -->
+            <!-- Card 2 -->
             <div class="reason-card">
                 <div class="icon-container">
-                    <svg viewBox="0 0 24 24"><path d="M8.1 13.34l2.83-2.83L3.91 3.5c-1.56 1.56-1.56 4.09 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.2-1.1-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
                 </div>
-                <h3>Homely Food</h3>
-                <p>Say goodbye to ordering out. Our kitchen serves nutritious, hygienic North & South Indian meals cooked with care.</p>
+                <div>
+                    <h3>100 Mbps Dual Fiber WiFi</h3>
+                    <p>Dedicated enterprise-grade mesh network in every corner. Seamlessly attend video standups, code, stream 4K, and game without latency.</p>
+                </div>
             </div>
 
-            <!-- Reason 3 -->
+            <!-- Card 3 -->
             <div class="reason-card">
                 <div class="icon-container">
-                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z"/></svg>
                 </div>
-                <h3>Prime Location</h3>
-                <p>Located strategically near Metro stations and major tech parks. Cut down your commute and reclaim your time.</p>
+                <div>
+                    <h3>Hygienic Homely Meals</h3>
+                    <p>Three freshly prepared hot meals daily in a sanitized commercial kitchen. Balanced North & South Indian menu curated with high-quality ingredients.</p>
+                </div>
             </div>
 
-            <!-- Reason 4 (Wide) -->
+            <!-- Card 4 -->
             <div class="reason-card">
                 <div class="icon-container">
-                    <svg viewBox="0 0 24 24"><path d="M12 3L10.27 8.22L5 10.27l5.22 1.73L12 17l1.73-5.22L19 10.27l-5.22-1.73L12 3zm0 0l1.73 5.22L19 10.27l-5.22 1.73L12 17l-1.73-5.22L5 10.27l5.22-1.73L12 3z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
                 </div>
-                <h3>Hygiene First</h3>
-                <p>Professional housekeeping staff ensures high standards of cleanliness in rooms, washrooms, and common areas daily. We maintain a strict hygiene protocol that ensures a healthy living environment for everyone.</p>
+                <div>
+                    <h3>Daily Hotel-Grade Cleaning</h3>
+                    <p>Dedicated housekeeping staff performs daily floor sweeping, bathroom deep disinfection, and timely fresh sanitized linen replacement.</p>
+                </div>
             </div>
 
-            <!-- Reason 5 -->
+            <!-- Card 5 -->
             <div class="reason-card">
                 <div class="icon-container">
-                    <svg viewBox="0 0 24 24"><path d="M11 6c0-1.1-.9-2-2-2s-2 .9-2 2 .9 2 2 2 2-.9 2-2zm4.5 2c.83 0 1.5-.67 1.5-1.5S16.33 5 15.5 5 14 5.67 14 6.5s.67 1.5 1.5 1.5zm-3 4c-.73 0-2.38.34-3.12.58l-.84-1.68c-.24-.48-.84-.68-1.32-.44s-.68.84-.44 1.32l.84 1.68c-.55.38-1.12.8-1.12 1.24v3c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1h-1v-1.58c0-.29-.17-.54-.42-.66-.25-.11-.55-.06-.76.13L12 13.5l-1.34-1.34c.72-.24 2.06-.58 2.84-.58.58 0 1.11.15 1.53.4l1.47-1.47C15.44 9.65 14.13 9 12.5 9c-1.21 0-2.5.43-2.5.43L11 9.5z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
                 </div>
-                <h3>Transparent Pricing</h3>
-                <p>No hidden charges. What you see is what you pay. We believe in honest, straightforward billing.</p>
+                <div>
+                    <h3>Zero Brokerage & Transparency</h3>
+                    <p>Deal directly with verified PG management. Transparent pricing with all utilities, WiFi, power backup, and meals bundled into one clear monthly fee.</p>
+                </div>
             </div>
 
-            <!-- Reason 6 -->
+            <!-- Card 6 -->
             <div class="reason-card">
                 <div class="icon-container">
-                    <svg viewBox="0 0 24 24"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2c-4.42 0-8 3.58-8 8 0 5.25 8 13 8 13s8-7.75 8-13c0-4.42-3.58-8-8-8zm0 11c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"/></svg>
                 </div>
-                <h3>Quick Resolution</h3>
-                <p>Our management is responsive. Maintenance issues are resolved within hours, not days.</p>
+                <div>
+                    <h3>Prime Metro Proximity</h3>
+                    <p>Situated within 3 minutes of the metro station, prominent IT tech corridors, shopping hubs, gyms, and specialty hospitals.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -619,58 +675,42 @@
     <!-- Trust Checklist -->
     <section class="checklist-section">
         <div class="section-header">
-            <p>Assurance</p>
-            <h2>What You Can Expect</h2>
+            <span class="page-badge">FULL PEACE OF MIND</span>
+            <h2>What You Get Included</h2>
         </div>
 
         <div class="checklist-container">
             <div class="check-item">
-                <div class="check-icon">
-                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                </div>
-                <span>No Brokerage Fees</span>
+                <div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+                <span>100% Free High-Speed WiFi</span>
             </div>
             <div class="check-item">
-                <div class="check-icon">
-                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                </div>
-                <span>Zero Hidden Charges</span>
+                <div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+                <span>3 Nutritious Daily Meals</span>
             </div>
             <div class="check-item">
-                <div class="check-icon">
-                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                </div>
-                <span>Flexible Notice Period</span>
+                <div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+                <span>Daily Housekeeping & Sanitization</span>
             </div>
             <div class="check-item">
-                <div class="check-icon">
-                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                </div>
-                <span>Visitor Friendly Policy</span>
+                <div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+                <span>Biometric & 24/7 CCTV Gate</span>
             </div>
             <div class="check-item">
-                <div class="check-icon">
-                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                </div>
-                <span>Purified Drinking Water</span>
+                <div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+                <span>Multi-Stage RO Drinking Stations</span>
             </div>
             <div class="check-item">
-                <div class="check-icon">
-                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                </div>
-                <span>Power Backup</span>
+                <div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+                <span>100% Automatic DG Power Backup</span>
             </div>
             <div class="check-item">
-                <div class="check-icon">
-                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                </div>
-                <span>Laundry Service</span>
+                <div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+                <span>Washing & Laundry Stations</span>
             </div>
             <div class="check-item">
-                <div class="check-icon">
-                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                </div>
-                <span>On-Site Parking</span>
+                <div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+                <span>Secure On-Site Covered Parking</span>
             </div>
         </div>
     </section>
@@ -680,20 +720,23 @@
         <div class="footer-grid">
             <div>
                 <h3 class="text-2xl font-bold text-white mb-4" style="font-family:'Playfair Display'">JAGAN PG</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Premium Paying Guest Accommodation.<br>Safe and comfortable living for students and professionals.</p>
+                <p class="text-gray-500 text-sm leading-relaxed">Premium Paying Guest Accommodation.<br>Safe, luxurious, and comfortable living for students and working professionals.</p>
             </div>
             <div>
                 <h4 class="font-semibold text-white mb-4">Quick Links</h4>
                 <ul class="space-y-2 text-gray-500 text-sm">
+                    <li><a href="index.html" class="hover:text-white">Home</a></li>
+                    <li><a href="why_us.html" class="hover:text-white">Why Us</a></li>
                     <li><a href="rooms.html" class="hover:text-white">Rooms</a></li>
-                    <li><a href="animates.html" class="hover:text-white">Amenities</a></li>
+                    <li><a href="amenities.html" class="hover:text-white">Amenities</a></li>
+                    <li><a href="life-at-pg.html" class="hover:text-white">Life at PG</a></li>
                     <li><a href="contact.html" class="hover:text-white">Contact</a></li>
                 </ul>
             </div>
             <div>
                 <h4 class="font-semibold text-white mb-4">Contact</h4>
                 <ul class="space-y-2 text-gray-500 text-sm">
-                    <li>📍 123 Main Street</li>
+                    <li>📍 Main Road, Near Metro</li>
                     <li>📞 +91 73002 12948</li>
                     <li>📧 piyushverma730929@gmail.com</li>
                 </ul>
@@ -710,11 +753,15 @@
 
     <!-- WhatsApp Float -->
     <a href="https://wa.me/917300212948?text=Hi%2C%20I%27m%20interested%20in%20Jagan%20PG" target="_blank" class="whatsapp-float">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <svg class="wa-icon" viewBox="0 0 24 24" fill="white">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        <span class="wa-text">WhatsApp Us</span>
     </a>
 
-    <!-- Floating Particles Generator Script -->
+    <!-- Base Scripts -->
     <script>
+        // Particle Generator
         const particleContainer = document.body;
         for(let i=0; i<20; i++) {
             const p = document.createElement('div');
@@ -733,13 +780,6 @@
             spotlight.style.left = e.clientX + 'px';
             spotlight.style.top = e.clientY + 'px';
         });
-    </script>
-
-    <script type="module">
-        import * as THREE from 'three';
-        import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
-        import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
-        import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 
         // UI Logic
         const burger = document.getElementById('burger-btn');
@@ -751,25 +791,24 @@
             const sY = window.scrollY; 
             document.getElementById('scroll-line').style.width = (sY / (document.body.scrollHeight - window.innerHeight) * 100) + '%'; 
             
-            // Parallax Hero Title
             const title = document.getElementById('hero-title');
             if(title) {
-                title.style.transform = `translateY(${sY * 0.3}px)`;
+                title.style.transform = `translateY(${sY * 0.25}px)`;
             }
         });
 
-        // Scroll Reveal Animation
+        // Scroll Reveal Animation & Stats Counter
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if(entry.isIntersecting) {
                     entry.target.classList.add('visible');
                     
-                    // Animate Stats Counter
-                    if(entry.target.classList.contains('stat-item')) {
+                    if(entry.target.classList.contains('stat-item') && !entry.target.dataset.animated) {
+                        entry.target.dataset.animated = 'true';
                         const counter = entry.target.querySelector('.stat-number');
                         const target = parseFloat(counter.getAttribute('data-target'));
                         const isDecimal = target % 1 !== 0;
-                        const duration = 2000;
+                        const duration = 1800;
                         const step = target / (duration / 16);
                         let current = 0;
                         
@@ -779,7 +818,7 @@
                                 counter.innerText = isDecimal ? current.toFixed(1) : Math.floor(current);
                                 requestAnimationFrame(updateCounter);
                             } else {
-                                counter.innerText = isDecimal ? target.toFixed(1) : target + '+';
+                                counter.innerText = isDecimal ? target.toFixed(1) : (target === 0 ? '0' : target + '+');
                             }
                         };
                         updateCounter();
@@ -792,20 +831,17 @@
             observer.observe(el);
         });
 
-        // 3D Tilt Effect for Cards
+        // 3D Tilt Effect
         const cards = document.querySelectorAll('.reason-card');
         cards.forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
-                
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
-                
-                const rotateX = (y - centerY) / 20; // Divide by higher number for less tilt
-                const rotateY = (centerX - x) / 20;
-                
+                const rotateX = (y - centerY) / 22;
+                const rotateY = (centerX - x) / 22;
                 card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
             });
             
@@ -813,8 +849,15 @@
                 card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
             });
         });
+    </script>
 
-        // THREE.JS BACKGROUND
+    <!-- Three.js Background -->
+    <script type="module">
+        import * as THREE from 'three';
+        import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+        import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+        import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+
         const canvas = document.getElementById('bg-canvas');
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
@@ -825,7 +868,6 @@
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
         renderer.setClearColor(0x000000, 0);
 
-        // Lighting
         const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
         scene.add(ambientLight);
 
@@ -833,15 +875,14 @@
         spotLight.position.set(10, 20, 15);
         scene.add(spotLight);
 
-        const pointLight1 = new THREE.PointLight(0xd4af37, 15, 50); // Gold
+        const pointLight1 = new THREE.PointLight(0xd4af37, 15, 50);
         pointLight1.position.set(-20, 10, 10);
         scene.add(pointLight1);
 
-        const pointLight2 = new THREE.PointLight(0x00bfff, 10, 50); // Blue
+        const pointLight2 = new THREE.PointLight(0x00bfff, 10, 50);
         pointLight2.position.set(20, -10, 10);
         scene.add(pointLight2);
 
-        // Central Magical Object (Torus Knot)
         const torusKnotGeo = new THREE.TorusKnotGeometry(8, 2.5, 100, 16);
         const torusKnotMat = new THREE.MeshStandardMaterial({
             color: 0x111111,
@@ -851,20 +892,16 @@
         const torusKnot = new THREE.Mesh(torusKnotGeo, torusKnotMat);
         scene.add(torusKnot);
 
-        // Wireframe overlay
         const wireMat = new THREE.MeshBasicMaterial({ color: 0xd4af37, wireframe: true, transparent: true, opacity: 0.1 });
         const wireKnot = new THREE.Mesh(torusKnotGeo, wireMat);
         torusKnot.add(wireKnot);
 
-        // Swirling Particles
         const particlesGeo = new THREE.BufferGeometry();
         const particlesCount = 5000;
         const posArray = new Float32Array(particlesCount * 3);
-        
         for(let i = 0; i < particlesCount * 3; i++) {
             posArray[i] = (Math.random() - 0.5) * 150;
         }
-        
         particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
         
         const particlesMat = new THREE.PointsMaterial({
@@ -878,56 +915,33 @@
         const particlesMesh = new THREE.Points(particlesGeo, particlesMat);
         scene.add(particlesMesh);
 
-        // Post Processing
         const composer = new EffectComposer(renderer);
         composer.addPass(new RenderPass(scene, camera));
-        
-        const bloomPass = new UnrealBloomPass(
-            new THREE.Vector2(window.innerWidth, window.innerHeight),
-            1.5, 0.4, 0.85
-        );
+        const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.4, 0.85);
         composer.addPass(bloomPass);
 
-        // Animation Variables
-        let mouseX = 0;
-        let mouseY = 0;
-        let targetX = 0;
-        let targetY = 0;
-        let scrollY = 0;
-
+        let mouseX = 0, mouseY = 0, targetX = 0, targetY = 0, scrollY = 0;
         document.addEventListener('mousemove', (e) => {
             mouseX = (e.clientX / window.innerWidth) * 2 - 1;
             mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
         });
-        
-        window.addEventListener('scroll', () => {
-            scrollY = window.scrollY;
-        });
+        window.addEventListener('scroll', () => { scrollY = window.scrollY; });
 
-        // Animation Loop
         const clock = new THREE.Clock();
-        
         function animate() {
             requestAnimationFrame(animate);
-            
             const elapsedTime = clock.getElapsedTime();
-            
             targetX += (mouseX - targetX) * 0.02;
             targetY += (mouseY - targetY) * 0.02;
 
             torusKnot.rotation.x = elapsedTime * 0.1 + targetY * 0.5;
             torusKnot.rotation.y = elapsedTime * 0.1 + targetX * 0.5;
-            
-            // Parallax Background
             torusKnot.position.y = scrollY * 0.01;
             particlesMesh.position.y = scrollY * 0.02;
-            
             particlesMesh.rotation.y = elapsedTime * 0.05;
             particlesMesh.rotation.x = elapsedTime * 0.02;
-            
             pointLight1.position.x = Math.sin(elapsedTime * 0.5) * 30;
             pointLight1.position.z = Math.cos(elapsedTime * 0.5) * 30;
-            
             pointLight2.position.x = Math.cos(elapsedTime * 0.5) * 30;
             pointLight2.position.z = Math.sin(elapsedTime * 0.5) * 30;
 
@@ -935,7 +949,6 @@
         }
         animate();
 
-        // Resize Handler
         window.addEventListener('resize', () => {
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();

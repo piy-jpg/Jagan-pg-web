@@ -266,11 +266,11 @@
     .section-title::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 60px; height: 2px; background: var(--accent); }
 
     /* ------------------------------------------------------- */
-    /* WHY CHOOSE US - UPDATED ANIMATION */
+    /* WHY CHOOSE US - CRISP & COMPACT LUXURY DESIGN */
     /* ------------------------------------------------------- */
     .why-us-section {
-        padding: 8rem 5%;
-        background: radial-gradient(circle at top center, #111 0%, #050505 70%);
+        padding: 6rem 5% 5rem;
+        background: radial-gradient(ellipse at 50% 10%, rgba(212, 175, 55, 0.06) 0%, #080808 50%, #030303 100%);
         position: relative;
         overflow: hidden;
     }
@@ -280,308 +280,414 @@
         top: 0; left: 0;
         width: 100%; height: 100%;
         z-index: 0;
-        opacity: 0.6;
+        opacity: 0.4;
         pointer-events: none;
     }
 
-    .bento-grid {
+    .why-header {
+        text-align: center;
+        max-width: 650px;
+        margin: 0 auto 2.75rem auto;
+        position: relative;
+        z-index: 2;
+    }
+
+    .why-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.72rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--accent);
+        font-weight: 600;
+        padding: 5px 14px;
+        border-radius: 9999px;
+        background: rgba(212, 175, 55, 0.08);
+        border: 1px solid rgba(212, 175, 55, 0.25);
+        margin-bottom: 1rem;
+    }
+
+    .why-grid-crisp {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(2, auto);
+        grid-template-columns: repeat(4, 1fr);
         gap: 1.5rem;
-        max-width: 1100px;
-        margin: 0 auto;
+        max-width: 1200px;
+        margin: 0 auto 2.5rem auto;
         position: relative; 
-        z-index: 1;
+        z-index: 2;
     }
     
-    /* Card Entrance Animation */
-    .bento-card {
-        background: rgba(255,255,255,0.02);
-        border: 1px solid rgba(255,255,255,0.05);
-        border-radius: 12px;
-        padding: 2rem;
-        position: relative;
-        overflow: hidden;
-        transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.6s ease;
+    .why-card-crisp {
+        background: rgba(255, 255, 255, 0.025);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-radius: 16px;
+        padding: 1.75rem 1.5rem;
+        backdrop-filter: blur(10px);
+        transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        backdrop-filter: blur(4px);
-        
-        /* Start hidden for animation */
-        opacity: 0;
-        transform: translateY(30px);
     }
 
-    /* Visible state triggered by JS */
-    .bento-card.visible {
-        opacity: 1;
-        transform: translateY(0);
+    .why-card-crisp:hover {
+        background: rgba(255, 255, 255, 0.045);
+        border-color: rgba(212, 175, 55, 0.4);
+        transform: translateY(-5px);
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.4), 0 0 20px rgba(212, 175, 55, 0.08);
     }
 
-    /* Staggering delays */
-    .bento-card:nth-child(1) { transition-delay: 0.1s; }
-    .bento-card:nth-child(2) { transition-delay: 0.2s; }
-    .bento-card:nth-child(3) { transition-delay: 0.3s; }
-    .bento-card:nth-child(4) { transition-delay: 0.4s; }
+    .why-card-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1.25rem;
+    }
 
-    .bento-card::after {
-        content: "";
-        position: absolute;
-        inset: 0;
+    .why-icon-crisp {
+        width: 44px;
+        height: 44px;
         border-radius: 12px;
-        padding: 1px;
-        background: linear-gradient(45deg, #d4af37, transparent, #d4af37);
-        -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-        opacity: 0;
-        transition: 0.4s;
+        background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.04));
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--accent);
     }
-    .bento-card:hover::after { opacity: 1; }
-    .bento-card.highlight {
-        grid-column: span 2;
-        background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), transparent);
+
+    .why-stat-pill {
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: #f1d27a;
+        background: rgba(212, 175, 55, 0.1);
         border: 1px solid rgba(212, 175, 55, 0.2);
+        padding: 3px 8px;
+        border-radius: 6px;
+        letter-spacing: 0.5px;
     }
-    .bento-card::before {
-        content: '';
-        position: absolute;
-        top: var(--mouse-y, 50%);
-        left: var(--mouse-x, 50%);
-        width: 200px;
-        height: 200px;
-        background: radial-gradient(circle, rgba(212, 175, 55, 0.1), transparent 60%);
-        opacity: 0;
-        transition: opacity 0.3s;
-        transform: translate(-50%, -50%);
-        pointer-events: none;
-        z-index: 1;
+
+    .why-title-crisp {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #fff;
+        font-family: 'Playfair Display', serif;
     }
-    .bento-card:hover::before { opacity: 1; }
-    .bento-card:hover {
-        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-        border-color: rgba(255,255,255,0.1);
+
+    .why-desc-crisp {
+        color: #aaa;
+        font-size: 0.85rem;
+        line-height: 1.55;
     }
-    .bento-icon { font-size: 2rem; margin-bottom: 1rem; color: var(--accent); position: relative; z-index: 2; }
-    .bento-title { font-size: 1.8rem; margin-bottom: 0.5rem; color: #fff; position: relative; z-index: 2; }
-    .bento-text { color: #aaa; font-size: 0.95rem; position: relative; z-index: 2; }
-    .counter-num {
-        font-size: 3.5rem;
+
+    /* Inline Stats & Trust Banner */
+    .why-stats-inline {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 1.2rem 2rem;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        position: relative;
+        z-index: 2;
+        backdrop-filter: blur(10px);
+    }
+
+    .stat-inline-item {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        text-align: left;
+    }
+
+    .stat-inline-num {
+        font-size: 1.25rem;
         font-weight: 700;
         color: var(--accent);
         font-family: 'Playfair Display', serif;
-        margin-right: 0.5rem;
-    }
-    @media (max-width: 900px) {
-        .bento-grid { grid-template-columns: 1fr 1fr; }
-        .bento-card.highlight { grid-column: span 2; }
-    }
-    @media (max-width: 600px) {
-        .bento-grid { grid-template-columns: 1fr; }
-        .bento-card.highlight { grid-column: span 1; }
     }
 
-    /* ROOMS SECTION */
+    .stat-inline-lbl {
+        font-size: 0.78rem;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .stat-inline-div {
+        width: 1px;
+        height: 24px;
+        background: rgba(255, 255, 255, 0.08);
+    }
+
+    @media (max-width: 1024px) {
+        .why-grid-crisp { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+        .why-grid-crisp { grid-template-columns: 1fr; }
+        .why-stats-inline {
+            flex-direction: column;
+            border-radius: 16px;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+        .stat-inline-div { display: none; }
+    }
+
+    /* ------------------------------------------------------- */
+    /* ROOMS SECTION - MODERN LUXURY REDESIGN */
+    /* ------------------------------------------------------- */
     .rooms-section-wrapper {
-        padding: 8rem 5%;
-        background: radial-gradient(circle at center, #0d0d0d 0%, #050505 100%);
+        padding: 7rem 5%;
+        background: radial-gradient(ellipse at 50% 20%, rgba(212, 175, 55, 0.05) 0%, #080808 60%, #030303 100%);
         position: relative;
         overflow: hidden;
+    }
+
+    .rooms-header {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 3.5rem auto;
+        position: relative;
+        z-index: 2;
+    }
+
+    .rooms-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.72rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--accent);
+        font-weight: 600;
+        padding: 5px 14px;
+        border-radius: 9999px;
+        background: rgba(212, 175, 55, 0.08);
+        border: 1px solid rgba(212, 175, 55, 0.25);
+        margin-bottom: 1rem;
     }
     
     .room-container { 
         display: grid; 
-        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); 
-        gap: 2.5rem; 
-        max-width: 1400px; 
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 1.75rem; 
+        max-width: 1350px; 
         margin: 0 auto; 
-        perspective: 1000px;
-    }
-
-    .room-card { 
         position: relative;
-        height: 500px;
-        border-radius: 20px;
-        overflow: hidden;
-        transform-style: preserve-3d;
-        transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-        cursor: pointer;
-    }
-
-    .room-card::before {
-        content: '';
-        position: absolute;
-        top: 5%; left: 5%;
-        width: 90%; height: 90%;
-        background: rgba(0,0,0,0.5);
-        filter: blur(20px);
-        z-index: -1;
-        transition: all 0.6s ease;
-        transform: translateZ(-50px);
-    }
-    .room-card:hover::before {
-        filter: blur(30px) brightness(0.5);
-        top: 10%;
-    }
-
-    .room-glare {
-        position: absolute;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.2), transparent 40%);
-        z-index: 5;
-        pointer-events: none;
-        opacity: 0;
-        transition: opacity 0.3s;
-        mix-blend-mode: overlay;
-    }
-    .room-card:hover .room-glare { opacity: 1; }
-
-    .room-border {
-        position: absolute;
-        inset: 0;
-        border-radius: 20px;
-        padding: 2px;
-        background: linear-gradient(45deg, var(--accent), transparent, var(--accent));
-        background-size: 400% 400%;
-        animation: borderRotate 6s linear infinite;
-        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-        opacity: 0.3;
-        transition: opacity 0.3s;
         z-index: 2;
     }
-    .room-card:hover .room-border { opacity: 1; }
 
-    @keyframes borderRotate {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
-
-    .room-image { 
-        position: absolute;
-        inset: 0;
-        background-size: cover; 
-        background-position: center; 
-        filter: grayscale(100%) brightness(0.6);
-        transition: transform 0.8s ease, filter 0.8s ease;
-        z-index: 0;
-    }
-    .room-card:hover .room-image { 
-        transform: scale(1.1); 
-        filter: grayscale(0%) brightness(0.8);
-    }
-
-    .room-content { 
-        position: absolute;
-        bottom: 0; left: 0; right: 0;
-        padding: 2rem;
-        background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.8) 70%, transparent);
-        z-index: 3;
-        transform: translateY(80px);
-        transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-    .room-card:hover .room-content {
-        transform: translateY(0);
-    }
-
-    .room-price { 
-        position: absolute;
-        top: 20px; right: 20px;
-        background: rgba(0,0,0,0.7);
-        backdrop-filter: blur(10px);
-        border: 1px solid var(--accent);
-        padding: 8px 20px;
-        border-radius: 30px;
-        font-size: 0.9rem;
-        color: var(--accent);
-        font-weight: 700;
-        z-index: 4;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-        transform: translateY(0);
-        transition: transform 0.3s ease, color 0.3s;
-    }
-    .room-card:hover .room-price {
-        transform: translateY(-5px);
-        color: #fff;
-        background: var(--accent);
-    }
-
-    .room-list { 
-        list-style: none; 
-        color: #ccc; 
-        font-size: 0.85rem; 
-        margin: 1.5rem 0; 
-        opacity: 0;
-        transition: opacity 0.4s ease 0.1s;
-        transform: translateY(20px);
-    }
-    .room-card:hover .room-list {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    .room-list li { 
-        margin-bottom: 0.5rem; 
-        display: flex; 
-        align-items: center; 
-        gap: 0.5rem; 
-    }
-    .room-list li::before { 
-        content: '✔'; 
-        color: var(--accent); 
-        font-size: 0.8rem; 
-    }
-
-    .room-btn-wrapper {
+    .room-card-modern {
+        background: rgba(255, 255, 255, 0.025);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-radius: 20px;
+        overflow: hidden;
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
-        align-items: center;
-        margin-top: 1rem;
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.4s ease 0.2s;
-    }
-    .room-card:hover .room-btn-wrapper {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    .room-btn {
-        padding: 10px 24px;
-        background: var(--accent);
-        color: #000;
-        text-decoration: none;
-        font-weight: 600;
-        border-radius: 4px;
-        transition: all 0.3s;
-        font-size: 0.9rem;
-    }
-    .room-btn:hover {
-        background: #fff;
-        color: #000;
+        transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        backdrop-filter: blur(10px);
+        position: relative;
     }
 
-    /* GALLERY SECTION */
+    .room-card-modern:hover {
+        background: rgba(255, 255, 255, 0.045);
+        border-color: rgba(212, 175, 55, 0.45);
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(212, 175, 55, 0.12);
+    }
+
+    .room-media-wrap {
+        position: relative;
+        width: 100%;
+        height: 220px;
+        overflow: hidden;
+    }
+
+    .room-media-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+    }
+
+    .room-card-modern:hover .room-media-img {
+        transform: scale(1.08);
+    }
+
+    .room-tag-pill {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(212, 175, 55, 0.4);
+        color: #f1d27a;
+        font-size: 0.7rem;
+        font-weight: 600;
+        padding: 4px 10px;
+        border-radius: 20px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        z-index: 2;
+    }
+
+    .room-price-badge {
+        position: absolute;
+        bottom: 14px;
+        right: 14px;
+        background: rgba(5, 5, 5, 0.85);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(212, 175, 55, 0.4);
+        color: #fff;
+        padding: 5px 12px;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        z-index: 2;
+        display: flex;
+        align-items: baseline;
+        gap: 3px;
+    }
+
+    .room-price-badge span {
+        color: var(--accent);
+    }
+
+    .room-price-badge small {
+        font-size: 0.7rem;
+        color: #888;
+        font-weight: 400;
+    }
+
+    .room-body {
+        padding: 1.5rem 1.4rem;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        justify-content: space-between;
+    }
+
+    .room-title-h3 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #fff;
+        font-family: 'Playfair Display', serif;
+        margin-bottom: 0.35rem;
+    }
+
+    .room-desc-short {
+        font-size: 0.82rem;
+        color: #888;
+        margin-bottom: 1.25rem;
+        line-height: 1.4;
+    }
+
+    .room-feature-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 1.25rem 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .room-feature-item {
+        font-size: 0.82rem;
+        color: #ccc;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .room-feature-item svg {
+        color: var(--accent);
+        flex-shrink: 0;
+    }
+
+    .room-avail-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 0.75rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        margin-bottom: 1.25rem;
+        font-size: 0.75rem;
+    }
+
+    .avail-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        color: #4ade80;
+        font-weight: 500;
+    }
+
+    .avail-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background-color: #4ade80;
+        box-shadow: 0 0 8px #4ade80;
+    }
+
+    .room-card-cta {
+        display: block;
+        text-align: center;
+        padding: 10px 16px;
+        background: linear-gradient(135deg, #d4af37, #b8860b);
+        color: #050505;
+        font-weight: 700;
+        font-size: 0.85rem;
+        border-radius: 8px;
+        text-decoration: none;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+    }
+
+    .room-card-cta:hover {
+        background: #ffffff;
+        color: #000000;
+        box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+        transform: translateY(-2px);
+    }
+
+    @media (max-width: 1200px) {
+        .room-container { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    }
+    @media (max-width: 640px) {
+        .room-container { grid-template-columns: 1fr; gap: 1.25rem; }
+    }
+
+    /* GALLERY SECTION - EXPANDED WIDTH 3D CAROUSEL */
     .gallery-section { 
-        padding: 6rem 0; 
-        background: #000; 
+        padding: 5rem 0 4rem; 
+        background: radial-gradient(circle at center, #090909 0%, #000 85%); 
         overflow: hidden; 
-        height: 800px; 
+        min-height: 640px; 
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         position: relative;
+        width: 100%;
     }
 
     .gallery-scene {
-        width: 210px;
-        height: 140px;
+        width: 100%;
+        max-width: 100vw;
+        height: 390px;
         position: relative;
-        perspective: 1000px;
+        perspective: 1500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .gallery-carousel {
@@ -589,6 +695,9 @@
         height: 100%;
         position: absolute;
         transform-style: preserve-3d;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
     .gallery-carousel.paused {
@@ -597,36 +706,40 @@
 
     .gallery-card {
         position: absolute;
-        width: 200px;
-        height: 280px;
+        width: 300px;
+        height: 360px;
         left: 50%;
         top: 50%;
-        margin-left: -100px;
-        margin-top: -140px;
-        border-radius: 12px;
+        margin-left: -150px;
+        margin-top: -180px;
+        border-radius: 18px;
         overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        border: 1px solid rgba(212, 175, 55, 0.3);
-        transition: transform 0.5s ease, box-shadow 0.3s ease;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.8), 0 0 15px rgba(212, 175, 55, 0.1);
+        border: 1px solid rgba(212, 175, 55, 0.25);
+        background: #0a0a0a;
+        transition: transform 0.4s ease, box-shadow 0.3s ease, border-color 0.3s ease;
         cursor: pointer;
         backface-visibility: hidden;
+        user-select: none;
     }
 
     .gallery-card:hover {
-        box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.9), 0 0 30px rgba(212, 175, 55, 0.4);
         border-color: #d4af37;
-        transform: scale(1.05); 
+        z-index: 10;
     }
 
     .gallery-card img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 0.5s;
+        transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        filter: brightness(0.9);
     }
 
     .gallery-card:hover img {
-        transform: scale(1.1);
+        transform: scale(1.08);
+        filter: brightness(1.05);
     }
 
     .gallery-card-content {
@@ -634,31 +747,87 @@
         bottom: 0;
         left: 0;
         width: 100%;
-        padding: 1rem;
-        background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-        text-align: center;
-        opacity: 0;
-        transform: translateY(20px);
-        transition: 0.3s;
-    }
-    
-    .gallery-card:hover .gallery-card-content {
-        opacity: 1;
-        transform: translateY(0);
+        padding: 1.5rem 1.25rem 1.2rem;
+        background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 60%, transparent 100%);
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+        transition: all 0.3s ease;
     }
 
-    .gallery-card-title { color: #fff; font-weight: 600; font-size: 1rem; }
-    .gallery-card-sub { color: #d4af37; font-size: 0.8rem; }
+    .gallery-card-badge {
+        display: inline-block;
+        align-self: flex-start;
+        font-size: 0.68rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #d4af37;
+        font-weight: 700;
+        background: rgba(212, 175, 55, 0.15);
+        padding: 2px 8px;
+        border-radius: 50px;
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        margin-bottom: 3px;
+    }
+
+    .gallery-card-title { 
+        color: #fff; 
+        font-family: 'Playfair Display', serif;
+        font-weight: 700; 
+        font-size: 1.2rem; 
+        line-height: 1.2;
+    }
+    .gallery-card-sub { 
+        color: #bbb; 
+        font-size: 0.8rem; 
+        line-height: 1.4;
+    }
 
     .gallery-section::after {
         content: '';
         position: absolute;
-        bottom: 100px;
-        left: 0;
-        width: 100%;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        max-width: 1200px;
         height: 100px;
-        background: radial-gradient(ellipse at center, rgba(212,175,55,0.1) 0%, transparent 70%);
+        background: radial-gradient(ellipse at center, rgba(212,175,55,0.15) 0%, transparent 70%);
         pointer-events: none;
+    }
+
+    @media (max-width: 1024px) {
+        .gallery-card {
+            width: 250px;
+            height: 310px;
+            margin-left: -125px;
+            margin-top: -155px;
+        }
+        .gallery-scene {
+            height: 340px;
+            perspective: 1200px;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .gallery-card {
+            width: 200px;
+            height: 260px;
+            margin-left: -100px;
+            margin-top: -130px;
+            border-radius: 14px;
+        }
+        .gallery-card-title { font-size: 1.05rem; }
+        .gallery-card-sub { font-size: 0.75rem; }
+        .gallery-scene {
+            height: 290px;
+            perspective: 850px;
+        }
+        .gallery-section {
+            min-height: 520px;
+            padding: 3.5rem 0 2.5rem;
+        }
     }
 
     /* AMENITIES SECTION */
@@ -736,237 +905,623 @@
         line-height: 1.4;
     }
 
-    /* Reviews Orbit */
-    .reviews-orbit { padding: 120px 0; background: #050505; text-align: center; overflow: hidden; }
-    .reviews-title { color: white; font-size: 36px; margin-bottom: 80px; font-family: 'Playfair Display', serif; }
-    .orbit { position: relative; width: 650px; height: 380px; margin: auto; animation: spin 28s linear infinite; }
-    .review-card {
-        position: absolute;
-        top: 50%; left: 50%;
-        width: 180px; height: 180px;
-        background: #0a0a0a;
-        border: 2px solid #d4af37;
-        border-radius: 50%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 18px;
-        text-align: center;
-        transform: rotate(calc(var(--i) * 36deg)) translate(300px) rotate(calc(var(--i) * -36deg));
-        box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-    }
-    .review-card img { width: 60px; height: 60px; border-radius: 50%; margin-bottom: 10px; object-fit: cover; }
-    .review-card p { font-size: 12px; color: #ccc; margin-bottom: 5px; }
-    .review-card h4 { color: #fff; font-size: 14px; }
-    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-    /* CONTACT SECTION */
-    .contact-section-upgraded {
-        padding: 8rem 5%;
-        background: radial-gradient(circle at top right, #111 0%, #050505 80%);
+    /* ------------------------------------------------------- */
+    /* HEART-SHAPED AUTO-SCROLL REVIEWS (LEFT TO RIGHT) */
+    /* ------------------------------------------------------- */
+    .reviews-section {
+        padding: 7rem 0;
+        background: radial-gradient(circle at 50% 30%, rgba(225, 29, 72, 0.06) 0%, rgba(212, 175, 55, 0.05) 40%, #060606 80%, #020202 100%);
         position: relative;
         overflow: hidden;
     }
 
+    .reviews-header-wrap {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 3rem auto;
+        padding: 0 5%;
+        position: relative;
+        z-index: 2;
+    }
+
+    .reviews-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.75rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: #fb7185;
+        font-weight: 600;
+        padding: 6px 16px;
+        border-radius: 9999px;
+        background: rgba(225, 29, 72, 0.1);
+        border: 1px solid rgba(225, 29, 72, 0.3);
+        margin-bottom: 1rem;
+    }
+
+    .reviews-rating-bar {
+        display: inline-flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 0.6rem 1.4rem;
+        border-radius: 50px;
+        margin-top: 1.25rem;
+        backdrop-filter: blur(8px);
+    }
+
+    .reviews-rating-bar .stars {
+        color: #f59e0b;
+        font-size: 1rem;
+        letter-spacing: 2px;
+    }
+
+    .reviews-rating-score {
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.95rem;
+    }
+
+    .reviews-rating-count {
+        color: #888;
+        font-size: 0.85rem;
+    }
+
+    /* Heart Auto-Scroll Track */
+    .heart-scroll-wrapper {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        padding: 2rem 0 3rem;
+        mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+    }
+
+    .heart-scroll-track {
+        display: flex;
+        gap: 2rem;
+        width: max-content;
+        animation: scrollLeftToRight 36s linear infinite;
+        will-change: transform;
+    }
+
+    .heart-scroll-track:hover {
+        animation-play-state: paused;
+    }
+
+    @keyframes scrollLeftToRight {
+        0% {
+            transform: translateX(-50%);
+        }
+        100% {
+            transform: translateX(0%);
+        }
+    }
+
+    /* Heart-Shaped Testimonial Card */
+    .heart-review-card {
+        width: 360px;
+        flex-shrink: 0;
+        background: linear-gradient(150deg, rgba(255, 255, 255, 0.04) 0%, rgba(225, 29, 72, 0.03) 50%, rgba(212, 175, 55, 0.04) 100%);
+        border: 1.5px solid rgba(212, 175, 55, 0.3);
+        border-radius: 32px 32px 24px 24px;
+        padding: 2.2rem 1.8rem 1.8rem;
+        position: relative;
+        overflow: hidden;
+        backdrop-filter: blur(12px);
+        transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+    }
+
+    /* Top Heart Notch Accent */
+    .heart-top-crest {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 24px;
+        background: #060606;
+        border-bottom-left-radius: 24px;
+        border-bottom-right-radius: 24px;
+        border-bottom: 1.5px solid rgba(212, 175, 55, 0.4);
+        border-left: 1.5px solid rgba(212, 175, 55, 0.4);
+        border-right: 1.5px solid rgba(212, 175, 55, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 3;
+    }
+
+    .heart-badge-icon {
+        font-size: 13px;
+        line-height: 1;
+        filter: drop-shadow(0 0 6px rgba(225, 29, 72, 0.7));
+        animation: heartPulse 1.8s ease-in-out infinite alternate;
+    }
+
+    @keyframes heartPulse {
+        0% { transform: scale(0.95); }
+        100% { transform: scale(1.2); }
+    }
+
+    .heart-watermark {
+        position: absolute;
+        right: -15px;
+        bottom: -15px;
+        width: 120px;
+        height: 120px;
+        opacity: 0.035;
+        fill: #e11d48;
+        pointer-events: none;
+        transition: all 0.4s ease;
+    }
+
+    .heart-review-card:hover {
+        transform: translateY(-8px) scale(1.02);
+        border-color: rgba(212, 175, 55, 0.65);
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 30px rgba(225, 29, 72, 0.15), 0 0 25px rgba(212, 175, 55, 0.2);
+        background: linear-gradient(150deg, rgba(255, 255, 255, 0.06) 0%, rgba(225, 29, 72, 0.05) 50%, rgba(212, 175, 55, 0.06) 100%);
+    }
+
+    .heart-review-card:hover .heart-watermark {
+        opacity: 0.09;
+        transform: scale(1.1) rotate(-8deg);
+    }
+
+    .heart-card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 0.25rem;
+        margin-bottom: 1.2rem;
+        position: relative;
+        z-index: 2;
+    }
+
+    .heart-author-wrap {
+        display: flex;
+        align-items: center;
+        gap: 0.9rem;
+    }
+
+    .heart-avatar-box {
+        position: relative;
+    }
+
+    .heart-avatar-img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid var(--accent);
+        box-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
+    }
+
+    .heart-mini-tag {
+        position: absolute;
+        bottom: -2px;
+        right: -2px;
+        background: #e11d48;
+        color: #fff;
+        width: 17px;
+        height: 17px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 9px;
+        border: 1.5px solid #060606;
+    }
+
+    .heart-author-name {
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: #fff;
+        font-family: 'Playfair Display', serif;
+        line-height: 1.2;
+    }
+
+    .heart-author-role {
+        font-size: 0.76rem;
+        color: #999;
+        margin-top: 2px;
+    }
+
+    .heart-verified-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 0.68rem;
+        font-weight: 600;
+        color: #60a5fa;
+        background: rgba(59, 130, 246, 0.1);
+        border: 1px solid rgba(59, 130, 246, 0.25);
+        padding: 3px 8px;
+        border-radius: 6px;
+    }
+
+    .heart-rating-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        color: #f59e0b;
+        font-size: 0.92rem;
+        letter-spacing: 2px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .heart-date-tag {
+        font-size: 0.72rem;
+        color: #777;
+        letter-spacing: normal;
+    }
+
+    .heart-review-quote {
+        font-size: 0.9rem;
+        line-height: 1.65;
+        color: #ddd;
+        position: relative;
+        z-index: 2;
+        font-style: normal;
+    }
+
+    /* ------------------------------------------------------- */
+    /* GET IN TOUCH / CONTACT SECTION - MODERN LUXURY REDESIGN */
+    /* ------------------------------------------------------- */
+    .contact-section-upgraded {
+        padding: 7rem 5%;
+        background: radial-gradient(ellipse at 80% 20%, rgba(212, 175, 55, 0.07) 0%, #090909 50%, #030303 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .contact-header-wrap {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 3.5rem auto;
+        position: relative;
+        z-index: 2;
+    }
+
+    .contact-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.72rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--accent);
+        font-weight: 600;
+        padding: 5px 14px;
+        border-radius: 9999px;
+        background: rgba(212, 175, 55, 0.08);
+        border: 1px solid rgba(212, 175, 55, 0.25);
+        margin-bottom: 1rem;
+    }
+
     .contact-grid-upgraded {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem;
-        max-width: 1200px;
+        grid-template-columns: 1fr 1.15fr;
+        gap: 3.5rem;
+        max-width: 1250px;
         margin: 0 auto;
         position: relative;
         z-index: 2;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 960px) {
         .contact-grid-upgraded {
             grid-template-columns: 1fr;
-            gap: 3rem;
+            gap: 2.5rem;
         }
     }
 
-    .contact-info-panel h2 {
-        font-size: 3rem;
-        margin-bottom: 1.5rem;
-        background: linear-gradient(45deg, #fff, #d4af37);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+    .contact-info-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
     }
 
-    .contact-info-panel p {
-        color: #aaa;
-        margin-bottom: 2.5rem;
-        line-height: 1.6;
-    }
-
-    .info-card {
+    .info-card-luxury {
         display: flex;
         align-items: center;
-        gap: 1.5rem;
-        background: rgba(255,255,255,0.02);
-        border: 1px solid rgba(255,255,255,0.05);
-        padding: 1.5rem;
-        border-radius: 12px;
-        margin-bottom: 1.5rem;
-        transition: all 0.3s ease;
+        gap: 1.25rem;
+        background: rgba(255, 255, 255, 0.025);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        padding: 1.25rem 1.5rem;
+        border-radius: 16px;
+        transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+        backdrop-filter: blur(10px);
     }
 
-    .info-card:hover {
-        border-color: var(--accent);
-        background: rgba(212, 175, 55, 0.05);
-        transform: translateX(10px);
+    .info-card-luxury:hover {
+        border-color: rgba(212, 175, 55, 0.45);
+        background: rgba(255, 255, 255, 0.045);
+        transform: translateY(-4px);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4), 0 0 20px rgba(212, 175, 55, 0.08);
     }
 
-    .info-icon {
-        width: 50px;
-        height: 50px;
+    .info-icon-luxury {
+        width: 48px;
+        height: 48px;
         background: rgba(212, 175, 55, 0.1);
-        border-radius: 50%;
+        border: 1px solid rgba(212, 175, 55, 0.25);
+        border-radius: 12px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.5rem;
+        color: var(--accent);
         flex-shrink: 0;
+        transition: all 0.3s ease;
     }
 
-    .info-content h4 {
-        font-family: 'Inter', sans-serif;
-        font-size: 1.1rem;
+    .info-card-luxury:hover .info-icon-luxury {
+        background: var(--accent);
+        color: #000;
+        transform: scale(1.08);
+    }
+
+    .whatsapp-icon-bg {
+        color: #25d366;
+        border-color: rgba(37, 211, 102, 0.3);
+        background: rgba(37, 211, 102, 0.1);
+    }
+
+    .info-card-luxury:hover .whatsapp-icon-bg {
+        background: #25d366;
         color: #fff;
-        margin-bottom: 0.3rem;
     }
 
-    .info-content p {
-        font-size: 0.9rem;
-        color: #888;
-        margin: 0;
+    .info-content-luxury h4 {
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: #fff;
+        font-family: 'Playfair Display', serif;
+        margin-bottom: 0.2rem;
     }
-    
-    .info-content a {
+
+    .info-content-luxury p {
+        font-size: 0.85rem;
+        color: #aaa;
+        margin: 0 0 0.2rem 0;
+        line-height: 1.4;
+    }
+
+    .info-phone-text {
+        font-size: 0.95rem;
+        font-weight: 600;
         color: var(--accent);
         text-decoration: none;
-        transition: color 0.3s;
+        transition: color 0.2s;
     }
-    .info-content a:hover {
+
+    .info-phone-text:hover {
         color: #fff;
     }
 
-    .map-container {
+    .info-link {
+        display: inline-block;
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--accent);
+        text-decoration: none;
+        margin-top: 2px;
+        transition: transform 0.2s, color 0.2s;
+    }
+
+    .info-link:hover {
+        color: #fff;
+        transform: translateX(3px);
+    }
+
+    .info-link-whatsapp {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #4ade80;
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+
+    .info-link-whatsapp:hover {
+        color: #86efac;
+    }
+
+    .info-subtext {
+        display: block;
+        font-size: 0.72rem;
+        color: #777;
+    }
+
+    .map-container-luxury {
         position: relative;
         border-radius: 16px;
         overflow: hidden;
-        height: 250px;
-        margin-top: 2rem;
-        border: 1px solid rgba(255,255,255,0.1);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        height: 180px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
     }
-    .map-container iframe {
+
+    .map-container-luxury iframe {
         width: 100%;
         height: 100%;
-        filter: grayscale(100%) invert(92%) contrast(83%);
-        transition: filter 0.3s;
+        border: 0;
+        filter: grayscale(100%) invert(90%) contrast(85%);
+        transition: filter 0.4s ease;
     }
-    .map-container:hover iframe {
+
+    .map-container-luxury:hover iframe {
         filter: grayscale(0%);
     }
 
-    .form-panel {
-        background: rgba(10, 10, 10, 0.6);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255,255,255,0.1);
-        padding: 3rem;
-        border-radius: 20px;
-        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    /* Luxury Form Panel */
+    .form-panel-luxury {
+        background: rgba(18, 18, 18, 0.55);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 2.5rem;
+        border-radius: 24px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         position: relative;
         overflow: hidden;
     }
 
-    .form-panel::before {
+    .form-panel-luxury::before {
         content: '';
         position: absolute;
         top: 0; left: 0; right: 0;
-        height: 2px;
+        height: 3px;
         background: linear-gradient(90deg, transparent, var(--accent), transparent);
     }
 
-    .form-group {
-        margin-bottom: 1.5rem;
-        position: relative;
+    .form-panel-header {
+        margin-bottom: 1.75rem;
     }
 
-    .form-group label {
-        display: block;
-        margin-bottom: 0.5rem;
-        font-size: 0.8rem;
-        color: #888;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-
-    .form-input {
-        width: 100%;
-        padding: 1rem;
-        background: rgba(0,0,0,0.3);
-        border: 1px solid rgba(255,255,255,0.1);
-        border-radius: 8px;
+    .form-panel-title {
+        font-size: 1.4rem;
+        font-weight: 600;
         color: #fff;
-        transition: all 0.3s ease;
-        font-family: 'Inter', sans-serif;
+        font-family: 'Playfair Display', serif;
+        margin-bottom: 0.35rem;
     }
 
-    .form-input:focus {
-        outline: none;
-        border-color: var(--accent);
-        box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
-        background: rgba(0,0,0,0.5);
+    .form-panel-subtitle {
+        font-size: 0.82rem;
+        color: #888;
+        line-height: 1.4;
     }
 
     .form-row {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 1.5rem;
+        gap: 1.25rem;
     }
 
     @media (max-width: 600px) {
         .form-row {
             grid-template-columns: 1fr;
+            gap: 1rem;
         }
     }
 
-    .submit-btn {
+    .form-group-luxury {
+        margin-bottom: 1rem;
+    }
+
+    .form-group-luxury label {
+        display: block;
+        margin-bottom: 0.4rem;
+        font-size: 0.75rem;
+        color: #aaa;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+    }
+
+    .input-wrap-luxury {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .input-icon-svg {
+        position: absolute;
+        left: 14px;
+        color: #666;
+        pointer-events: none;
+        transition: color 0.3s;
+    }
+
+    .form-input-luxury {
         width: 100%;
-        padding: 1.2rem;
-        background: var(--accent);
+        padding: 0.75rem 1rem 0.75rem 2.6rem;
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 10px;
+        color: #fff;
+        font-size: 0.88rem;
+        transition: all 0.3s ease;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .form-date-input, .form-select-luxury {
+        padding-left: 1rem !important;
+    }
+
+    .form-textarea-luxury {
+        width: 100%;
+        padding: 0.85rem 1rem;
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 10px;
+        color: #fff;
+        font-size: 0.88rem;
+        transition: all 0.3s ease;
+        font-family: 'Inter', sans-serif;
+        resize: vertical;
+    }
+
+    .form-input-luxury:focus, .form-textarea-luxury:focus {
+        outline: none;
+        border-color: rgba(212, 175, 55, 0.6);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.12);
+        background: rgba(0, 0, 0, 0.6);
+    }
+
+    .input-wrap-luxury:focus-within .input-icon-svg {
+        color: var(--accent);
+    }
+
+    .form-select-luxury option {
+        background: #111;
+        color: #fff;
+    }
+
+    .submit-btn-luxury {
+        width: 100%;
+        padding: 1rem 1.5rem;
+        background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
         color: #000;
         border: none;
-        border-radius: 8px;
+        border-radius: 10px;
         font-weight: 700;
-        font-size: 1rem;
+        font-size: 0.92rem;
         cursor: pointer;
-        transition: all 0.3s ease;
+        transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+        letter-spacing: 0.5px;
         text-transform: uppercase;
-        letter-spacing: 1px;
-        position: relative;
-        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        box-shadow: 0 6px 20px rgba(212, 175, 55, 0.25);
+        margin-top: 0.5rem;
     }
 
-    .submit-btn::before {
-        content: '';
-        position: absolute;
-        top: 0; left: -100%;
-        width: 100%; height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-        transition: left 0.5s;
-    }
-
-    .submit-btn:hover::before {
-        left: 100%;
-    }
-
-    .submit-btn:hover {
+    .submit-btn-luxury:hover {
+        background: #ffffff;
+        color: #000000;
         transform: translateY(-2px);
-        box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+        box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+    }
+
+    .form-trust-badges {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1.25rem;
+        margin-top: 1rem;
+        font-size: 0.72rem;
+        color: #777;
     }
 
     /* FAQ */
@@ -1004,6 +1559,7 @@
   </style>
 </head>
 <body>
+    <div class="spotlight" id="spotlight"></div>
     <div class="scroll-line" id="scroll-line"></div>
     <canvas id="bg-canvas"></canvas>
 
@@ -1070,48 +1626,99 @@
     <section id="why-us" class="why-us-section">
         <canvas id="about-canvas"></canvas>
 
-        <div class="text-center mb-16 relative z-10">
-            <span class="text-xs uppercase tracking-[0.3em] text-[#d4af37] font-semibold">Why Choose Us</span>
-            <h2 class="section-title text-white mt-4">The Jagan PG Advantage</h2>
-            <p class="section-subtitle">Trusted by <span style="color:#d4af37;font-weight:600;">1700+ happy residents</span> for safe, comfortable, and premium living.</p>
+        <div class="why-header">
+            <span class="why-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                Why Jagan PG
+            </span>
+            <h2 class="section-title text-white">Why Choose Jagan PG?</h2>
+            <p class="section-subtitle mb-6">Premium living spaces crafted for absolute safety, comfort, and community.</p>
         </div>
 
-        <div class="bento-grid">
-            <div class="bento-card highlight" data-tilt>
-                <div class="bento-icon">👥</div>
-                <div class="flex items-baseline gap-2 mb-2">
-                    <span class="counter-num" id="counter1">0</span>
-                    <span class="text-2xl text-white font-bold">+</span>
+        <!-- 4 Crisp Feature Cards -->
+        <div class="why-grid-crisp">
+            <div class="why-card-crisp" data-tilt>
+                <div class="why-card-top">
+                    <div class="why-icon-crisp">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+                    </div>
+                    <span class="why-stat-pill">100% Secure</span>
                 </div>
-                <h3 class="bento-title">Happy Residents</h3>
-                <p class="bento-text">A vibrant community of students and professionals living harmoniously. Join our family today.</p>
+                <h3 class="why-title-crisp">360° Safety</h3>
+                <p class="why-desc-crisp">Biometric lock access, 24/7 CCTV surveillance, guarded gates, and on-site wardens.</p>
             </div>
-            <div class="bento-card" data-tilt>
-                <div class="bento-icon">🛡️</div>
-                <h3 class="bento-title">Safe & Secure</h3>
-                <p class="bento-text">Biometric entry, CCTV surveillance, and 24/7 security.</p>
+
+            <div class="why-card-crisp" data-tilt>
+                <div class="why-card-top">
+                    <div class="why-icon-crisp">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/></svg>
+                    </div>
+                    <span class="why-stat-pill">3 Meals Daily</span>
+                </div>
+                <h3 class="why-title-crisp">Homely Food</h3>
+                <p class="why-desc-crisp">Fresh, hygienic breakfast, lunch & dinner with pure RO drinking water.</p>
             </div>
-            <div class="bento-card" data-tilt>
-                <div class="bento-icon">🍛</div>
-                <h3 class="bento-title">Homely Food</h3>
-                <p class="bento-text">Fresh, hygienic, and nutritious meals served daily.</p>
+
+            <div class="why-card-crisp" data-tilt>
+                <div class="why-card-top">
+                    <div class="why-icon-crisp">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <span class="why-stat-pill">3 Min Walk</span>
+                </div>
+                <h3 class="why-title-crisp">Prime Location</h3>
+                <p class="why-desc-crisp">Walking distance to metro station, major tech parks, colleges, and markets.</p>
             </div>
-            <div class="bento-card" data-tilt>
-                <div class="bento-icon">📍</div>
-                <h3 class="bento-title">Prime Location</h3>
-                <p class="bento-text">Located near colleges, offices, metro stations.</p>
+
+            <div class="why-card-crisp" data-tilt>
+                <div class="why-card-top">
+                    <div class="why-icon-crisp">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+                    </div>
+                    <span class="why-stat-pill">100 Mbps</span>
+                </div>
+                <h3 class="why-title-crisp">Fiber & Power</h3>
+                <p class="why-desc-crisp">High-speed dual-band fiber WiFi and 100% auto-switch DG power backup.</p>
+            </div>
+        </div>
+
+        <!-- Inline Stats & Trust Highlight Strip -->
+        <div class="why-stats-inline">
+            <div class="stat-inline-item">
+                <span class="stat-inline-num"><span id="counter-residents">1,700</span>+</span>
+                <span class="stat-inline-lbl">Happy Residents</span>
+            </div>
+            <div class="stat-inline-div"></div>
+            <div class="stat-inline-item">
+                <span class="stat-inline-num"><span id="counter-rating">4.9</span> ★</span>
+                <span class="stat-inline-lbl">Google Rating</span>
+            </div>
+            <div class="stat-inline-div"></div>
+            <div class="stat-inline-item">
+                <span class="stat-inline-num">Zero</span>
+                <span class="stat-inline-lbl">Brokerage</span>
+            </div>
+            <div class="stat-inline-div"></div>
+            <div class="stat-inline-item">
+                <span class="stat-inline-num">Daily</span>
+                <span class="stat-inline-lbl">Housekeeping</span>
             </div>
         </div>
     </section>
 
     <!-- Rooms -->
     <section id="rooms" class="rooms-section-wrapper">
-        <div class="text-center mb-16 relative z-10">
-            <span class="text-xs uppercase tracking-[0.3em] text-[#d4af37] font-semibold">Our Rooms</span>
-            <h2 class="section-title text-white mt-4">Choose Your Space</h2>
-            <p class="section-subtitle">Perfect spaces that fit your budget and lifestyle.</p>
+        <div class="rooms-header">
+            <span class="rooms-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9.3V4h-3v2.6L12 3 2 12h3v8h5v-6h4v6h5v-8h3l-3-2.7z"/></svg>
+                Accommodations
+            </span>
+            <h2 class="section-title text-white">Choose Your Space</h2>
+            <p class="section-subtitle">Fully-furnished, hygienic, and well-ventilated rooms designed for every lifestyle and budget.</p>
         </div>
-        <div class="room-container" id="room-container"></div>
+        <div class="room-container" id="room-container">
+            <!-- Room cards injected by JS -->
+        </div>
     </section>
 
     <!-- Amenities -->
@@ -1183,90 +1790,152 @@
         </div>
     </section>
 
-    <!-- Reviews -->
-    <section id="reviews" class="reviews-orbit">
-        <h2 class="reviews-title">What Our Residents Say</h2>
-        <div class="orbit" id="reviews-orbit-container"></div>
+    <!-- Reviews Section (Heart-Shaped Auto-Scroll Left-to-Right) -->
+    <section id="reviews" class="reviews-section">
+        <div class="reviews-header-wrap">
+            <span class="reviews-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="#e11d48"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                Resident Stories
+            </span>
+            <h2 class="section-title text-white">Loved By Our Residents</h2>
+            <p class="section-subtitle">Real experiences and feedback from students and working professionals living at Jagan PG.</p>
+            
+            <div class="reviews-rating-bar">
+                <span class="reviews-rating-score">4.9 / 5.0</span>
+                <span class="stars">★★★★★</span>
+                <span class="reviews-rating-count">Based on 120+ Verified Google Reviews</span>
+            </div>
+        </div>
+
+        <!-- Left to Right Auto-Scroll Heart Cards Track -->
+        <div class="heart-scroll-wrapper">
+            <div class="heart-scroll-track" id="heart-scroll-track">
+                <!-- Testimonials injected by JS -->
+            </div>
+        </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact-section-upgraded">
+        <div class="contact-header-wrap">
+            <span class="contact-badge">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                Connect With Us
+            </span>
+            <h2 class="section-title text-white">Get in Touch</h2>
+            <p class="section-subtitle">Have questions or want to schedule a visit? Reach out directly or send an enquiry below.</p>
+        </div>
+
         <div class="contact-grid-upgraded">
+            <!-- Left Info Panel -->
             <div class="contact-info-panel">
-                <h2>Get in Touch</h2>
-                <p>Have questions about availability or want to schedule a visit? Reach out to us directly or fill out the form, and we'll get back to you shortly.</p>
-                
-                <div class="info-card">
-                    <div class="info-icon">📍</div>
-                    <div class="info-content">
+                <div class="info-card-luxury" data-tilt>
+                    <div class="info-icon-luxury">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <div class="info-content-luxury">
                         <h4>Our Location</h4>
-                        <p>Near Metro Station, Main Road,<br>Bangalore – 560001</p>
+                        <p>Main Road, Near Metro Station, Bangalore – 560001</p>
+                        <a href="https://maps.google.com/?q=Bangalore" target="_blank" class="info-link">Get Directions →</a>
                     </div>
                 </div>
 
-                <div class="info-card">
-                    <div class="info-icon">📞</div>
-                    <div class="info-content">
-                        <h4>Phone Number</h4>
-                        <p><a href="tel:+917300212948">+91 73002 12948</a></p>
+                <div class="info-card-luxury" data-tilt>
+                    <div class="info-icon-luxury">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </div>
+                    <div class="info-content-luxury">
+                        <h4>Direct Calling</h4>
+                        <p><a href="tel:+917300212948" class="info-phone-text">+91 73002 12948</a></p>
+                        <span class="info-subtext">Mon – Sun: 8:00 AM – 9:00 PM</span>
                     </div>
                 </div>
 
-                <div class="info-card">
-                    <div class="info-icon">💬</div>
-                    <div class="info-content">
-                        <h4>WhatsApp</h4>
-                        <p><a href="https://wa.me/917300212948" target="_blank">Chat with us instantly</a></p>
+                <div class="info-card-luxury" data-tilt>
+                    <div class="info-icon-luxury whatsapp-icon-bg">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </div>
+                    <div class="info-content-luxury">
+                        <h4>WhatsApp Concierge</h4>
+                        <p><a href="https://wa.me/917300212948" target="_blank" class="info-link-whatsapp">Chat with us instantly 💬</a></p>
+                        <span class="info-subtext">Usually replies in &lt; 5 mins</span>
                     </div>
                 </div>
 
-                <div class="map-container">
-                    <iframe src="https://maps.google.com/maps?q=bangalore&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy"></iframe>
+                <div class="map-container-luxury">
+                    <iframe src="https://maps.google.com/maps?q=bangalore&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" title="Jagan PG Location"></iframe>
                 </div>
             </div>
 
-            <div class="form-panel">
-                <h3 style="font-family: 'Inter', sans-serif; font-size: 1.5rem; margin-bottom: 2rem; color: #fff;">Send an Enquiry</h3>
-                <form id="contact-form">
+            <!-- Right Form Panel -->
+            <div class="form-panel-luxury" data-tilt>
+                <div class="form-panel-header">
+                    <h3 class="form-panel-title">Schedule a Visit & Enquire</h3>
+                    <p class="form-panel-subtitle">Fill in your details below and our team will get in touch immediately.</p>
+                </div>
+
+                <form id="contact-form" class="space-y-4">
                     <div class="form-row">
-                        <div class="form-group">
-                            <label>Full Name</label>
-                            <input id="fullName" name="fullName" type="text" class="form-input" placeholder="John Doe" required>
+                        <div class="form-group-luxury">
+                            <label for="fullName">Full Name</label>
+                            <div class="input-wrap-luxury">
+                                <svg class="input-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                                <input id="fullName" name="fullName" type="text" class="form-input-luxury" placeholder="Rahul Sharma" required>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>Phone Number</label>
-                            <input id="phone" name="phone" type="tel" class="form-input" placeholder="+91 98765 43210" required>
+                        <div class="form-group-luxury">
+                            <label for="phone">Phone Number</label>
+                            <div class="input-wrap-luxury">
+                                <svg class="input-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                <input id="phone" name="phone" type="tel" class="form-input-luxury" placeholder="+91 98765 43210" required>
+                            </div>
                         </div>
                     </div>
                     
                     <div class="form-row">
-                        <div class="form-group">
-                            <label>Email Address</label>
-                            <input id="email" name="email" type="email" class="form-input" placeholder="john@example.com">
+                        <div class="form-group-luxury">
+                            <label for="email">Email Address</label>
+                            <div class="input-wrap-luxury">
+                                <svg class="input-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                                <input id="email" name="email" type="email" class="form-input-luxury" placeholder="rahul@example.com">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>Move-in Date</label>
-                            <input id="moveInDate" name="moveInDate" type="date" class="form-input">
+                        <div class="form-group-luxury">
+                            <label for="moveInDate">Expected Move-in Date</label>
+                            <div class="input-wrap-luxury">
+                                <input id="moveInDate" name="moveInDate" type="date" class="form-input-luxury form-date-input">
+                            </div>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label>Room Preference</label>
-                        <select id="roomPreference" name="roomPreference" class="form-input">
-                            <option>Select Room Type</option>
-                            <option>Single Occupancy</option>
-                            <option>Double Sharing</option>
-                            <option>Triple Sharing</option>
-                            <option>Deluxe Suite</option>
-                        </select>
+                    <div class="form-group-luxury">
+                        <label for="roomPreference">Room Preference</label>
+                        <div class="input-wrap-luxury">
+                            <select id="roomPreference" name="roomPreference" class="form-input-luxury form-select-luxury">
+                                <option value="">Select Room Type</option>
+                                <option value="Single Occupancy">Single Occupancy (₹9,000 / mo)</option>
+                                <option value="Double Sharing">Double Sharing (₹7,000 / mo)</option>
+                                <option value="Triple Sharing">Triple Sharing (₹5,500 / mo)</option>
+                                <option value="Quadruple Sharing">Quadruple Sharing (₹4,500 / mo)</option>
+                            </select>
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <label>Your Message</label>
-                        <textarea id="message" name="message" class="form-input" rows="4" placeholder="Any specific requirements or questions..."></textarea>
+                    <div class="form-group-luxury">
+                        <label for="message">Your Message or Query</label>
+                        <textarea id="message" name="message" class="form-input-luxury form-textarea-luxury" rows="3" placeholder="Tell us your requirements, visiting schedule, or questions..."></textarea>
                     </div>
 
-                    <button type="submit" class="submit-btn">Send Enquiry</button>
+                    <button type="submit" class="submit-btn-luxury">
+                        <span>Send Booking Enquiry</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </button>
+
+                    <div class="form-trust-badges">
+                        <span>🔒 100% Privacy</span>
+                        <span>⚡ Quick Response</span>
+                        <span>🤝 Zero Brokerage</span>
+                    </div>
                 </form>
             </div>
         </div>
@@ -1331,6 +2000,13 @@
       if (homeForm) {
         homeForm.addEventListener('submit', async (e) => {
           e.preventDefault();
+          const submitBtn = homeForm.querySelector('button[type="submit"]');
+          const originalBtnHTML = submitBtn ? submitBtn.innerHTML : 'Send Booking Enquiry';
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span>Sending enquiry...</span> <svg class="animate-spin" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" stroke-opacity="0.25"/><path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/></svg>';
+          }
+
           const payload = {
             fullName: document.getElementById('fullName').value.trim(),
             phone: document.getElementById('phone').value.trim(),
@@ -1339,6 +2015,7 @@
             roomPreference: document.getElementById('roomPreference').value,
             message: document.getElementById('message').value.trim(),
           };
+
           try {
             const res = await fetch('/api/contact', {
               method: 'POST',
@@ -1347,13 +2024,28 @@
             });
             if (!res.ok) {
               const err = await res.json().catch(() => ({}));
-              alert(err.error || 'Failed to send enquiry');
+              alert(err.error || 'Failed to send enquiry. Please try WhatsApp.');
+              if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = originalBtnHTML; }
               return;
             }
-            alert('Thanks! Your enquiry has been sent.');
-            homeForm.reset();
+            if (submitBtn) {
+              submitBtn.innerHTML = '<span>✓ Enquiry Sent Successfully!</span>';
+              submitBtn.style.background = '#10b981';
+              submitBtn.style.color = '#fff';
+            }
+            setTimeout(() => {
+              alert('🎉 Thank you! Your visit & enquiry request has been sent. Our team will contact you shortly.');
+              homeForm.reset();
+              if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnHTML;
+                submitBtn.style.background = '';
+                submitBtn.style.color = '';
+              }
+            }, 500);
           } catch (e2) {
-            alert('Network error. Please try again.');
+            alert('Network error. You can also contact us directly via WhatsApp.');
+            if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = originalBtnHTML; }
           }
         });
       }
@@ -1371,10 +2063,46 @@
 
         // Data
         const roomsData = [
-          { type: 'Single Occupancy', price: '₹9,000 / month', img: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800', features: ['Private Room', 'Attached Bathroom', 'AC & Fan', 'High-Speed WiFi'], btn: 'Enquire Now' },
-          { type: 'Double Sharing', price: '₹7,000 / month', img: 'https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=800', features: ['Spacious Room', 'High-Speed WiFi', 'Wardrobe', 'Study Table'], btn: 'Enquire Now' },
-          { type: 'Triple Sharing', price: '₹5,500 / month', img: 'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=800', features: ['Budget Friendly', 'WiFi Included', 'Personal Storage', 'Study Area'], btn: 'Enquire Now' },
-          { type: 'Deluxe Suite', price: '₹12,000 / month', img: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800', features: ['Premium Private Room', 'AC Included', 'Mini Fridge', 'Smart TV'], btn: 'Book Now' }
+          { 
+            type: 'Single Occupancy', 
+            price: '₹9,000', 
+            sub: 'Ideal for professionals & scholars seeking total privacy.',
+            tag: 'Most Private',
+            avail: '2 Rooms Left',
+            img: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=800', 
+            features: ['Private Single Bedroom', 'Attached Private Bathroom', 'AC & High-Speed WiFi', 'Dedicated Study Desk & Wardrobe', '3 Homely Meals Daily'], 
+            btn: 'Book Single' 
+          },
+          { 
+            type: 'Double Sharing', 
+            price: '₹7,000', 
+            sub: 'Spacious sharing room with comfortable private corners.',
+            tag: 'Most Popular',
+            avail: '4 Beds Available',
+            img: 'https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?q=80&w=800', 
+            features: ['2 Separate Single Beds', 'Attached/Shared Modern Bath', 'High-Speed Fiber Internet', 'Individual Lockers & Study Desks', 'Daily Room Housekeeping'], 
+            btn: 'Book Double' 
+          },
+          { 
+            type: 'Triple Sharing', 
+            price: '₹5,500', 
+            sub: 'Balanced living with study zones and friendly peers.',
+            tag: 'Great Value',
+            avail: 'Instant Move-in',
+            img: 'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?q=80&w=800', 
+            features: ['3 Ergonomic Beds', 'High-Speed WiFi Included', 'Personal Secure Storage', 'Air Cooling & Power Backup', 'Nutritious Food Included'], 
+            btn: 'Book Triple' 
+          },
+          { 
+            type: 'Quadruple Sharing', 
+            price: '₹4,500', 
+            sub: 'Maximum savings with all full PG amenities included.',
+            tag: 'Budget Friendly',
+            avail: 'Available Now',
+            img: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=800', 
+            features: ['4 Individual Single Beds', 'Personal Key Lockers', '100 Mbps Dual WiFi', 'Hot Water & Daily Cleaning', '3 Nutritious Meals Daily'], 
+            btn: 'Book Quadruple' 
+          }
         ];
         
         const galleryData = [
@@ -1389,66 +2117,143 @@
         ];
 
         const reviewsData = [
-            { img: 'https://i.pravatar.cc/150?img=1', text: 'Clean rooms and homely food. Highly recommended.', name: 'Rahul Sharma' },
-            { img: 'https://i.pravatar.cc/150?img=2', text: 'Very safe PG and great WiFi for work.', name: 'Ankit Verma' },
-            { img: 'https://i.pravatar.cc/150?img=3', text: 'Best PG near metro station.', name: 'Priya Singh' },
-            { img: 'https://i.pravatar.cc/150?img=4', text: 'Owner is very supportive.', name: 'Aman Gupta' },
-            { img: 'https://i.pravatar.cc/150?img=5', text: 'Affordable and comfortable rooms.', name: 'Neha Kapoor' },
-            { img: 'https://i.pravatar.cc/150?img=6', text: 'Food quality is amazing.', name: 'Rohit Sharma' },
-            { img: 'https://i.pravatar.cc/150?img=7', text: 'Very peaceful environment.', name: 'Karan Mehta' },
-            { img: 'https://i.pravatar.cc/150?img=8', text: 'Feels like home.', name: 'Sneha Verma' },
-            { img: 'https://i.pravatar.cc/150?img=9', text: 'Great facilities and fast internet.', name: 'Riya Sharma' },
-            { img: 'https://i.pravatar.cc/150?img=10', text: 'Perfect for students.', name: 'Aditya Jain' },
+            { 
+                name: 'Rahul Sharma', 
+                role: 'Software Engineer • Single Room', 
+                img: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150', 
+                rating: 5, 
+                date: '2 weeks ago',
+                text: 'Clean rooms, fast WiFi, and delicious homely food. The management is polite and resolves any query immediately. Best PG in the area!'
+            },
+            { 
+                name: 'Priya Singh', 
+                role: 'Medical Student • Single Room', 
+                img: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150', 
+                rating: 5, 
+                date: '1 month ago',
+                text: 'Safety was my top priority, and Jagan PG provides 24/7 CCTV and secure biometric access. The rooms are spacious and well ventilated.'
+            },
+            { 
+                name: 'Ankit Verma', 
+                role: 'Data Analyst • Double Sharing', 
+                img: 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=150', 
+                rating: 5, 
+                date: '3 weeks ago',
+                text: 'The quiet study environment and high-speed fiber internet make it super convenient for work from home. Great community vibe here.'
+            },
+            { 
+                name: 'Neha Kapoor', 
+                role: 'UI Designer • Double Sharing', 
+                img: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150', 
+                rating: 5, 
+                date: '1 month ago',
+                text: 'Affordable, clean, and truly homely. Daily housekeeping keeps everything spotless, and the hygienic food menu has great variety.'
+            },
+            { 
+                name: 'Aman Gupta', 
+                role: 'Financial Analyst • Single Room', 
+                img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150', 
+                rating: 5, 
+                date: '2 months ago',
+                text: 'Located just walking distance from the metro station, which saves commute time. The owner is genuinely supportive and responsive.'
+            },
+            { 
+                name: 'Sneha Verma', 
+                role: 'Tech Consultant • Quadruple Sharing', 
+                img: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150', 
+                rating: 5, 
+                date: '3 weeks ago',
+                text: 'The interior finish and amenities feel like a boutique stay. Uninterrupted power backup and AC make daily life comfortable.'
+            }
         ];
 
-        // Render Rooms
+        // Render Rooms (Modern Luxury Layout)
         const roomContainer = document.getElementById('room-container');
-        roomContainer.innerHTML = roomsData.map(r => `
-        <div class="room-card" data-tilt>
-            <div class="room-border"></div>
-            <div class="room-glare"></div>
-            <div class="room-image" style="background-image:url('${r.img}')" role="img" aria-label="Jagan PG ${r.type} Room"></div>
-            <div class="room-price">${r.price}</div>
-            <div class="room-content">
-                <h3 class="text-2xl font-bold text-white mb-2" style="font-family:'Playfair Display';">${r.type}</h3>
-                <ul class="room-list">${r.features.map(f => `<li>${f}</li>`).join('')}</ul>
-                <div class="room-btn-wrapper">
-                    <a href="#contact" class="room-btn">${r.btn}</a>
+        if (roomContainer) {
+            roomContainer.innerHTML = roomsData.map(r => `
+                <div class="room-card-modern" data-tilt>
+                    <div class="room-media-wrap">
+                        <img src="${r.img}" alt="${r.type}" class="room-media-img" loading="lazy">
+                        <span class="room-tag-pill">${r.tag}</span>
+                        <div class="room-price-badge">
+                            <span>${r.price}</span><small>/mo</small>
+                        </div>
+                    </div>
+                    <div class="room-body">
+                        <div>
+                            <h3 class="room-title-h3">${r.type}</h3>
+                            <p class="room-desc-short">${r.sub}</p>
+                            <ul class="room-feature-list">
+                                ${r.features.map(f => `
+                                    <li class="room-feature-item">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                        <span>${f}</span>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="room-avail-bar">
+                                <span class="avail-status"><span class="avail-dot"></span> ${r.avail}</span>
+                                <span style="color:#777;">Zero Brokerage</span>
+                            </div>
+                            <a href="#contact" class="room-card-cta" onclick="document.getElementById('roomPreference') && (document.getElementById('roomPreference').value = '${r.type}')">${r.btn}</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        `).join('');
+            `).join('');
+        }
 
-        // GALLERY 3D CAROUSEL LOGIC
+        // GALLERY 3D CAROUSEL LOGIC (EXPANDED WIDTH)
         const galleryCarousel = document.getElementById('gallery-carousel');
         const galleryScene = document.getElementById('gallery-scene');
         
         if(galleryCarousel) {
             const cardCount = galleryData.length;
             const angleStep = 360 / cardCount;
-            const radius = 400; 
+            
+            function getRadius() {
+                const w = window.innerWidth;
+                if (w < 640) return 260;
+                if (w < 1024) return 390;
+                return 500;
+            }
+
+            let cardItems = [];
 
             galleryData.forEach((g, i) => {
                 const card = document.createElement('div');
                 card.className = 'gallery-card';
                 const angle = i * angleStep;
-                card.style.transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
 
                 card.innerHTML = `
                     <img src="${g.url}" loading="lazy" alt="${g.title}">
                     <div class="gallery-card-content">
+                        <span class="gallery-card-badge">${g.sub || 'Experience'}</span>
                         <div class="gallery-card-title">${g.title}</div>
-                        <div class="gallery-card-sub">${g.sub}</div>
+                        <div class="gallery-card-sub">Premium Coliving Space</div>
                     </div>
                 `;
                 galleryCarousel.appendChild(card);
+                cardItems.push({ element: card, angle: angle });
             });
+
+            function updateCardPositions() {
+                const radius = getRadius();
+                cardItems.forEach(c => {
+                    c.element.style.transform = `rotateY(${c.angle}deg) translateZ(${radius}px)`;
+                });
+            }
+            updateCardPositions();
+            window.addEventListener('resize', updateCardPositions);
 
             let rotation = 0;
             let isPaused = false;
 
             galleryScene.addEventListener('mouseenter', () => isPaused = true);
             galleryScene.addEventListener('mouseleave', () => isPaused = false);
+            galleryScene.addEventListener('touchstart', () => isPaused = true, { passive: true });
+            galleryScene.addEventListener('touchend', () => isPaused = false, { passive: true });
 
             function animateGallery() {
                 requestAnimationFrame(animateGallery);
@@ -1460,15 +2265,42 @@
             animateGallery();
         }
 
-        // Render Reviews
-        const reviewsContainer = document.getElementById('reviews-orbit-container');
-        reviewsContainer.innerHTML = reviewsData.map((r, i) => `
-            <div class="review-card" style="--i:${i+1};">
-                <img src="${r.img}" alt="${r.name}">
-                <p>${r.text}</p>
-                <h4>${r.name}</h4>
-            </div>
-        `).join('');
+        // Render Reviews (Heart Cards Left-to-Right Auto-Scroll Track)
+        const heartTrack = document.getElementById('heart-scroll-track');
+        if (heartTrack) {
+            // Duplicate data to form a seamless infinite marquee
+            const loopData = [...reviewsData, ...reviewsData];
+            heartTrack.innerHTML = loopData.map(r => `
+                <div class="heart-review-card" data-tilt>
+                    <div class="heart-top-crest">
+                        <span class="heart-badge-icon">❤️</span>
+                    </div>
+                    <svg class="heart-watermark" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    <div>
+                        <div class="heart-card-header">
+                            <div class="heart-author-wrap">
+                                <div class="heart-avatar-box">
+                                    <img src="${r.img}" alt="${r.name}" class="heart-avatar-img" loading="lazy">
+                                    <span class="heart-mini-tag">♥</span>
+                                </div>
+                                <div>
+                                    <h4 class="heart-author-name">${r.name}</h4>
+                                    <div class="heart-author-role">${r.role}</div>
+                                </div>
+                            </div>
+                            <span class="heart-verified-tag">
+                                <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Verified
+                            </span>
+                        </div>
+                        <div class="heart-rating-row">
+                            <span>${'★'.repeat(r.rating)}</span>
+                            <span class="heart-date-tag">${r.date}</span>
+                        </div>
+                        <p class="heart-review-quote">"${r.text}"</p>
+                    </div>
+                </div>
+            `).join('');
+        }
 
         // ENHANCED 3D TILT & GLARE LOGIC
         document.querySelectorAll('[data-tilt]').forEach(card => {
@@ -1546,32 +2378,40 @@
             });
         });
 
-        // Counter Animation
-        const counterEle = document.getElementById('counter1');
+        // Counter Animation (Smooth multi-stat counter)
         let hasCounted = false;
-        const animateCounter = () => {
-            if(hasCounted) return;
-            const rect = counterEle.getBoundingClientRect();
-            if(rect.top < window.innerHeight && rect.bottom > 0) {
+        const animateCounters = () => {
+            if (hasCounted) return;
+            const targetSection = document.getElementById('why-us');
+            if (!targetSection) return;
+            const rect = targetSection.getBoundingClientRect();
+            if (rect.top < window.innerHeight * 0.85 && rect.bottom > 0) {
                 hasCounted = true;
-                let count = 0;
-                const target = 2000;
-                const duration = 2000;
-                const step = target / (duration / 16);
-                const update = () => {
-                    count += step;
-                    if(count < target) {
-                        counterEle.innerText = Math.floor(count);
-                        requestAnimationFrame(update);
-                    } else {
-                        counterEle.innerText = target;
-                    }
+                
+                const animateValue = (id, start, end, duration, decimals = 0) => {
+                    const el = document.getElementById(id);
+                    if (!el) return;
+                    let startTime = null;
+                    const step = (timestamp) => {
+                        if (!startTime) startTime = timestamp;
+                        const progress = Math.min((timestamp - startTime) / duration, 1);
+                        const current = start + progress * (end - start);
+                        el.innerText = decimals > 0 ? current.toFixed(decimals) : Math.floor(current).toLocaleString();
+                        if (progress < 1) {
+                            requestAnimationFrame(step);
+                        } else {
+                            el.innerText = decimals > 0 ? end.toFixed(decimals) : end.toLocaleString();
+                        }
+                    };
+                    requestAnimationFrame(step);
                 };
-                update();
+
+                animateValue('counter-residents', 0, 1700, 1600);
+                animateValue('counter-rating', 0, 4.9, 1200, 1);
             }
         };
-        window.addEventListener('scroll', animateCounter);
-        animateCounter();
+        window.addEventListener('scroll', animateCounters, { passive: true });
+        animateCounters();
 
         // FAQ Accordion
         document.querySelectorAll('.faq-question').forEach(btn => {

@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Rooms – Jagan PG</title>
+  <title>Our Luxury Rooms – Jagan PG</title>
   <link rel="icon" type="image/png" href="logo.png">
-  <meta name="description" content="Explore premium room options at Jagan PG with 360 degree virtual tours.">
+  <meta name="description" content="Explore premium, fully furnished rooms at Jagan PG with interactive 360-degree virtual tours, transparent pricing, and instant booking.">
   
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Pannellum 360 Viewer CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
@@ -28,8 +28,8 @@
       --fg: #ffffff;
       --accent: #d4af37;
       --accent-glow: rgba(212, 175, 55, 0.6);
-      --glass: rgba(10, 10, 10, 0.65);
-      --border: rgba(255, 255, 255, 0.1);
+      --glass: rgba(12, 12, 12, 0.7);
+      --border: rgba(255, 255, 255, 0.08);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -39,7 +39,7 @@
       background: var(--bg);
       color: var(--fg);
       overflow-x: hidden;
-      background-color: #050505;
+      background-color: #040404;
       padding-bottom: 70px;
     }
     @media (min-width: 769px) {
@@ -48,7 +48,7 @@
     
     h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
 
-    /* Scroll Progress */
+    /* Scroll Progress Line */
     .scroll-line {
       position: fixed;
       top: 0; left: 0;
@@ -56,34 +56,69 @@
       background: linear-gradient(90deg, var(--accent), #fff);
       z-index: 9999;
       transition: width 0.1s;
-      box-shadow: 0 0 10px var(--accent);
+      box-shadow: 0 0 12px var(--accent);
     }
 
     /* Navigation */
     .nav {
       position: fixed; top: 0; width: 100%;
-      padding: 1.5rem 5%;
+      padding: 1.25rem 5%;
       display: flex;
       justify-content: space-between;
       align-items: center;
       z-index: 100;
-      background: rgba(5,5,5,0.4);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      background: rgba(5,5,5,0.65);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: all 0.3s ease;
     }
-    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: #fff; text-decoration: none; }
-    .nav-links { display: flex; gap: 2rem; }
-    .nav-links a { color: #fff; text-decoration: none; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; transition: 0.3s; position: relative; }
+    .nav-logo { 
+      font-family: 'Playfair Display', serif; 
+      font-size: 1.5rem; 
+      font-weight: 700; 
+      color: #fff; 
+      text-decoration: none; 
+      letter-spacing: 0.5px;
+    }
+    .nav-links { display: flex; gap: 2.2rem; align-items: center; }
+    .nav-links a { 
+      color: #fff; 
+      text-decoration: none; 
+      font-size: 0.82rem; 
+      text-transform: uppercase; 
+      letter-spacing: 1px; 
+      opacity: 0.75; 
+      transition: 0.3s; 
+      position: relative; 
+    }
     .nav-links a:hover, .nav-links a.active { opacity: 1; color: var(--accent); }
     .nav-links a.active::after {
         content: '';
         position: absolute;
-        bottom: -5px;
+        bottom: -6px;
         left: 0;
         width: 100%;
-        height: 1px;
+        height: 2px;
         background: var(--accent);
-        box-shadow: 0 0 5px var(--accent);
+        box-shadow: 0 0 8px var(--accent);
+        border-radius: 2px;
+    }
+
+    .nav-cta-btn {
+        padding: 7px 18px;
+        background: linear-gradient(135deg, var(--accent), #b8860b);
+        color: #000 !important;
+        font-weight: 700;
+        border-radius: 6px;
+        opacity: 1 !important;
+        box-shadow: 0 2px 10px rgba(212, 175, 55, 0.25);
+        transition: all 0.3s ease !important;
+    }
+    .nav-cta-btn:hover {
+        background: #fff;
+        color: #000 !important;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
     }
 
     .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 200; }
@@ -94,15 +129,15 @@
 
     .mobile-menu {
         position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-        background: rgba(0,0,0,0.9); backdrop-filter: blur(20px); z-index: 99;
+        background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); z-index: 99;
         display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 2rem;
         opacity: 0; visibility: hidden; transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
     }
     .mobile-menu.active { opacity: 1; visibility: visible; }
-    .mobile-menu a { color: #fff; text-decoration: none; font-size: 2rem; font-family: 'Playfair Display', serif; opacity: 0; transform: translateY(50px); transition: all 0.4s ease; }
+    .mobile-menu a { color: #fff; text-decoration: none; font-size: 1.8rem; font-family: 'Playfair Display', serif; opacity: 0; transform: translateY(50px); transition: all 0.4s ease; }
     .mobile-menu.active a { opacity: 1; transform: translateY(0); }
 
-    @media (max-width: 768px) {
+    @media (max-width: 860px) {
         .nav-links { display: none; }
         .burger { display: flex; }
     }
@@ -117,7 +152,7 @@
         position: fixed;
         top: 0; left: 0;
         width: 800px; height: 800px;
-        background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 60%);
+        background: radial-gradient(circle, rgba(212, 175, 55, 0.07) 0%, transparent 60%);
         pointer-events: none;
         z-index: 1;
         transform: translate(-50%, -50%);
@@ -145,45 +180,96 @@
 
     /* HERO SECTION */
     .hero-rooms {
-        min-height: 60vh;
+        min-height: 52vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         text-align: center;
-        padding-top: 10rem;
+        padding: 9rem 5% 2rem;
         position: relative;
         z-index: 5;
     }
+
+    .room-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.72rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--accent);
+        font-weight: 600;
+        padding: 5px 14px;
+        border-radius: 9999px;
+        background: rgba(212, 175, 55, 0.08);
+        border: 1px solid rgba(212, 175, 55, 0.25);
+        margin-bottom: 1.25rem;
+    }
     
     .hero-title {
-        font-size: clamp(3rem, 8vw, 6rem);
-        line-height: 1.1;
-        background: linear-gradient(45deg, #fff, #d4af37);
+        font-size: clamp(2.8rem, 6vw, 4.8rem);
+        line-height: 1.15;
+        background: linear-gradient(45deg, #ffffff 30%, #d4af37 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.25rem;
         opacity: 0;
         transform: translateY(30px);
-        animation: fadeUp 1s ease forwards 0.3s;
+        animation: fadeUp 1s ease forwards 0.2s;
     }
 
     .hero-sub {
-        font-size: 1.2rem;
-        color: #aaa;
-        max-width: 600px;
+        font-size: 1.05rem;
+        color: #999;
+        max-width: 680px;
+        line-height: 1.6;
         opacity: 0;
         transform: translateY(30px);
-        animation: fadeUp 1s ease forwards 0.6s;
+        animation: fadeUp 1s ease forwards 0.4s;
     }
 
     @keyframes fadeUp {
         to { opacity: 1; transform: translateY(0); }
     }
 
+    /* FILTER TABS */
+    .filter-tabs-wrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        max-width: 800px;
+        margin: 2.5rem auto 1rem auto;
+        position: relative;
+        z-index: 10;
+    }
+
+    .filter-tab-btn {
+        padding: 8px 20px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 50px;
+        color: #aaa;
+        font-size: 0.82rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(8px);
+    }
+
+    .filter-tab-btn:hover, .filter-tab-btn.active {
+        background: var(--accent);
+        color: #000;
+        border-color: var(--accent);
+        font-weight: 700;
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+    }
+
     /* ROOMS GRID */
     .rooms-section {
-        padding: 4rem 5% 8rem;
+        padding: 2rem 5% 6rem;
         position: relative;
         z-index: 5;
     }
@@ -198,16 +284,19 @@
     }
 
     .room-card {
-        background: rgba(10, 10, 10, 0.6);
-        backdrop-filter: blur(15px);
-        border: 1px solid rgba(255,255,255,0.05);
-        border-radius: 20px;
+        background: rgba(14, 14, 14, 0.65);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 24px;
         overflow: hidden;
         position: relative;
         transform-style: preserve-3d;
-        transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s ease;
+        transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s ease, border-color 0.4s ease;
         opacity: 0;
         transform: translateY(80px) rotateX(10deg) scale(0.9);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     .room-card.visible {
@@ -216,7 +305,8 @@
     }
     
     .room-card:hover {
-        box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 30px rgba(212, 175, 55, 0.1);
+        box-shadow: 0 25px 50px rgba(0,0,0,0.6), 0 0 35px rgba(212, 175, 55, 0.15);
+        border-color: rgba(212, 175, 55, 0.45);
         z-index: 10;
     }
 
@@ -224,7 +314,7 @@
         content: '';
         position: absolute;
         top: 0; left: 0; right: 0; bottom: 0;
-        background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 60%);
+        background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 60%);
         opacity: 0;
         transition: opacity 0.3s;
         pointer-events: none;
@@ -234,7 +324,7 @@
 
     .room-image {
         position: relative;
-        height: 250px;
+        height: 260px;
         overflow: hidden;
     }
 
@@ -258,21 +348,22 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        filter: brightness(0.8);
+        filter: brightness(0.85);
         transition: transform 5s linear;
     }
     
-    .room-card:hover .slide.active img { transform: scale(1.1); }
+    .room-card:hover .slide.active img { transform: scale(1.08); }
 
     .slider-btn {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        background: rgba(0,0,0,0.5);
+        background: rgba(0,0,0,0.6);
+        backdrop-filter: blur(4px);
         color: #fff;
-        border: none;
-        width: 30px;
-        height: 30px;
+        border: 1px solid rgba(255,255,255,0.2);
+        width: 32px;
+        height: 32px;
         border-radius: 50%;
         cursor: pointer;
         z-index: 15;
@@ -284,13 +375,13 @@
     }
     
     .room-image:hover .slider-btn { opacity: 1; }
-    .slider-btn:hover { background: var(--accent); color: #000; }
-    .slider-btn.prev { left: 10px; }
-    .slider-btn.next { right: 10px; }
+    .slider-btn:hover { background: var(--accent); color: #000; border-color: var(--accent); }
+    .slider-btn.prev { left: 12px; }
+    .slider-btn.next { right: 12px; }
 
     .slider-dots {
         position: absolute;
-        bottom: 15px;
+        bottom: 14px;
         left: 50%;
         transform: translateX(-50%);
         display: flex;
@@ -299,8 +390,8 @@
     }
     
     .dot {
-        width: 6px;
-        height: 6px;
+        width: 7px;
+        height: 7px;
         background: rgba(255,255,255,0.4);
         border-radius: 50%;
         cursor: pointer;
@@ -309,33 +400,59 @@
     
     .dot.active {
         background: var(--accent);
-        box-shadow: 0 0 5px var(--accent);
+        box-shadow: 0 0 6px var(--accent);
+        width: 18px;
+        border-radius: 10px;
+    }
+
+    .room-pill-tag {
+        position: absolute;
+        top: 1.25rem;
+        left: 1.25rem;
+        background: rgba(0,0,0,0.75);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(212, 175, 55, 0.4);
+        color: #f1d27a;
+        font-size: 0.68rem;
+        font-weight: 700;
+        padding: 4px 10px;
+        border-radius: 20px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        z-index: 5;
     }
 
     .price-tag {
         position: absolute;
-        top: 1.5rem;
-        right: 1.5rem;
-        background: rgba(0,0,0,0.7);
-        backdrop-filter: blur(5px);
-        border: 1px solid var(--accent);
-        padding: 0.5rem 1rem;
-        border-radius: 30px;
-        color: var(--accent);
-        font-weight: 600;
-        font-size: 0.9rem;
+        bottom: 1.25rem;
+        right: 1.25rem;
+        background: rgba(5,5,5,0.85);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(212, 175, 55, 0.4);
+        padding: 0.45rem 0.9rem;
+        border-radius: 8px;
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.95rem;
         z-index: 5;
+        display: flex;
+        align-items: baseline;
+        gap: 2px;
     }
+
+    .price-tag span { color: var(--accent); }
+    .price-tag small { font-size: 0.7rem; color: #888; font-weight: 400; }
 
     .view-360-btn {
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%) scale(0.8);
-        background: rgba(0,0,0,0.7);
-        border: 1px solid rgba(255,255,255,0.3);
+        transform: translate(-50%, -50%) scale(0.85);
+        background: rgba(0,0,0,0.75);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(212, 175, 55, 0.5);
         color: #fff;
-        padding: 0.8rem 1.5rem;
+        padding: 0.75rem 1.4rem;
         border-radius: 50px;
         cursor: pointer;
         opacity: 0;
@@ -344,7 +461,9 @@
         align-items: center;
         gap: 0.5rem;
         font-size: 0.85rem;
+        font-weight: 600;
         z-index: 10;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.5);
     }
     
     .room-image:hover .view-360-btn {
@@ -356,74 +475,80 @@
         background: var(--accent);
         color: #000;
         border-color: var(--accent);
-        box-shadow: 0 0 20px var(--accent-glow);
+        box-shadow: 0 0 25px var(--accent-glow);
     }
 
     .room-content {
-        padding: 2rem;
+        padding: 1.8rem;
         position: relative;
         z-index: 2;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        justify-content: space-between;
     }
 
     .room-content h3 {
-        font-size: 1.8rem;
-        margin-bottom: 0.5rem;
+        font-size: 1.6rem;
+        margin-bottom: 0.35rem;
         color: #fff;
+        font-family: 'Playfair Display', serif;
     }
 
     .room-content p {
         color: #888;
-        font-size: 0.9rem;
-        margin-bottom: 1.5rem;
-        line-height: 1.6;
+        font-size: 0.85rem;
+        margin-bottom: 1.25rem;
+        line-height: 1.5;
     }
 
     .room-features {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.8rem;
-        margin-bottom: 1.5rem;
+        gap: 0.5rem;
+        margin-bottom: 1.25rem;
     }
 
     .feature {
         display: flex;
         align-items: center;
-        gap: 0.5rem;
-        font-size: 0.8rem;
-        color: #aaa;
-        background: rgba(255,255,255,0.05);
-        padding: 0.4rem 0.8rem;
-        border-radius: 4px;
+        gap: 0.4rem;
+        font-size: 0.76rem;
+        color: #ccc;
+        background: rgba(255,255,255,0.035);
+        border: 1px solid rgba(255,255,255,0.06);
+        padding: 0.35rem 0.75rem;
+        border-radius: 6px;
     }
 
     /* Urgency Counter */
     .availability-wrapper {
-        margin-bottom: 1.5rem;
-        background: rgba(255,255,255,0.03);
-        padding: 10px;
-        border-radius: 8px;
+        margin-bottom: 1.25rem;
+        background: rgba(255,255,255,0.02);
+        padding: 10px 12px;
+        border-radius: 10px;
         border: 1px solid rgba(255,255,255,0.05);
     }
     .availability-bar {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.4rem;
     }
     .status-text {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         font-weight: 600;
         display: flex;
         align-items: center;
         gap: 6px;
     }
-    .status-text.low { color: #ff4d4d; }
-    .status-text.medium { color: #ffa500; }
-    .status-text.high { color: #4caf50; }
+    .status-text.low { color: #f87171; }
+    .status-text.medium { color: #fbbf24; }
+    .status-text.high { color: #4ade80; }
     
     .pulse-dot {
-        width: 8px;
-        height: 8px;
+        width: 7px;
+        height: 7px;
         background: currentColor;
         border-radius: 50%;
         animation: pulse-scale 1.5s infinite;
@@ -436,7 +561,7 @@
     }
 
     .last-booked {
-        font-size: 0.75rem;
+        font-size: 0.72rem;
         color: #666;
         margin-top: 4px;
         text-align: right;
@@ -445,7 +570,7 @@
     .progress-bg {
         width: 100%;
         height: 4px;
-        background: rgba(255,255,255,0.1);
+        background: rgba(255,255,255,0.08);
         border-radius: 2px;
         overflow: hidden;
     }
@@ -454,37 +579,160 @@
         border-radius: 2px;
         transition: width 1s ease;
     }
-    .fill-low { background: #ff4d4d; }
-    .fill-medium { background: #ffa500; }
-    .fill-high { background: #4caf50; }
+    .fill-low { background: #f87171; }
+    .fill-medium { background: #fbbf24; }
+    .fill-high { background: #4ade80; }
+
+    .room-actions-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+    }
 
     .book-btn {
         width: 100%;
-        padding: 1rem;
-        background: transparent;
-        border: 1px solid var(--accent);
+        padding: 0.85rem;
+        background: linear-gradient(135deg, var(--accent), #b8860b);
+        color: #000;
+        border-radius: 8px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-size: 0.8rem;
+        box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25);
+    }
+
+    .book-btn:hover {
+        background: #fff;
+        color: #000;
+        box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+        transform: translateY(-2px);
+    }
+
+    .tour-card-btn {
+        width: 100%;
+        padding: 0.85rem;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(212, 175, 55, 0.3);
         color: var(--accent);
         border-radius: 8px;
         font-weight: 600;
         cursor: pointer;
         transition: all 0.3s ease;
         text-align: center;
-        text-decoration: none;
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
         text-transform: uppercase;
-        letter-spacing: 1px;
-        font-size: 0.85rem;
+        letter-spacing: 0.5px;
+        font-size: 0.8rem;
     }
 
-    .book-btn:hover {
+    .tour-card-btn:hover {
+        background: rgba(212, 175, 55, 0.12);
+        border-color: var(--accent);
+        color: #fff;
+    }
+
+    /* COMPARISON SECTION */
+    .comparison-section {
+        padding: 5rem 5% 7rem;
+        position: relative;
+        z-index: 5;
+        background: radial-gradient(circle at center, rgba(212, 175, 55, 0.03) 0%, transparent 70%);
+    }
+
+    .comparison-table-wrap {
+        max-width: 1200px;
+        margin: 0 auto;
+        overflow-x: auto;
+        border-radius: 20px;
+        background: rgba(12, 12, 12, 0.6);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+        min-width: 700px;
+    }
+
+    .comparison-table th {
+        padding: 1.4rem 1.5rem;
+        background: rgba(255, 255, 255, 0.03);
+        color: #fff;
+        font-family: 'Playfair Display', serif;
+        font-size: 1.05rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .comparison-table td {
+        padding: 1.1rem 1.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        font-size: 0.85rem;
+        color: #bbb;
+    }
+
+    .comparison-table tr:last-child td {
+        border-bottom: none;
+    }
+
+    .comparison-table tr:hover td {
+        background: rgba(255, 255, 255, 0.015);
+    }
+
+    .feat-name {
+        font-weight: 600;
+        color: #fff !important;
+    }
+
+    .feat-price {
+        color: var(--accent) !important;
+        font-weight: 700;
+        font-size: 0.95rem;
+    }
+
+    .chk-gold {
+        color: #f1d27a;
+        font-weight: 500;
+    }
+
+    .chk-gray {
+        color: #888;
+    }
+
+    .tbl-tour-btn {
+        padding: 5px 12px;
+        background: rgba(212, 175, 55, 0.1);
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        color: var(--accent);
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .tbl-tour-btn:hover {
         background: var(--accent);
         color: #000;
-        box-shadow: 0 0 20px var(--accent-glow);
     }
 
     /* Google Reviews */
     .reviews-section {
-        padding: 6rem 5%;
+        padding: 5rem 5% 7rem;
         position: relative;
         z-index: 5;
         background: linear-gradient(180deg, rgba(5,5,5,0) 0%, rgba(10,10,10,0.8) 100%);
@@ -492,13 +740,13 @@
     
     .section-header {
         text-align: center;
-        margin-bottom: 4rem;
+        margin-bottom: 3.5rem;
     }
     
     .section-header h2 {
-        font-size: 3rem;
+        font-size: clamp(2.2rem, 4vw, 3.2rem);
         margin-bottom: 1rem;
-        background: linear-gradient(45deg, #fff, #888);
+        background: linear-gradient(45deg, #fff, #d4af37);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
@@ -507,19 +755,19 @@
         display: inline-flex;
         align-items: center;
         gap: 10px;
-        background: rgba(255,255,255,0.05);
-        padding: 10px 20px;
+        background: rgba(255,255,255,0.03);
+        padding: 8px 18px;
         border-radius: 50px;
-        border: 1px solid rgba(255,255,255,0.1);
+        border: 1px solid rgba(255,255,255,0.08);
         position: relative;
     }
     
     .live-indicator {
         position: absolute;
-        top: -5px;
-        right: -5px;
-        background: #4caf50;
-        color: white;
+        top: -6px;
+        right: -6px;
+        background: #4ade80;
+        color: #000;
         font-size: 0.6rem;
         padding: 2px 6px;
         border-radius: 20px;
@@ -528,19 +776,19 @@
         display: flex;
         align-items: center;
         gap: 4px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        box-shadow: 0 2px 8px rgba(74, 222, 128, 0.4);
     }
     .live-dot {
-        width: 6px;
-        height: 6px;
-        background: white;
+        width: 5px;
+        height: 5px;
+        background: #000;
         border-radius: 50%;
         animation: pulse-scale 1s infinite;
     }
 
-    .google-logo { font-weight: 700; font-family: 'Inter', sans-serif; color: #fff; }
+    .google-logo { font-weight: 700; font-family: 'Inter', sans-serif; color: #fff; font-size: 0.9rem; }
     
-    .stars { color: #FFC107; font-size: 1.2rem; display: flex; gap: 4px; }
+    .stars { color: #FFC107; font-size: 1.1rem; display: flex; gap: 3px; }
     
     .review-grid {
         display: grid;
@@ -551,23 +799,25 @@
     }
     
     .review-card {
-        background: rgba(255,255,255,0.03);
-        border: 1px solid rgba(255,255,255,0.05);
-        border-radius: 16px;
+        background: rgba(255,255,255,0.025);
+        border: 1px solid rgba(255,255,255,0.06);
+        border-radius: 18px;
         padding: 2rem;
-        transition: 0.3s;
+        transition: all 0.35s ease;
         position: relative;
+        backdrop-filter: blur(10px);
     }
 
     .verified-badge {
         position: absolute;
-        top: 1rem;
-        right: 1rem;
-        background: rgba(66, 133, 244, 0.1);
-        color: #4285F4;
-        font-size: 0.65rem;
+        top: 1.25rem;
+        right: 1.25rem;
+        background: rgba(96, 165, 250, 0.1);
+        color: #60a5fa;
+        border: 1px solid rgba(96, 165, 250, 0.25);
+        font-size: 0.68rem;
         padding: 3px 8px;
-        border-radius: 4px;
+        border-radius: 6px;
         font-weight: 600;
         display: flex;
         align-items: center;
@@ -575,15 +825,17 @@
     }
     
     .review-card:hover {
-        background: rgba(255,255,255,0.05);
-        transform: translateY(-5px);
+        background: rgba(255,255,255,0.045);
+        border-color: rgba(212, 175, 55, 0.35);
+        transform: translateY(-6px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.5);
     }
     
     .review-header {
         display: flex;
         align-items: center;
         gap: 1rem;
-        margin-bottom: 1rem;
+        margin-bottom: 1.25rem;
     }
     
     .avatar {
@@ -592,15 +844,16 @@
         background-size: cover;
         background-position: center;
         border: 2px solid var(--accent);
+        box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
     }
     
-    .user-info h4 { color: #fff; font-size: 1rem; }
-    .user-info span { color: #666; font-size: 0.8rem; }
+    .user-info h4 { color: #fff; font-size: 1.05rem; font-family: 'Playfair Display', serif; }
+    .user-info span { color: #777; font-size: 0.78rem; }
     
     .review-text {
         color: #ccc;
-        font-size: 0.95rem;
-        line-height: 1.7;
+        font-size: 0.9rem;
+        line-height: 1.65;
     }
 
     /* 360 MODAL STYLES */
@@ -609,6 +862,7 @@
         top: 0; left: 0;
         width: 100%; height: 100%;
         background: rgba(0,0,0,0.95);
+        backdrop-filter: blur(10px);
         z-index: 1000;
         display: flex;
         flex-direction: column;
@@ -624,13 +878,13 @@
     }
     
     .modal-content {
-        width: 95%;
-        height: 90%;
+        width: 92%;
+        height: 88%;
         position: relative;
-        border-radius: 12px;
+        border-radius: 16px;
         overflow: hidden;
-        border: 1px solid var(--border);
-        box-shadow: 0 0 50px rgba(0,0,0,0.5);
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        box-shadow: 0 0 60px rgba(212, 175, 55, 0.15), 0 25px 50px rgba(0,0,0,0.8);
         background: #000;
     }
 
@@ -647,27 +901,28 @@
     
     .modal-title {
         color: #fff;
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         display: flex;
         align-items: center;
         gap: 10px;
     }
     
     .modal-title span {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
         background: var(--accent);
         color: #000;
         padding: 4px 10px;
         border-radius: 4px;
         font-weight: 700;
         text-transform: uppercase;
+        font-family: 'Inter', sans-serif;
     }
 
     .close-modal {
         background: rgba(255,255,255,0.1);
         border: 1px solid rgba(255,255,255,0.2);
         color: #fff;
-        width: 40px; height: 40px;
+        width: 42px; height: 42px;
         border-radius: 50%;
         font-size: 1.5rem;
         cursor: pointer;
@@ -677,8 +932,9 @@
         justify-content: center;
     }
     .close-modal:hover {
-        background: #fff;
+        background: var(--accent);
         color: #000;
+        border-color: var(--accent);
         transform: rotate(90deg);
     }
 
@@ -690,7 +946,7 @@
     /* Footer */
     footer { 
       background: #030505; 
-      padding: 3rem 5% 0;
+      padding: 5rem 5% 2rem;
       border-top: 1px solid var(--border); 
       position: relative; 
       z-index: 10; 
@@ -864,18 +1120,20 @@
     <!-- Mouse Spotlight -->
     <div class="mouse-spotlight" id="spotlight"></div>
 
-    <!-- Background Canvas -->
+    <!-- Background Canvas (Three.js 3D Torus Knot & Particles) -->
     <canvas id="bg-canvas"></canvas>
 
     <!-- Navigation -->
     <nav class="nav">
         <a href="index.html" class="nav-logo">JAGAN PG</a>
         <div class="nav-links">
+            <a href="index.html">Home</a>
             <a href="why_us.html">Why Us</a>
             <a href="rooms.html" class="active">Rooms</a>
             <a href="amenities.html">Amenities</a>
             <a href="life-at-pg.html">Life at PG</a>
             <a href="contact.html">Contact</a>
+            <a href="contact.html" class="nav-cta-btn">Book a Visit</a>
         </div>
         <div class="burger" id="burger-btn">
             <span></span><span></span><span></span>
@@ -884,17 +1142,31 @@
 
     <!-- Mobile Menu Overlay -->
     <div class="mobile-menu" id="mobile-menu">
-        <a href="index.html#why-us">Why Us</a>
+        <a href="index.html">Home</a>
+        <a href="why_us.html">Why Us</a>
         <a href="rooms.html">Rooms</a>
         <a href="amenities.html">Amenities</a>
-        <a href="life at pg.html">Life at PG</a>
+        <a href="life-at-pg.html">Life at PG</a>
         <a href="contact.html">Contact</a>
     </div>
 
     <!-- Hero Section -->
     <section class="hero-rooms">
-        <h1 class="hero-title">Our Rooms</h1>
-        <p class="hero-sub">Thoughtfully designed spaces that blend privacy, comfort, and modern aesthetics. Find the perfect fit for your lifestyle.</p>
+        <span class="room-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            Premium Accommodations
+        </span>
+        <h1 class="hero-title">Our Living Spaces</h1>
+        <p class="hero-sub">Thoughtfully designed spaces that blend privacy, luxury comfort, and modern aesthetics. Find the perfect fit for your lifestyle with instant 360° virtual tours.</p>
+        
+        <!-- Filter Tabs -->
+        <div class="filter-tabs-wrap">
+            <button class="filter-tab-btn active" onclick="filterRooms('all', this)">All Spaces (4)</button>
+            <button class="filter-tab-btn" onclick="filterRooms('single', this)">Single Occupancy</button>
+            <button class="filter-tab-btn" onclick="filterRooms('double', this)">Double Sharing</button>
+            <button class="filter-tab-btn" onclick="filterRooms('triple', this)">Triple Sharing</button>
+            <button class="filter-tab-btn" onclick="filterRooms('quadruple', this)">Quadruple Sharing</button>
+        </div>
     </section>
 
     <!-- Rooms Grid -->
@@ -902,16 +1174,17 @@
         <div class="grid-container" id="rooms-grid">
             
             <!-- Room 1: Single Occupancy -->
-            <div class="room-card" data-tilt>
+            <div class="room-card" data-tilt data-category="single">
                 <div class="room-image">
-                    <div class="price-tag">₹12,000/mo</div>
+                    <span class="room-pill-tag">Most Private</span>
+                    <div class="price-tag"><span>₹9,000</span><small>/mo</small></div>
                     
                     <div class="slider-container">
                         <div class="slide active">
-                            <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=1200" alt="Single Room View 1">
+                            <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=1200" alt="Single Room View 1" loading="lazy">
                         </div>
                         <div class="slide">
-                            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200" alt="Single Room View 2">
+                            <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80&w=1200" alt="Single Room View 2" loading="lazy">
                         </div>
                     </div>
 
@@ -928,40 +1201,54 @@
                     </button>
                 </div>
                 <div class="room-content">
-                    <h3>Single Occupancy</h3>
-                    <p>Perfect for working professionals seeking privacy.</p>
-                    <div class="room-features">
-                        <div class="feature">🛏️ 1 Bed</div>
-                        <div class="feature">❄️ AC</div>
-                        <div class="feature">🚿 Attached Bath</div>
+                    <div>
+                        <h3>Single Occupancy</h3>
+                        <p>Perfect for working professionals & scholars seeking total privacy and peace.</p>
+                        <div class="room-features">
+                            <div class="feature">🛏️ Private Bed</div>
+                            <div class="feature">❄️ AC & Fan</div>
+                            <div class="feature">🚿 Attached Bath</div>
+                            <div class="feature">📶 100 Mbps WiFi</div>
+                            <div class="feature">📚 Work Desk</div>
+                            <div class="feature">🍲 3 Meals Daily</div>
+                        </div>
                     </div>
                     
-                    <div class="availability-wrapper">
-                        <div class="availability-bar">
-                            <span class="status-text low"><span class="pulse-dot"></span> Only 2 left!</span>
-                            <span style="color:#666; font-size:0.8rem;">8/10 Filled</span>
+                    <div>
+                        <div class="availability-wrapper">
+                            <div class="availability-bar">
+                                <span class="status-text low"><span class="pulse-dot"></span> Only 2 rooms left!</span>
+                                <span style="color:#888; font-size:0.75rem;">8/10 Filled</span>
+                            </div>
+                            <div class="progress-bg">
+                                <div class="progress-fill fill-low" style="width: 80%"></div>
+                            </div>
+                            <div class="last-booked">Last booked 2 hours ago</div>
                         </div>
-                        <div class="progress-bg">
-                            <div class="progress-fill fill-low" style="width: 80%"></div>
-                        </div>
-                        <div class="last-booked">Last booked 2 hours ago</div>
-                    </div>
 
-                    <a href="contact.html" class="book-btn">Book Now</a>
+                        <div class="room-actions-row">
+                            <button class="tour-card-btn" onclick="initTour('single')">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+                                360° Tour
+                            </button>
+                            <a href="contact.html" class="book-btn">Book Now</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- Room 2: Double Sharing -->
-            <div class="room-card" data-tilt>
+            <div class="room-card" data-tilt data-category="double">
                 <div class="room-image">
-                    <div class="price-tag">₹8,000/mo</div>
+                    <span class="room-pill-tag">Most Popular</span>
+                    <div class="price-tag"><span>₹7,000</span><small>/mo</small></div>
                     
                     <div class="slider-container">
                         <div class="slide active">
-                            <img src="https://images.unsplash.com/photo-1555854877-bab0e3b79c28?q=80&w=1200" alt="Double Room 1">
+                            <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?q=80&w=1200" alt="Double Room 1" loading="lazy">
                         </div>
                         <div class="slide">
-                            <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=1200" alt="Double Room 2">
+                            <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=1200" alt="Double Room 2" loading="lazy">
                         </div>
                     </div>
 
@@ -978,40 +1265,54 @@
                     </button>
                 </div>
                 <div class="room-content">
-                    <h3>Double Sharing</h3>
-                    <p>Spacious room for two. Ideal for friends.</p>
-                    <div class="room-features">
-                        <div class="feature">🛏️ 2 Beds</div>
-                        <div class="feature">❄️ AC</div>
-                        <div class="feature">🛁 Common Bath</div>
+                    <div>
+                        <h3>Double Sharing</h3>
+                        <p>Spacious sharing room with generous personal wardrobes and comfortable study desks.</p>
+                        <div class="room-features">
+                            <div class="feature">🛏️ 2 Single Beds</div>
+                            <div class="feature">❄️ AC & Power Backup</div>
+                            <div class="feature">🚪 Wardrobes</div>
+                            <div class="feature">📶 Fiber WiFi</div>
+                            <div class="feature">🛁 Attached/Shared Bath</div>
+                            <div class="feature">🍲 3 Meals Daily</div>
+                        </div>
                     </div>
                     
-                    <div class="availability-wrapper">
-                        <div class="availability-bar">
-                            <span class="status-text medium"><span class="pulse-dot"></span> 5 beds available</span>
-                            <span style="color:#666; font-size:0.8rem;">5/10 Filled</span>
+                    <div>
+                        <div class="availability-wrapper">
+                            <div class="availability-bar">
+                                <span class="status-text medium"><span class="pulse-dot"></span> 4 beds available</span>
+                                <span style="color:#888; font-size:0.75rem;">6/10 Filled</span>
+                            </div>
+                            <div class="progress-bg">
+                                <div class="progress-fill fill-medium" style="width: 60%"></div>
+                            </div>
+                            <div class="last-booked">Last booked 5 hours ago</div>
                         </div>
-                        <div class="progress-bg">
-                            <div class="progress-fill fill-medium" style="width: 50%"></div>
-                        </div>
-                        <div class="last-booked">Last booked 5 hours ago</div>
-                    </div>
 
-                    <a href="contact.html" class="book-btn">Book Now</a>
+                        <div class="room-actions-row">
+                            <button class="tour-card-btn" onclick="initTour('double')">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+                                360° Tour
+                            </button>
+                            <a href="contact.html" class="book-btn">Book Now</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- Room 3: Triple Sharing -->
-            <div class="room-card" data-tilt>
+            <div class="room-card" data-tilt data-category="triple">
                 <div class="room-image">
-                    <div class="price-tag">₹6,500/mo</div>
+                    <span class="room-pill-tag">Great Value</span>
+                    <div class="price-tag"><span>₹5,500</span><small>/mo</small></div>
                     
                     <div class="slider-container">
                         <div class="slide active">
-                            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200" alt="Triple Room 1">
+                            <img src="https://images.unsplash.com/photo-1555854877-bab0e3b79c28?q=80&w=1200" alt="Triple Room 1" loading="lazy">
                         </div>
                         <div class="slide">
-                            <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=1200" alt="Triple Room 2">
+                            <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?q=80&w=1200" alt="Triple Room 2" loading="lazy">
                         </div>
                     </div>
 
@@ -1028,40 +1329,54 @@
                     </button>
                 </div>
                 <div class="room-content">
-                    <h3>Triple Sharing</h3>
-                    <p>Budget-friendly option without compromise.</p>
-                    <div class="room-features">
-                        <div class="feature">🛏️ 3 Beds</div>
-                        <div class="feature">🌬️ Cooler</div>
-                        <div class="feature">🛁 Common Bath</div>
+                    <div>
+                        <h3>Triple Sharing</h3>
+                        <p>Balanced coliving with study zones, personal secure storage, and peer community.</p>
+                        <div class="room-features">
+                            <div class="feature">🛏️ 3 Single Beds</div>
+                            <div class="feature">🌬️ Cooler & Fan</div>
+                            <div class="feature">🔒 Personal Storage</div>
+                            <div class="feature">📶 100 Mbps WiFi</div>
+                            <div class="feature">🧹 Daily Cleaning</div>
+                            <div class="feature">🍲 3 Meals Daily</div>
+                        </div>
                     </div>
                     
-                    <div class="availability-wrapper">
-                        <div class="availability-bar">
-                            <span class="status-text high"><span class="pulse-dot"></span> Plenty of space</span>
-                            <span style="color:#666; font-size:0.8rem;">2/10 Filled</span>
+                    <div>
+                        <div class="availability-wrapper">
+                            <div class="availability-bar">
+                                <span class="status-text high"><span class="pulse-dot"></span> Plenty of space</span>
+                                <span style="color:#888; font-size:0.75rem;">3/10 Filled</span>
+                            </div>
+                            <div class="progress-bg">
+                                <div class="progress-fill fill-high" style="width: 30%"></div>
+                            </div>
+                            <div class="last-booked">Last booked 1 day ago</div>
                         </div>
-                        <div class="progress-bg">
-                            <div class="progress-fill fill-high" style="width: 20%"></div>
-                        </div>
-                        <div class="last-booked">Last booked 1 day ago</div>
-                    </div>
 
-                    <a href="contact.html" class="book-btn">Book Now</a>
+                        <div class="room-actions-row">
+                            <button class="tour-card-btn" onclick="initTour('triple')">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+                                360° Tour
+                            </button>
+                            <a href="contact.html" class="book-btn">Book Now</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Room 4: Four Seater Sharing -->
-            <div class="room-card" data-tilt>
+            <!-- Room 4: Quadruple Sharing -->
+            <div class="room-card" data-tilt data-category="quadruple">
                 <div class="room-image">
-                    <div class="price-tag">₹5,000/mo</div>
+                    <span class="room-pill-tag">Budget Friendly</span>
+                    <div class="price-tag"><span>₹4,500</span><small>/mo</small></div>
                     
                     <div class="slider-container">
                         <div class="slide active">
-                            <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?q=80&w=1200" alt="Four Seater 1">
+                            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200" alt="Quadruple Room 1" loading="lazy">
                         </div>
                         <div class="slide">
-                            <img src="https://images.unsplash.com/photo-1555854877-bab0e3b79c28?q=80&w=1200" alt="Four Seater 2">
+                            <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=1200" alt="Quadruple Room 2" loading="lazy">
                         </div>
                     </div>
 
@@ -1078,36 +1393,137 @@
                     </button>
                 </div>
                 <div class="room-content">
-                    <h3>Four Seater Sharing</h3>
-                    <p>Most affordable option. Great for students.</p>
-                    <div class="room-features">
-                        <div class="feature">🛏️ 4 Beds</div>
-                        <div class="feature">🌬️ Air Cooler</div>
-                        <div class="feature">📶 Wi-Fi</div>
-                        <div class="feature">🛁 Common Bath</div>
+                    <div>
+                        <h3>Quadruple Sharing</h3>
+                        <p>Most economical choice with all full PG amenities, WiFi, food, and daily housekeeping included.</p>
+                        <div class="room-features">
+                            <div class="feature">🛏️ 4 Individual Beds</div>
+                            <div class="feature">🌬️ Air Cooler</div>
+                            <div class="feature">📶 100 Mbps WiFi</div>
+                            <div class="feature">🔒 Key Lockers</div>
+                            <div class="feature">🚿 Hot Water</div>
+                            <div class="feature">🍲 3 Meals Daily</div>
+                        </div>
                     </div>
                     
-                    <div class="availability-wrapper">
-                        <div class="availability-bar">
-                            <span class="status-text high"><span class="pulse-dot"></span> 8 beds available</span>
-                            <span style="color:#666; font-size:0.8rem;">4/12 Filled</span>
+                    <div>
+                        <div class="availability-wrapper">
+                            <div class="availability-bar">
+                                <span class="status-text high"><span class="pulse-dot"></span> Available Now</span>
+                                <span style="color:#888; font-size:0.75rem;">4/12 Filled</span>
+                            </div>
+                            <div class="progress-bg">
+                                <div class="progress-fill fill-high" style="width: 33%"></div>
+                            </div>
+                            <div class="last-booked">Last booked 3 days ago</div>
                         </div>
-                        <div class="progress-bg">
-                            <div class="progress-fill fill-high" style="width: 33%"></div>
-                        </div>
-                        <div class="last-booked">Last booked 3 days ago</div>
-                    </div>
 
-                    <a href="contact.html" class="book-btn">Book Now</a>
+                        <div class="room-actions-row">
+                            <button class="tour-card-btn" onclick="initTour('four_sharing')">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+                                360° Tour
+                            </button>
+                            <a href="contact.html" class="book-btn">Book Now</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
         </div>
     </section>
 
+    <!-- ROOM COMPARISON TABLE -->
+    <section class="comparison-section">
+        <div class="section-header">
+            <span class="room-badge">TRANSPARENT AMENITIES</span>
+            <h2>Compare Room Options</h2>
+            <p class="text-gray-400 max-w-xl mx-auto text-sm">Review detailed feature breakdowns to select the ideal option for your budget and lifestyle.</p>
+        </div>
+
+        <div class="comparison-table-wrap">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Key Amenities</th>
+                        <th>Single Occupancy</th>
+                        <th>Double Sharing</th>
+                        <th>Triple Sharing</th>
+                        <th>Quadruple Sharing</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="feat-name">Monthly Price</td>
+                        <td class="feat-price">₹9,000 / mo</td>
+                        <td class="feat-price">₹7,000 / mo</td>
+                        <td class="feat-price">₹5,500 / mo</td>
+                        <td class="feat-price">₹4,500 / mo</td>
+                    </tr>
+                    <tr>
+                        <td class="feat-name">Room Privacy Level</td>
+                        <td>100% Private (1 Bed)</td>
+                        <td>2 Persons Sharing</td>
+                        <td>3 Persons Sharing</td>
+                        <td>4 Persons Sharing</td>
+                    </tr>
+                    <tr>
+                        <td class="feat-name">Attached Washroom</td>
+                        <td><span class="chk-gold">✔ Attached Private</span></td>
+                        <td><span class="chk-gold">✔ Attached / Shared</span></td>
+                        <td><span class="chk-gray">Shared Clean</span></td>
+                        <td><span class="chk-gray">Shared Clean</span></td>
+                    </tr>
+                    <tr>
+                        <td class="feat-name">High-Speed WiFi (100 Mbps)</td>
+                        <td><span class="chk-gold">✔ Included</span></td>
+                        <td><span class="chk-gold">✔ Included</span></td>
+                        <td><span class="chk-gold">✔ Included</span></td>
+                        <td><span class="chk-gold">✔ Included</span></td>
+                    </tr>
+                    <tr>
+                        <td class="feat-name">3 Wholesome Meals Daily</td>
+                        <td><span class="chk-gold">✔ Included</span></td>
+                        <td><span class="chk-gold">✔ Included</span></td>
+                        <td><span class="chk-gold">✔ Included</span></td>
+                        <td><span class="chk-gold">✔ Included</span></td>
+                    </tr>
+                    <tr>
+                        <td class="feat-name">Air Conditioning / Cooling</td>
+                        <td><span class="chk-gold">✔ AC & Ceiling Fan</span></td>
+                        <td><span class="chk-gold">✔ AC & Ceiling Fan</span></td>
+                        <td><span class="chk-gold">✔ Air Cooler</span></td>
+                        <td><span class="chk-gold">✔ Air Cooler</span></td>
+                    </tr>
+                    <tr>
+                        <td class="feat-name">Daily Hotel-Grade Cleaning</td>
+                        <td><span class="chk-gold">✔ Daily</span></td>
+                        <td><span class="chk-gold">✔ Daily</span></td>
+                        <td><span class="chk-gold">✔ Daily</span></td>
+                        <td><span class="chk-gold">✔ Daily</span></td>
+                    </tr>
+                    <tr>
+                        <td class="feat-name">24/7 Power Backup (DG)</td>
+                        <td><span class="chk-gold">✔ 100% DG Backup</span></td>
+                        <td><span class="chk-gold">✔ 100% DG Backup</span></td>
+                        <td><span class="chk-gold">✔ 100% DG Backup</span></td>
+                        <td><span class="chk-gold">✔ 100% DG Backup</span></td>
+                    </tr>
+                    <tr>
+                        <td class="feat-name">360° Virtual Tour</td>
+                        <td><button class="tbl-tour-btn" onclick="initTour('single')">View 360°</button></td>
+                        <td><button class="tbl-tour-btn" onclick="initTour('double')">View 360°</button></td>
+                        <td><button class="tbl-tour-btn" onclick="initTour('triple')">View 360°</button></td>
+                        <td><button class="tbl-tour-btn" onclick="initTour('four_sharing')">View 360°</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
     <!-- REVIEWS SECTION -->
     <section class="reviews-section">
         <div class="section-header">
+            <span class="room-badge">TESTIMONIALS</span>
             <h2>What Our Residents Say</h2>
             <div class="google-rating">
                 <span class="live-indicator"><span class="live-dot"></span> Live</span>
@@ -1119,54 +1535,57 @@
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
                 </div>
-                <span style="color:#aaa; font-weight:600;">4.9/5</span>
+                <span style="color:#aaa; font-weight:600;">4.9 / 5.0</span>
             </div>
         </div>
 
         <div class="review-grid">
-            <div class="review-card">
+            <div class="review-card" data-tilt>
                 <div class="verified-badge">
                     <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                    Verified
+                    Verified Resident
                 </div>
                 <div class="review-header">
-                    <div class="avatar" style="background-image: url('https://randomuser.me/api/portraits/men/32.jpg')"></div>
+                    <div class="avatar" style="background-image: url('https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150')"></div>
                     <div class="user-info">
                         <h4>Rahul Sharma</h4>
-                        <span>2 days ago</span>
+                        <span>Software Engineer • Single Room</span>
                     </div>
                 </div>
-                <p class="review-text">"Fantastic place to stay! The rooms are super clean and the staff is very cooperative. The food quality is top-notch."</p>
+                <div class="stars mb-3">★★★★★</div>
+                <p class="review-text">"Fantastic place to stay! Clean rooms, fast fiber WiFi, and delicious hygienic food. The management resolves any query immediately. Best PG in Bangalore!"</p>
             </div>
 
-            <div class="review-card">
+            <div class="review-card" data-tilt>
                 <div class="verified-badge">
                     <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                    Verified
+                    Verified Resident
                 </div>
                 <div class="review-header">
-                    <div class="avatar" style="background-image: url('https://randomuser.me/api/portraits/women/44.jpg')"></div>
+                    <div class="avatar" style="background-image: url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150')"></div>
                     <div class="user-info">
                         <h4>Priya Singh</h4>
-                        <span>1 week ago</span>
+                        <span>Medical Scholar • Double Sharing</span>
                     </div>
                 </div>
-                <p class="review-text">"I've been staying here for 6 months. The security is great and the amenities like the gym and wifi are well maintained."</p>
+                <div class="stars mb-3">★★★★★</div>
+                <p class="review-text">"Safety was my top priority, and Jagan PG provides 24/7 CCTV and secure biometric access. The rooms are spacious, well ventilated, and hotel-grade clean."</p>
             </div>
 
-            <div class="review-card">
+            <div class="review-card" data-tilt>
                 <div class="verified-badge">
                     <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                    Verified
+                    Verified Resident
                 </div>
                 <div class="review-header">
-                    <div class="avatar" style="background-image: url('https://randomuser.me/api/portraits/men/46.jpg')"></div>
+                    <div class="avatar" style="background-image: url('https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=150')"></div>
                     <div class="user-info">
-                        <h4>Amit Verma</h4>
-                        <span>3 weeks ago</span>
+                        <h4>Ankit Verma</h4>
+                        <span>Data Analyst • Triple Sharing</span>
                     </div>
                 </div>
-                <p class="review-text">"Good location near the metro. Rooms are spacious. Management fixes issues quickly. Solid 4-star experience."</p>
+                <div class="stars mb-3">★★★★★</div>
+                <p class="review-text">"Super prime location walking distance from the metro. Fast WiFi with automatic power backup makes work from home completely frictionless."</p>
             </div>
         </div>
     </section>
@@ -1187,20 +1606,23 @@
         <div class="footer-grid">
             <div>
                 <h3 class="text-2xl font-bold text-white mb-4" style="font-family:'Playfair Display'">JAGAN PG</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Premium Paying Guest Accommodation.<br>Safe and comfortable living for students and professionals.</p>
+                <p class="text-gray-500 text-sm leading-relaxed">Premium Paying Guest Accommodation.<br>Safe, luxurious, and comfortable living for students and working professionals.</p>
             </div>
             <div>
                 <h4 class="font-semibold text-white mb-4">Quick Links</h4>
                 <ul class="space-y-2 text-gray-500 text-sm">
                     <li><a href="index.html" class="hover:text-white">Home</a></li>
+                    <li><a href="why_us.html" class="hover:text-white">Why Us</a></li>
+                    <li><a href="rooms.html" class="hover:text-white">Rooms</a></li>
                     <li><a href="amenities.html" class="hover:text-white">Amenities</a></li>
-                    <li><a href="life-at-pg.html" class="hover:text-white">Gallery</a></li>
+                    <li><a href="life-at-pg.html" class="hover:text-white">Life at PG</a></li>
+                    <li><a href="contact.html" class="hover:text-white">Contact</a></li>
                 </ul>
             </div>
             <div>
                 <h4 class="font-semibold text-white mb-4">Contact</h4>
                 <ul class="space-y-2 text-gray-500 text-sm">
-                    <li>📍 123 Main Street</li>
+                    <li>📍 Main Road, Near Metro</li>
                     <li>📞 +91 73002 12948</li>
                     <li>📧 piyushverma730929@gmail.com</li>
                 </ul>
@@ -1210,7 +1632,7 @@
                 <p class="text-gray-500 text-sm">Near Metro Station, Bangalore - 560001</p>
             </div>
         </div>
-        <div class="border-t border-[#111] mt-6 pt-4 pb-6 text-center text-gray-600 text-xs">
+        <div class="border-t border-[#111] mt-12 pt-8 text-center text-gray-600 text-xs">
             &copy; 2024 Jagan PG. All rights reserved.
         </div>
     </footer>
@@ -1227,7 +1649,7 @@
     <div class="sticky-mobile-bar">
         <div class="sticky-price">
             <span>Starting from</span>
-            <strong>₹5,000/mo</strong>
+            <strong>₹4,500/mo</strong>
         </div>
         <div class="sticky-actions">
             <a href="tel:+917300212948" class="sticky-btn sticky-call">
@@ -1235,11 +1657,11 @@
                 Call
             </a>
             <a href="https://wa.me/917300212948?text=Hi%2C%20I%27m%20interested%20in%20booking" target="_blank" class="sticky-btn sticky-wa">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                WhatsApp
-            </a>
-        </div>
-    </div>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        WhatsApp
+    </a>
+</div>
 
     <!-- Pannellum 360 Viewer JS -->
     <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
@@ -1290,7 +1712,7 @@
                     const cardIndex = Array.from(cards).indexOf(entry.target);
                     setTimeout(() => {
                         entry.target.classList.add('visible');
-                    }, cardIndex * 150);
+                    }, cardIndex * 120);
                 }
             });
         }, observerOptions);
@@ -1309,8 +1731,8 @@
                 const y = e.clientY - rect.top;
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
-                const rotateX = (y - centerY) / 20;
-                const rotateY = (centerX - x) / 20;
+                const rotateX = (y - centerY) / 22;
+                const rotateY = (centerX - x) / 22;
                 card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
             });
 
@@ -1322,6 +1744,24 @@
                 }
             });
         });
+
+        // Category Filter Logic
+        function filterRooms(category, btn) {
+            document.querySelectorAll('.filter-tab-btn').forEach(b => b.classList.remove('active'));
+            if(btn) btn.classList.add('active');
+
+            const allCards = document.querySelectorAll('.room-card');
+            allCards.forEach(card => {
+                const cardCat = card.getAttribute('data-category');
+                if(category === 'all' || cardCat === category) {
+                    card.style.display = 'flex';
+                    setTimeout(() => card.classList.add('visible'), 50);
+                } else {
+                    card.style.display = 'none';
+                    card.classList.remove('visible');
+                }
+            });
+        }
 
         /* Image Slider Logic */
         function changeSlide(btn, direction) {
@@ -1383,7 +1823,7 @@
                 ]
             },
             "four_sharing": {
-                title: "Four Seater Sharing",
+                title: "Quadruple Sharing",
                 image: "https://pannellum.org/images/from-tree.jpg",
                 hotSpots: [
                     { pitch: 0, yaw: 0, type: "info", text: "Spacious Common Area", createTooltipFunc: createHotspot }
@@ -1489,6 +1929,7 @@
         setInterval(updateLastBooked, 30000);
     </script>
 
+    <!-- Three.js 3D Background Scene with Torus Knot & Bloom Postprocessing -->
     <script type="module">
         import * as THREE from 'three';
         import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
