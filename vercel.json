@@ -1,24 +1,11 @@
 {
   "version": 2,
+  "outputDirectory": "frontend",
   "cleanUrls": true,
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },
-    { "source": "/", "destination": "/frontend/index.html" },
-    { "source": "/index.html", "destination": "/frontend/index.html" },
-    { "source": "/rooms", "destination": "/frontend/rooms.html" },
-    { "source": "/rooms.html", "destination": "/frontend/rooms.html" },
-    { "source": "/why-us", "destination": "/frontend/why_us.html" },
-    { "source": "/why_us", "destination": "/frontend/why_us.html" },
-    { "source": "/why_us.html", "destination": "/frontend/why_us.html" },
-    { "source": "/amenities", "destination": "/frontend/amenities.html" },
-    { "source": "/amenities.html", "destination": "/frontend/amenities.html" },
-    { "source": "/life", "destination": "/frontend/life-at-pg.html" },
-    { "source": "/life-at-pg", "destination": "/frontend/life-at-pg.html" },
-    { "source": "/life-at-pg.html", "destination": "/frontend/life-at-pg.html" },
-    { "source": "/contact", "destination": "/frontend/contact.html" },
-    { "source": "/contact.html", "destination": "/frontend/contact.html" },
-    { "source": "/logo.png", "destination": "/frontend/logo.png" },
-    { "source": "/assets/(.*)", "destination": "/frontend/assets/$1" },
-    { "source": "/(.*)", "destination": "/frontend/$1" }
+    { "source": "/why-us", "destination": "/why_us.html" },
+    { "source": "/why_us", "destination": "/why_us.html" },
+    { "source": "/life", "destination": "/life-at-pg.html" }
   ]
 }
