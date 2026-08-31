@@ -12,7 +12,7 @@
     { "source": "/amenities", "destination": "/amenities.html" },
     { "source": "/why-us", "destination": "/why_us.html" },
     { "source": "/why_us", "destination": "/why_us.html" },
-    { "source": "/life", "destination": "/life%20at%20pg.html" },
-    { "source": "/life-at-pg", "destination": "/life%20at%20pg.html" }
-  }
+    { "source": "/life", "destination": "/life-at-pg.html" },
+    { "source": "/life-at-pg", "destination": "/life-at-pg.html" }
+  ]
 }
