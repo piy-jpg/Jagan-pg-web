@@ -4,11 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Get in Touch & Book a Visit – Jagan PG</title>
-  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="icon" type="image/png" sizes="any" href="logo.png?v=2">
   <meta name="description" content="Get in touch with Jagan PG. Schedule an in-person room visit, chat on WhatsApp, or send an instant booking enquiry.">
   
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <script type="importmap">
     {
@@ -330,14 +329,17 @@
         border: 1px solid rgba(255,255,255,0.08);
         box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
-    .map-container-luxury iframe {
-        width: 100%;
+    .location-card {
         height: 100%;
-        border: none;
-        filter: grayscale(100%) invert(92%) contrast(85%);
-        transition: filter 0.4s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+        text-align: center;
+        background: radial-gradient(circle at top, rgba(212,175,55,0.15), transparent 65%), #0a0a0a;
+        color: #ddd;
     }
-    .map-container-luxury:hover iframe { filter: grayscale(0%); }
+    .location-card a { color: #d4af37; font-weight: 700; text-decoration: none; }
 
     /* FORM PANEL */
     .form-panel-luxury {
@@ -578,8 +580,8 @@
                     </div>
                     <div class="info-content-luxury">
                         <h4>Our Location</h4>
-                        <p>Main Road, Near Metro Station, Bangalore – 560001</p>
-                        <a href="https://maps.google.com/?q=Bangalore" target="_blank" class="info-link">Get Directions →</a>
+                        <p>Gali No. 44, Sector 167, Noida, Chhaproli Khadar, Uttar Pradesh 201304</p>
+                        <a href="https://www.openstreetmap.org/search?query=Gali%20No.%2044%2C%20Sector%20167%2C%20Noida%2C%20Chhaproli%20Khadar%2C%20Uttar%20Pradesh%20201304" target="_blank" rel="noopener" class="info-link">Get Directions →</a>
                     </div>
                 </div>
 
@@ -606,7 +608,7 @@
                 </div>
 
                 <div class="map-container-luxury">
-                    <iframe src="https://maps.google.com/maps?q=bangalore&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" title="Jagan PG Location"></iframe>
+                    <div class="location-card">📍&nbsp; Gali No. 44, Sector 167, Noida<br><a href="https://www.openstreetmap.org/search?query=Gali%20No.%2044%2C%20Sector%20167%2C%20Noida%2C%20Chhaproli%20Khadar%2C%20Uttar%20Pradesh%20201304" target="_blank" rel="noopener">View location</a></div>
                 </div>
             </div>
 
@@ -654,10 +656,10 @@
                         <div class="input-wrap-luxury">
                             <select id="roomPreference" name="roomPreference" class="form-select-luxury">
                                 <option value="">Select Room Type</option>
-                                <option value="Single Occupancy">Single Occupancy (₹9,000 / mo)</option>
-                                <option value="Double Sharing">Double Sharing (₹7,000 / mo)</option>
-                                <option value="Triple Sharing">Triple Sharing (₹5,500 / mo)</option>
-                                <option value="Quadruple Sharing">Quadruple Sharing (₹4,500 / mo)</option>
+                                <option value="Single Occupancy">Single Occupancy (₹15,500 / mo; AC +₹2,000)</option>
+                                <option value="Double Sharing">Double Sharing (₹9,500 / mo; AC +₹2,000)</option>
+                                <option value="Triple Sharing">Triple Sharing (₹7,500 / mo; AC +₹2,000)</option>
+                                <option value="Quadruple Sharing">Quadruple Sharing (₹6,500 / mo; AC +₹2,000)</option>
                             </select>
                         </div>
                     </div>
@@ -703,14 +705,14 @@
             <div>
                 <h4 class="font-semibold text-white mb-4">Contact</h4>
                 <ul class="space-y-2 text-gray-500 text-sm">
-                    <li>📍 Main Road, Near Metro</li>
+                    <li>📍 Gali No. 44, Sector 167, Noida</li>
                     <li>📞 +91 73002 12948</li>
                     <li>📧 piyushverma730929@gmail.com</li>
                 </ul>
             </div>
             <div>
                 <h4 class="font-semibold text-white mb-4">Location</h4>
-                <p class="text-gray-500 text-sm">Near Metro Station, Bangalore - 560001</p>
+                <p class="text-gray-500 text-sm">Chhaproli Khadar, Uttar Pradesh 201304</p>
             </div>
         </div>
         <div class="border-t border-[#111] mt-12 pt-8 text-center text-gray-600 text-xs">

@@ -4,11 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Life at Jagan PG – Community & Experience</title>
-  <link rel="icon" type="image/png" href="logo.png">
-  <meta name="description" content="Experience the vibrant community, dining, work spaces, and lifestyle at Jagan PG Bangalore.">
+  <link rel="icon" type="image/png" sizes="any" href="logo.png?v=2">
+  <meta name="description" content="Experience the vibrant community, dining, work spaces, and lifestyle at Jagan PG in Sector 167, Noida.">
   
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <script type="importmap">
     {
@@ -225,7 +224,7 @@
         to { opacity: 1; transform: translateY(0); }
     }
 
-    /* GALLERY MASONRY */
+    /* CIRCULAR PHOTO GALLERY */
     .gallery-section {
         padding: 1.5rem 5% 7rem;
         position: relative;
@@ -247,21 +246,21 @@
 
     .masonry-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-auto-rows: 240px;
-        gap: 1.5rem;
-        max-width: 1400px;
+        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+        gap: 2rem;
+        max-width: 1240px;
         margin: 0 auto;
+        align-items: center;
     }
 
-    @media (max-width: 1024px) { .masonry-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 600px) { .masonry-grid { grid-template-columns: 1fr; grid-auto-rows: 250px; } }
+    @media (max-width: 600px) { .masonry-grid { grid-template-columns: repeat(2, minmax(130px, 1fr)); gap: 1.25rem; } }
 
     .gallery-item {
         position: relative;
         overflow: hidden;
-        border-radius: 20px;
-        border: 1px solid rgba(255,255,255,0.08);
+        aspect-ratio: 1;
+        border-radius: 50%;
+        border: 2px solid rgba(212, 175, 55, 0.55);
         cursor: pointer;
         opacity: 0;
         transform: scale(0.92);
@@ -274,19 +273,14 @@
         transform: scale(1);
     }
 
-    .gi-tall { grid-row: span 2; }
-    .gi-wide { grid-column: span 2; }
-    @media (max-width: 600px) {
-        .gi-tall { grid-row: span 1; }
-        .gi-wide { grid-column: span 1; }
-    }
+    .gi-tall, .gi-wide { grid-row: auto; grid-column: auto; }
 
     .gallery-item img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-        filter: brightness(0.85);
+        filter: brightness(0.82);
     }
 
     .gallery-item:hover img {
@@ -500,7 +494,7 @@
             Community & Vibes
         </span>
         <h1 class="hero-title">Life at Jagan PG</h1>
-        <p class="hero-sub">More than just a place to stay. It's an inspiring community, a thriving network of peers, and a peaceful sanctuary to call home in Bangalore.</p>
+        <p class="hero-sub">More than just a place to stay. It's an inspiring community, a thriving network of peers, and a peaceful sanctuary to call home in Noida.</p>
     </section>
 
     <!-- Gallery Section -->
@@ -513,7 +507,7 @@
         <div class="masonry-grid">
             <!-- Item 1: Wide (Common Room) -->
             <div class="gallery-item gi-wide">
-                <img src="https://images.unsplash.com/photo-1555854877-bab0e3b79c28?q=80&w=1920&auto=format&fit=crop" alt="Common Room" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?q=80&w=800&auto=format&fit=crop" alt="Common Room" loading="lazy">
                 <div class="gi-overlay">
                     <h4>The Community Lounge</h4>
                     <p>Relax, stream movies on Smart TV, or connect with fellow residents.</p>
@@ -587,7 +581,7 @@
             <div class="testimonial-card">
                 <div class="stars">★★★★★</div>
                 <div class="tc-content">
-                    <p>"Living at Jagan PG made my transition to Bangalore so effortless. The homely meals and daily housekeeping give me all the time I need to focus on my tech job."</p>
+                    <p>"Living at Jagan PG made my transition to Noida so effortless. The homely meals and daily housekeeping give me all the time I need to focus on my tech job."</p>
                 </div>
                 <div class="tc-author">
                     <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150" class="tc-avatar" alt="Rahul">
@@ -649,14 +643,14 @@
             <div>
                 <h4 class="font-semibold text-white mb-4">Contact</h4>
                 <ul class="space-y-2 text-gray-500 text-sm">
-                    <li>📍 Main Road, Near Metro</li>
+                    <li>📍 Gali No. 44, Sector 167, Noida</li>
                     <li>📞 +91 73002 12948</li>
                     <li>📧 piyushverma730929@gmail.com</li>
                 </ul>
             </div>
             <div>
                 <h4 class="font-semibold text-white mb-4">Location</h4>
-                <p class="text-gray-500 text-sm">Near Metro Station, Bangalore - 560001</p>
+                <p class="text-gray-500 text-sm">Chhaproli Khadar, Uttar Pradesh 201304</p>
             </div>
         </div>
         <div class="border-t border-[#111] mt-12 pt-8 text-center text-gray-600 text-xs">

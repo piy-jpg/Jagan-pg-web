@@ -5,10 +5,10 @@
 -- Insert Rooms
 INSERT INTO rooms (id, type_name, price_monthly, capacity, tag, available_units, description, image_url)
 VALUES 
-('single', 'Single Occupancy', 9000.00, 1, 'Most Private', 2, 'Ideal for professionals & scholars seeking total privacy.', 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=800'),
-('double', 'Double Sharing', 7000.00, 2, 'Most Popular', 4, 'Spacious sharing room with comfortable private corners.', 'https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?q=80&w=800'),
-('triple', 'Triple Sharing', 5500.00, 3, 'Great Value', 3, 'Balanced living with study zones and friendly peers.', 'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?q=80&w=800'),
-('quadruple', 'Quadruple Sharing', 4500.00, 4, 'Budget Friendly', 5, 'Maximum savings with all full PG amenities included.', 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=800')
+('single', 'Single Occupancy', 15500.00, 1, 'Most Private', 2, 'Ideal for professionals & scholars seeking total privacy.', 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=800'),
+('double', 'Double Sharing', 9500.00, 2, 'Most Popular', 4, 'Spacious sharing room with comfortable private corners.', 'https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?q=80&w=800'),
+('triple', 'Triple Sharing', 7500.00, 3, 'Great Value', 3, 'Balanced living with study zones and friendly peers.', 'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?q=80&w=800'),
+('quadruple', 'Quadruple Sharing', 6500.00, 4, 'Budget Friendly', 5, 'Maximum savings with all full PG amenities included.', 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=800')
 ON CONFLICT (id) DO UPDATE SET price_monthly = EXCLUDED.price_monthly;
 
 -- Insert Verified Resident Reviews

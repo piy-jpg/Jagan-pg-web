@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jagan PG – Premium PG & Hostel for Students & Professionals</title>
-  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="icon" type="image/png" sizes="any" href="logo.png?v=2">
   <link rel="canonical" href="https://jagan-pg-web.vercel.app/">
   
-  <meta name="description" content="Jagan PG offers luxury paying guest accommodation for students and working professionals near metro. Includes homely food, high-speed WiFi, and 24/7 security from ₹4,500/mo.">
-  <meta name="keywords" content="Jagan PG, Jagan PG Bangalore, PG near metro station, student PG hostel, luxury PG, paying guest accommodation, single room PG, double sharing PG">
+  <meta name="description" content="Jagan PG offers premium paying guest accommodation in Sector 167, Noida for students and working professionals. Includes homely food, high-speed WiFi, and 24/7 security from ₹6,500/mo.">
+  <meta name="keywords" content="Jagan PG, Jagan PG Noida, PG in Sector 167, student PG hostel, luxury PG, paying guest accommodation, single room PG, double sharing PG">
   <meta name="author" content="Jagan PG">
   <meta name="robots" content="index, follow">
 
@@ -17,34 +17,35 @@
   <meta property="og:url" content="https://jagan-pg-web.vercel.app/">
   <meta property="og:site_name" content="Jagan PG">
   <meta property="og:title" content="Jagan PG – Premium Living Spaces for Students & Professionals">
-  <meta property="og:description" content="Fully furnished PG rooms near metro with homely food, 100 Mbps WiFi and 24/7 security. Starting from ₹4,500/month.">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=1200">
+  <meta property="og:description" content="Fully furnished PG rooms in Sector 167, Noida with homely food, 100 Mbps WiFi and 24/7 security. Starting from ₹6,500/month.">
+  <meta property="og:image" content="https://jagan-pg-web.vercel.app/assets/jagan-pg-brand.png">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://jagan-pg-web.vercel.app/">
   <meta property="twitter:title" content="Jagan PG – Premium Living Spaces">
   <meta property="twitter:description" content="Fully furnished PG rooms near metro with homely food, 100 Mbps WiFi and 24/7 security.">
-  <meta property="twitter:image" content="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=1200">
+  <meta property="twitter:image" content="https://jagan-pg-web.vercel.app/assets/jagan-pg-brand.png">
 
-  <!-- Schema.org JSON-LD for Google Search & Maps -->
+  <!-- Schema.org JSON-LD for search engines and maps -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Hostel",
     "name": "Jagan PG",
     "alternateName": "Jagan Paying Guest Accommodation",
-    "image": "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=1200",
+    "image": "https://jagan-pg-web.vercel.app/assets/jagan-pg-brand.png",
+    "logo": "https://jagan-pg-web.vercel.app/assets/jagan-pg-brand.png",
     "url": "https://jagan-pg-web.vercel.app/",
     "telephone": "+917300212948",
     "email": "piyushverma730929@gmail.com",
-    "priceRange": "₹4,500 - ₹9,000 / month",
+    "priceRange": "₹6,500 - ₹15,500 / month, plus ₹2,000 for AC",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Main Road, Near Metro Station",
-      "addressLocality": "Bangalore",
-      "addressRegion": "Karnataka",
-      "postalCode": "560001",
+      "streetAddress": "Gali No. 44, Sector 167",
+      "addressLocality": "Noida, Chhaproli Khadar",
+      "addressRegion": "Uttar Pradesh",
+      "postalCode": "201304",
       "addressCountry": "IN"
     },
     "geo": {
@@ -79,7 +80,6 @@
   </script>
   
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   
   <script type="importmap">
     {
@@ -1035,6 +1035,14 @@
         font-size: 0.95rem;
     }
 
+    .reviews-brand-logo {
+        width: 34px;
+        height: 34px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 1px solid rgba(212, 175, 55, 0.55);
+    }
+
     .reviews-rating-count {
         color: #888;
         font-size: 0.85rem;
@@ -1420,17 +1428,17 @@
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
     }
 
-    .map-container-luxury iframe {
-        width: 100%;
+    .location-card {
         height: 100%;
-        border: 0;
-        filter: grayscale(100%) invert(90%) contrast(85%);
-        transition: filter 0.4s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+        text-align: center;
+        background: radial-gradient(circle at top, rgba(212,175,55,0.15), transparent 65%), #0a0a0a;
+        color: #ddd;
     }
-
-    .map-container-luxury:hover iframe {
-        filter: grayscale(0%);
-    }
+    .location-card a { color: #d4af37; font-weight: 700; text-decoration: none; }
 
     /* Luxury Form Panel */
     .form-panel-luxury {
@@ -1662,7 +1670,7 @@
     <section class="hero">
         <div class="hero-badge">🔥 Only 3 Rooms Left This Month</div>
         <h1 class="hero-title">Premium PG for Students & Working Professionals</h1>
-        <p class="hero-subtitle">Fully furnished PG rooms near metro with homely food, WiFi and 24/7 security. Starting from ₹5,500/month.</p>
+        <p class="hero-subtitle">Fully furnished PG rooms in Sector 167, Noida with homely food, WiFi and 24/7 security. Starting from ₹6,500/month.</p>
         
         <div class="hero-features">
             <div class="hero-feature">
@@ -1760,7 +1768,7 @@
             <div class="stat-inline-div"></div>
             <div class="stat-inline-item">
                 <span class="stat-inline-num"><span id="counter-rating">4.9</span> ★</span>
-                <span class="stat-inline-lbl">Google Rating</span>
+                <span class="stat-inline-lbl">Resident Rating</span>
             </div>
             <div class="stat-inline-div"></div>
             <div class="stat-inline-item">
@@ -1870,9 +1878,10 @@
             <p class="section-subtitle">Real experiences and feedback from students and working professionals living at Jagan PG.</p>
             
             <div class="reviews-rating-bar">
+                <img src="assets/jagan-pg-brand.png" class="reviews-brand-logo" alt="Jagan PG logo">
                 <span class="reviews-rating-score">4.9 / 5.0</span>
                 <span class="stars">★★★★★</span>
-                <span class="reviews-rating-count">Based on 120+ Verified Google Reviews</span>
+                <span class="reviews-rating-count">Based on 120+ verified resident reviews</span>
             </div>
         </div>
 
@@ -1904,8 +1913,8 @@
                     </div>
                     <div class="info-content-luxury">
                         <h4>Our Location</h4>
-                        <p>Main Road, Near Metro Station, Bangalore – 560001</p>
-                        <a href="https://maps.google.com/?q=Bangalore" target="_blank" class="info-link">Get Directions →</a>
+                        <p>Gali No. 44, Sector 167, Noida, Chhaproli Khadar, Uttar Pradesh 201304</p>
+                        <a href="https://www.openstreetmap.org/search?query=Gali%20No.%2044%2C%20Sector%20167%2C%20Noida%2C%20Chhaproli%20Khadar%2C%20Uttar%20Pradesh%20201304" target="_blank" rel="noopener" class="info-link">Get Directions →</a>
                     </div>
                 </div>
 
@@ -1932,7 +1941,7 @@
                 </div>
 
                 <div class="map-container-luxury">
-                    <iframe src="https://maps.google.com/maps?q=bangalore&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" title="Jagan PG Location"></iframe>
+                    <div class="location-card">📍&nbsp; Gali No. 44, Sector 167, Noida<br><a href="https://www.openstreetmap.org/search?query=Gali%20No.%2044%2C%20Sector%20167%2C%20Noida%2C%20Chhaproli%20Khadar%2C%20Uttar%20Pradesh%20201304" target="_blank" rel="noopener">View location</a></div>
                 </div>
             </div>
 
@@ -1982,10 +1991,10 @@
                         <div class="input-wrap-luxury">
                             <select id="roomPreference" name="roomPreference" class="form-input-luxury form-select-luxury">
                                 <option value="">Select Room Type</option>
-                                <option value="Single Occupancy">Single Occupancy (₹9,000 / mo)</option>
-                                <option value="Double Sharing">Double Sharing (₹7,000 / mo)</option>
-                                <option value="Triple Sharing">Triple Sharing (₹5,500 / mo)</option>
-                                <option value="Quadruple Sharing">Quadruple Sharing (₹4,500 / mo)</option>
+                                <option value="Single Occupancy">Single Occupancy (₹15,500 / mo; AC +₹2,000)</option>
+                                <option value="Double Sharing">Double Sharing (₹9,500 / mo; AC +₹2,000)</option>
+                                <option value="Triple Sharing">Triple Sharing (₹7,500 / mo; AC +₹2,000)</option>
+                                <option value="Quadruple Sharing">Quadruple Sharing (₹6,500 / mo; AC +₹2,000)</option>
                             </select>
                         </div>
                     </div>
@@ -2042,8 +2051,11 @@
                 <h4 class="font-semibold text-white mb-4">Quick Links</h4>
                 <ul class="space-y-2 text-gray-500 text-sm">
                     <li><a href="#" class="hover:text-white">Home</a></li>
-                    <li><a href="#rooms" class="hover:text-white">Rooms</a></li>
-                    <li><a href="#gallery" class="hover:text-white">Gallery</a></li>
+                    <li><a href="why_us.html" class="hover:text-white">Why Us</a></li>
+                    <li><a href="rooms.html" class="hover:text-white">Rooms</a></li>
+                    <li><a href="amenities.html" class="hover:text-white">Amenities</a></li>
+                    <li><a href="life-at-pg.html" class="hover:text-white">Life at PG</a></li>
+                    <li><a href="contact.html" class="hover:text-white">Contact</a></li>
                 </ul>
             </div>
             <div>
@@ -2056,7 +2068,7 @@
             </div>
             <div>
                 <h4 class="font-semibold text-white mb-4">Location</h4>
-                <p class="text-gray-500 text-sm">Near Metro Station, Bangalore - 560001</p>
+                <p class="text-gray-500 text-sm">Gali No. 44, Sector 167, Noida, Chhaproli Khadar, Uttar Pradesh 201304</p>
             </div>
         </div>
         <div class="border-t border-[#111] mt-12 pt-8 text-center text-gray-600 text-xs">
@@ -2134,7 +2146,7 @@
         const roomsData = [
           { 
             type: 'Single Occupancy', 
-            price: '₹9,000', 
+            price: '₹15,500',
             sub: 'Ideal for professionals & scholars seeking total privacy.',
             tag: 'Most Private',
             avail: '2 Rooms Left',
@@ -2144,7 +2156,7 @@
           },
           { 
             type: 'Double Sharing', 
-            price: '₹7,000', 
+            price: '₹9,500',
             sub: 'Spacious sharing room with comfortable private corners.',
             tag: 'Most Popular',
             avail: '4 Beds Available',
@@ -2154,7 +2166,7 @@
           },
           { 
             type: 'Triple Sharing', 
-            price: '₹5,500', 
+            price: '₹7,500',
             sub: 'Balanced living with study zones and friendly peers.',
             tag: 'Great Value',
             avail: 'Instant Move-in',
@@ -2164,7 +2176,7 @@
           },
           { 
             type: 'Quadruple Sharing', 
-            price: '₹4,500', 
+            price: '₹6,500',
             sub: 'Maximum savings with all full PG amenities included.',
             tag: 'Budget Friendly',
             avail: 'Available Now',
@@ -2245,7 +2257,7 @@
                         <img src="${r.img}" alt="${r.type}" class="room-media-img" loading="lazy">
                         <span class="room-tag-pill">${r.tag}</span>
                         <div class="room-price-badge">
-                            <span>${r.price}</span><small>/mo</small>
+                            <span>${r.price}</span><small>/mo + ₹2,000 AC</small>
                         </div>
                     </div>
                     <div class="room-body">

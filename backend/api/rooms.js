@@ -4,7 +4,8 @@ module.exports = (req, res) => {
     {
       id: 'single',
       type: 'Single Occupancy',
-      price: 9000,
+      price: 15500,
+      acSurcharge: 2000,
       period: 'month',
       tag: 'Most Private',
       availability: '2 Rooms Left',
@@ -23,7 +24,8 @@ module.exports = (req, res) => {
     {
       id: 'double',
       type: 'Double Sharing',
-      price: 7000,
+      price: 9500,
+      acSurcharge: 2000,
       period: 'month',
       tag: 'Most Popular',
       availability: '4 Beds Available',
@@ -41,7 +43,8 @@ module.exports = (req, res) => {
     {
       id: 'triple',
       type: 'Triple Sharing',
-      price: 5500,
+      price: 7500,
+      acSurcharge: 2000,
       period: 'month',
       tag: 'Great Value',
       availability: 'Instant Move-in',
@@ -59,7 +62,8 @@ module.exports = (req, res) => {
     {
       id: 'quadruple',
       type: 'Quadruple Sharing',
-      price: 4500,
+      price: 6500,
+      acSurcharge: 2000,
       period: 'month',
       tag: 'Budget Friendly',
       availability: 'Available Now',

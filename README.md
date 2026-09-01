@@ -67,6 +67,10 @@ npm start
 ```
 Then visit **[http://localhost:3000](http://localhost:3000)**.
 
+### Booking enquiry email setup
+
+Copy `backend/.env.example` to a private `.env` file in the project root and enter the SMTP credentials for the email account that will send enquiries. Set `TO_EMAIL` to the inbox that should receive them. For Gmail, use an App Password rather than your normal account password.
+
 ---
 
 ## 🔌 API Reference

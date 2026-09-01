@@ -94,41 +94,50 @@ module.exports = async (req, res) => {
     return;
   }
 
+  const emailConfigured = Boolean(
+    process.env.SMTP_HOST &&
+    process.env.SMTP_PORT &&
+    process.env.SMTP_USER &&
+    process.env.SMTP_PASS
+  );
+
+  if (!emailConfigured) {
+    res.status(503).json({
+      error: 'Enquiry email is not configured yet. Please contact us on WhatsApp.',
+    });
+    return;
+  }
+
   try {
     const toEmail = process.env.TO_EMAIL || 'piyushverma730929@gmail.com';
-    let emailDelivered = false;
-    const emailConfigured = !!(process.env.SMTP_HOST && process.env.SMTP_PORT && process.env.SMTP_USER && process.env.SMTP_PASS);
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: Number(process.env.SMTP_PORT),
+      secure: Number(process.env.SMTP_PORT) === 465,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+    });
 
-    if (emailConfigured) {
-      const transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST,
-        port: Number(process.env.SMTP_PORT),
-        secure: Number(process.env.SMTP_PORT) === 465,
-        auth: {
-          user: process.env.SMTP_USER,
-          pass: process.env.SMTP_PASS,
-        },
-      });
+    const mailOptions = {
+      from: `"Jagan PG Website" <${process.env.FROM_EMAIL || process.env.SMTP_USER}>`,
+      to: toEmail,
+      replyTo: email || undefined,
+      subject: `New Jagan PG enquiry from ${fullName}`,
+      text: [
+        `Name: ${fullName}`,
+        `Phone: ${phone}`,
+        `Email: ${email || '-'}`,
+        `Move-in date: ${moveInDate || '-'}`,
+        `Room preference: ${roomPreference || '-'}`,
+        '',
+        'Message:',
+        message || '-',
+      ].join('\n'),
+    };
 
-      const mailOptions = {
-        from: `"Jagan PG Website" <${process.env.SMTP_USER}>`,
-        to: toEmail,
-        subject: `New enquiry from ${fullName}`,
-        text: [
-          `Name: ${fullName}`,
-          `Phone: ${phone}`,
-          `Email: ${email || '-'}`,
-          `Move-in date: ${moveInDate || '-'}`,
-          `Room preference: ${roomPreference || '-'}`,
-          '',
-          'Message:',
-          message || '-',
-        ].join('\n'),
-      };
-
-      await transporter.sendMail(mailOptions);
-      emailDelivered = true;
-    }
+    await transporter.sendMail(mailOptions);
 
     const waResult = await sendWhatsAppNotification({
       fullName,
@@ -139,8 +148,9 @@ module.exports = async (req, res) => {
       message,
     });
 
-    res.status(200).json({ ok: true, delivered: emailDelivered, whatsapp: waResult.sent });
+    res.status(200).json({ ok: true, delivered: true, whatsapp: waResult.sent });
   } catch (e) {
-    res.status(500).json({ error: 'Failed to process enquiry' });
+    console.error('Failed to deliver enquiry email:', e);
+    res.status(502).json({ error: 'We could not deliver your enquiry. Please try again or contact us on WhatsApp.' });
   }
 };

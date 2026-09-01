@@ -4,11 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Our Luxury Rooms – Jagan PG</title>
-  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="icon" type="image/png" sizes="any" href="logo.png?v=2">
   <meta name="description" content="Explore premium, fully furnished rooms at Jagan PG with interactive 360-degree virtual tours, transparent pricing, and instant booking.">
   
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Pannellum 360 Viewer CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
@@ -730,7 +729,7 @@
         color: #000;
     }
 
-    /* Google Reviews */
+    /* Resident Reviews */
     .reviews-section {
         padding: 5rem 5% 7rem;
         position: relative;
@@ -751,7 +750,7 @@
         -webkit-text-fill-color: transparent;
     }
     
-    .google-rating {
+    .reviews-rating {
         display: inline-flex;
         align-items: center;
         gap: 10px;
@@ -786,7 +785,13 @@
         animation: pulse-scale 1s infinite;
     }
 
-    .google-logo { font-weight: 700; font-family: 'Inter', sans-serif; color: #fff; font-size: 0.9rem; }
+    .reviews-brand-logo {
+        width: 38px;
+        height: 38px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 1px solid rgba(212, 175, 55, 0.55);
+    }
     
     .stars { color: #FFC107; font-size: 1.1rem; display: flex; gap: 3px; }
     
@@ -1177,7 +1182,7 @@
             <div class="room-card" data-tilt data-category="single">
                 <div class="room-image">
                     <span class="room-pill-tag">Most Private</span>
-                    <div class="price-tag"><span>₹9,000</span><small>/mo</small></div>
+                    <div class="price-tag"><span>₹15,500</span><small>/mo + ₹2,000 AC</small></div>
                     
                     <div class="slider-container">
                         <div class="slide active">
@@ -1241,7 +1246,7 @@
             <div class="room-card" data-tilt data-category="double">
                 <div class="room-image">
                     <span class="room-pill-tag">Most Popular</span>
-                    <div class="price-tag"><span>₹7,000</span><small>/mo</small></div>
+                    <div class="price-tag"><span>₹9,500</span><small>/mo + ₹2,000 AC</small></div>
                     
                     <div class="slider-container">
                         <div class="slide active">
@@ -1305,7 +1310,7 @@
             <div class="room-card" data-tilt data-category="triple">
                 <div class="room-image">
                     <span class="room-pill-tag">Great Value</span>
-                    <div class="price-tag"><span>₹5,500</span><small>/mo</small></div>
+                    <div class="price-tag"><span>₹7,500</span><small>/mo + ₹2,000 AC</small></div>
                     
                     <div class="slider-container">
                         <div class="slide active">
@@ -1369,7 +1374,7 @@
             <div class="room-card" data-tilt data-category="quadruple">
                 <div class="room-image">
                     <span class="room-pill-tag">Budget Friendly</span>
-                    <div class="price-tag"><span>₹4,500</span><small>/mo</small></div>
+                    <div class="price-tag"><span>₹6,500</span><small>/mo + ₹2,000 AC</small></div>
                     
                     <div class="slider-container">
                         <div class="slide active">
@@ -1454,10 +1459,10 @@
                 <tbody>
                     <tr>
                         <td class="feat-name">Monthly Price</td>
-                        <td class="feat-price">₹9,000 / mo</td>
-                        <td class="feat-price">₹7,000 / mo</td>
-                        <td class="feat-price">₹5,500 / mo</td>
-                        <td class="feat-price">₹4,500 / mo</td>
+                        <td class="feat-price">₹15,500 / mo<br><small>AC: +₹2,000</small></td>
+                        <td class="feat-price">₹9,500 / mo<br><small>AC: +₹2,000</small></td>
+                        <td class="feat-price">₹7,500 / mo<br><small>AC: +₹2,000</small></td>
+                        <td class="feat-price">₹6,500 / mo<br><small>AC: +₹2,000</small></td>
                     </tr>
                     <tr>
                         <td class="feat-name">Room Privacy Level</td>
@@ -1525,9 +1530,9 @@
         <div class="section-header">
             <span class="room-badge">TESTIMONIALS</span>
             <h2>What Our Residents Say</h2>
-            <div class="google-rating">
+            <div class="reviews-rating">
                 <span class="live-indicator"><span class="live-dot"></span> Live</span>
-                <span class="google-logo">Google</span>
+                <img src="assets/jagan-pg-brand.png" class="reviews-brand-logo" alt="Jagan PG logo">
                 <div class="stars">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
@@ -1622,14 +1627,14 @@
             <div>
                 <h4 class="font-semibold text-white mb-4">Contact</h4>
                 <ul class="space-y-2 text-gray-500 text-sm">
-                    <li>📍 Main Road, Near Metro</li>
+                    <li>📍 Gali No. 44, Sector 167, Noida</li>
                     <li>📞 +91 73002 12948</li>
                     <li>📧 piyushverma730929@gmail.com</li>
                 </ul>
             </div>
             <div>
                 <h4 class="font-semibold text-white mb-4">Location</h4>
-                <p class="text-gray-500 text-sm">Near Metro Station, Bangalore - 560001</p>
+                <p class="text-gray-500 text-sm">Chhaproli Khadar, Uttar Pradesh 201304</p>
             </div>
         </div>
         <div class="border-t border-[#111] mt-12 pt-8 text-center text-gray-600 text-xs">
@@ -1649,7 +1654,7 @@
     <div class="sticky-mobile-bar">
         <div class="sticky-price">
             <span>Starting from</span>
-            <strong>₹4,500/mo</strong>
+            <strong>₹6,500/mo</strong>
         </div>
         <div class="sticky-actions">
             <a href="tel:+917300212948" class="sticky-btn sticky-call">
