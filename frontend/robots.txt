@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jagan-pg-web.vercel.app/sitemap.xml
+Sitemap: https://jaganpg.townhub.site/sitemap.xml
